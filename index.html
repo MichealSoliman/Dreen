@@ -1393,6 +1393,386 @@
             z-index: 2;
         }
     </style>
+    <!-- Vision Section -->
+       <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .vision-bg {
+            background: linear-gradient(135deg, #f8faf9 0%, #ffffff 100%);
+        }
+        
+        .vision-container {
+            box-shadow: 0 15px 50px rgba(15, 76, 58, 0.1);
+            border-radius: 20px;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .vision-image-section {
+            position: relative;
+            padding: 30px;
+            background: linear-gradient(135deg, #0f4c3a10, #1a7a5e10);
+            border-radius: 20px 0 0 20px;
+        }
+        
+        .vision-image-wrapper {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .vision-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .vision-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .vision-image-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(15, 76, 58, 0.3));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        
+        .image-caption {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-right: 4px solid #0f4c3a;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .vision-image-wrapper:hover .image-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .image-quote {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(15, 76, 58, 0.08);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-quote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 80px;
+            color: #0f4c3a10;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .image-quote-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0f4c3a, #1a7a5e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .vision-content {
+            padding: 40px 35px;
+        }
+        
+        .vision-badge {
+            background: linear-gradient(135deg, #0f4c3a, #1a7a5e);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 25px;
+            animation: badgePulse 2s infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(15, 76, 58, 0.4);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 5px rgba(15, 76, 58, 0.1);
+            }
+        }
+        
+        .vision-point {
+            position: relative;
+            padding-right: 25px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .vision-point.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .vision-point::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: #0f4c3a;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(15, 76, 58, 0.2);
+        }
+        
+        .vision-point::after {
+            content: '';
+            position: absolute;
+            right: 4px;
+            top: 8px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: #e2e8f0;
+            z-index: -1;
+        }
+        
+        .vision-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0f4c3a, #1a7a5e);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transform: rotate(-5deg);
+            transition: all 0.4s ease;
+        }
+        
+        .vision-point:hover .vision-icon {
+            transform: rotate(0deg) scale(1.1);
+            box-shadow: 0 10px 20px rgba(15, 76, 58, 0.2);
+        }
+        
+        .vision-2030 {
+            background: linear-gradient(135deg, #0f4c3a15, #1a7a5e15);
+            border-right: 4px solid #0f4c3a;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .vision-2030.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .vision-2030::before {
+            content: '2030';
+            position: absolute;
+            left: -20px;
+            bottom: -20px;
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(15, 76, 58, 0.05);
+            z-index: 0;
+        }
+        
+        .vision-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .stat-box {
+            background: #f8faf9;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .stat-box.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(15, 76, 58, 0.15);
+            border-color: #0f4c3a;
+            background: white;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to left, #0f4c3a, #1a7a5e);
+            border-radius: 10px;
+            animation: widthGrow 1.5s ease-out forwards;
+        }
+        
+        @keyframes widthGrow {
+            from {
+                width: 0;
+            }
+            to {
+                width: 80px;
+            }
+        }
+        
+        .quote-author {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0f4c3a, #1a7a5e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(15, 76, 58, 0.1);
+            border-radius: 50%;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 30%;
+            left: 20%;
+            animation-delay: 0.5s;
+            width: 15px;
+            height: 15px;
+        }
+        
+        .floating-element:nth-child(3) {
+            top: 60%;
+            left: 15%;
+            animation-delay: 1s;
+            width: 25px;
+            height: 25px;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 10px rgba(15, 76, 58, 0.3);
+            transition: text-shadow 0.3s ease;
+        }
+        
+        .text-glow:hover {
+            text-shadow: 0 0 20px rgba(15, 76, 58, 0.5);
+        }
+        
+        @media (max-width: 1024px) {
+            .vision-content {
+                padding: 30px 25px;
+            }
+            
+            .vision-image-wrapper {
+                height: 280px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -3177,6 +3557,311 @@
             imageUrls.forEach(url => {
                 const img = new Image();
                 img.src = url;
+            });
+        });
+    </script>
+
+        <!-- Vision Section -->
+    <section id="vision" class="py-16 md:py-20 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="vision-badge mb-4">
+                    <i class="fas fa-eye mr-2"></i> رؤيتنا المستقبلية
+                </span>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fadeInUp">
+                    نحو <span class="text-[#0f4c3a] text-glow">الريادة</span> والتميز
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto animate-fadeInUp" style="animation-delay: 0.2s">
+                    نرسم ملامح المستقبل بخطى ثابتة نحو تحقيق أهدافنا الطموحة
+                </p>
+            </div>
+
+            <!-- Main Vision Container -->
+            <div class="vision-container animate-fadeInUp" style="animation-delay: 0.3s">
+                <div class="grid lg:grid-cols-3">
+                    <!-- Image Column - Left Side -->
+                    <div class="lg:col-span-1">
+                        <div class="vision-image-section">
+                            <div class="floating-elements">
+                                <div class="floating-element"></div>
+                                <div class="floating-element"></div>
+                                <div class="floating-element"></div>
+                            </div>
+                            
+                            <!-- Image Container -->
+                            <div class="vision-image-wrapper">
+                                <!-- هنا ضع رابط الصورة الفعلية -->
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                     alt="رؤية مؤسسة درين للمقاولات" 
+                                     class="vision-image">
+                                <div class="vision-image-overlay">
+                                    <div class="image-caption">
+                                        <h4 class="font-bold text-gray-900">طموح نحو المستقبل</h4>
+                                        <p class="text-sm text-gray-600">الريادة في مجال المقاولات</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quote under image -->
+                            <div class="image-quote">
+                                <div class="image-quote-icon">
+                                    <i class="fas fa-quote-right text-white"></i>
+                                </div>
+                                <p class="text-gray-700 mb-4 italic">
+                                    "النجاح ليس صدفة، بل هو نتيجة التخطيط الاستراتيجي والعمل الدؤوب والالتزام بالتميز في كل ما نقدمه."
+                                </p>
+                                <div class="quote-author">
+                                    <div class="author-avatar">
+                                        <i class="fas fa-user-tie text-white"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-gray-900">فريق القيادة</div>
+                                        <div class="text-sm text-gray-600">مؤسسة درين للمقاولات</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Stats under quote -->
+                            <div class="mt-6 grid grid-cols-2 gap-3">
+                                <div class="bg-white rounded-lg p-4 text-center border border-gray-100 shadow-sm">
+                                    <div class="text-xl font-bold text-[#0f4c3a]">+18</div>
+                                    <div class="text-xs text-gray-600">سنة خبرة</div>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 text-center border border-gray-100 shadow-sm">
+                                    <div class="text-xl font-bold text-[#1a7a5e]">623+</div>
+                                    <div class="text-xs text-gray-600">فني متخصص</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Column - Right Side -->
+                    <div class="lg:col-span-2">
+                        <div class="vision-content">
+                            <!-- Vision Introduction -->
+                            <div class="mb-10">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-6 section-title">
+                                    رؤيتنا
+                                </h2>
+                                <p class="text-gray-700 text-lg leading-relaxed mb-6 animate-fadeInUp" style="animation-delay: 0.4s">
+                                    نسعى لأن نكون شركة متميزة على مستوى المملكة، ذات استثمارات متعددة، وأن نتميز بقدراتنا على القيادة والمشاركة في تأسيس المشاريع والشركات بمنهجية علمية مدروسة.
+                                </p>
+                            </div>
+                            
+                            <!-- Vision Points -->
+                            <div class="mb-10">
+                                <div class="vision-point" style="transition-delay: 0.1s">
+                                    <div class="vision-icon">
+                                        <i class="fas fa-chart-line text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-3">استثمارات استراتيجية كبرى</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        نطمح إلى الدخول في استثمارات استراتيجية كبرى، وأن نكون الشركة الرائدة والمتخصصة في مجال المقاولات والتشغيل والصيانة.
+                                    </p>
+                                </div>
+                                
+                                <div class="vision-point" style="transition-delay: 0.2s">
+                                    <div class="vision-icon">
+                                        <i class="fas fa-medal text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-3">الجودة والابتكار</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        نتطلع لأن نكون من الشركات الرائدة في تقديم خدمات صيانة متكاملة تتميز بأعلى درجات الجودة والإتقان، مع الالتزام التام بالابتكار وتطوير جودة المنتجات.
+                                    </p>
+                                </div>
+                                
+                                <div class="vision-point" style="transition-delay: 0.3s">
+                                    <div class="vision-icon">
+                                        <i class="fas fa-handshake text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-3">ثقة العملاء</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        لنكون الخيار الأول في مجال عملنا، وكسب ثقة الدولة والأفراد من خلال أدائنا المتميز وخدماتنا عالية الجودة.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Vision 2030 -->
+                            <div class="vision-2030" style="transition-delay: 0.4s">
+                                <div class="relative z-10">
+                                    <div class="flex items-center mb-4">
+                                        <div class="bg-[#0f4c3a] text-white w-10 h-10 rounded-full flex items-center justify-center ml-3 animate-float">
+                                            <i class="fas fa-flag"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-gray-900">مساهمتنا في رؤية 2030</h3>
+                                    </div>
+                                    <p class="text-gray-700">
+                                        ونسعى لأن نكون أحد المساهمين الفاعلين في التحول الاقتصادي للمملكة، وفق رؤية المملكة 2030، من خلال تقديم حلول مبتكرة وخدمات متميزة تساهم في تحقيق أهداف الرؤية الطموحة.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Stats -->
+                            <div class="vision-stats">
+                                <div class="stat-box" style="transition-delay: 0.5s">
+                                    <div class="text-2xl font-bold text-[#0f4c3a] mb-2">الريادة</div>
+                                    <div class="text-sm text-gray-600">في مجال المقاولات</div>
+                                </div>
+                                
+                                <div class="stat-box" style="transition-delay: 0.6s">
+                                    <div class="text-2xl font-bold text-[#1a7a5e] mb-2">الجودة</div>
+                                    <div class="text-sm text-gray-600">أعلى معايير الإتقان</div>
+                                </div>
+                                
+                                <div class="stat-box" style="transition-delay: 0.7s">
+                                    <div class="text-2xl font-bold text-[#0f4c3a] mb-2">الابتكار</div>
+                                    <div class="text-sm text-gray-600">حلول مبتكرة ومتطورة</div>
+                                </div>
+                                
+                                <div class="stat-box" style="transition-delay: 0.8s">
+                                    <div class="text-2xl font-bold text-[#1a7a5e] mb-2">الثقة</div>
+                                    <div class="text-sm text-gray-600">ثقة الدولة والأفراد</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vision Values -->
+            <div class="mt-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-10 text-center animate-fadeInUp" style="animation-delay: 0.5s">
+                    قيمنا نحو تحقيق الرؤية
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border-t-4 border-[#0f4c3a] transform hover:-translate-y-2 animate-fadeInUp" style="animation-delay: 0.6s">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-[#0f4c3a] text-white w-12 h-12 rounded-full flex items-center justify-center ml-4 animate-float">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">التركيز الاستراتيجي</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            نركز جهودنا على المجالات التي تمتلك فيها المؤسسة ميزة تنافسية واضحة، لتحقيق النمو المستدام.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border-t-4 border-[#1a7a5e] transform hover:-translate-y-2 animate-fadeInUp" style="animation-delay: 0.7s">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-[#1a7a5e] text-white w-12 h-12 rounded-full flex items-center justify-center ml-4 animate-float" style="animation-delay: 0.2s">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">التعاون والشراكات</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            نؤمن بأهمية الشراكات الاستراتيجية لتحقيق الرؤية المشتركة وتعزيز تأثيرنا في السوق.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border-t-4 border-[#0f4c3a] transform hover:-translate-y-2 animate-fadeInUp" style="animation-delay: 0.8s">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-[#0f4c3a] text-white w-12 h-12 rounded-full flex items-center justify-center ml-4 animate-float" style="animation-delay: 0.4s">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">النمو المستمر</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            نسعى للتطوير المستمر وتحسين أدائنا لمواكبة التطورات في قطاع المقاولات والتشغيل.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="mt-16 text-center animate-fadeInUp" style="animation-delay: 0.9s">
+                <div class="inline-block bg-gradient-to-r from-[#0f4c3a] to-[#1a7a5e] rounded-2xl p-2 animate-float">
+                    <div class="bg-white rounded-xl p-8 md:p-10">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">نحو مستقبل مشترك</h3>
+                        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                            نؤمن بأن تحقيق الرؤية يتطلب العمل الجماعي والشراكات الاستراتيجية. نرحب بفرص التعاون لتحقيق أهدافنا المشتركة.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <button class="bg-[#0f4c3a] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0a382a] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                                <i class="fas fa-handshake ml-2"></i>
+                                تعرف على شراكاتنا
+                            </button>
+                            <button class="bg-white text-[#0f4c3a] border border-[#0f4c3a] px-8 py-3 rounded-lg font-semibold hover:bg-[#0f4c3a] hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                                <i class="fas fa-phone ml-2"></i>
+                                اتصل بنا
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Intersection Observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('vision-point') || 
+                            entry.target.classList.contains('vision-2030') || 
+                            entry.target.classList.contains('stat-box')) {
+                            entry.target.classList.add('animated');
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20px 0px'
+            });
+
+            // Observe all elements that need animation
+            document.querySelectorAll('.vision-point, .vision-2030, .stat-box').forEach((el) => {
+                observer.observe(el);
+            });
+
+            // Image hover effect
+            const visionImage = document.querySelector('.vision-image');
+            if (visionImage) {
+                visionImage.parentElement.addEventListener('mouseenter', function() {
+                    visionImage.style.transform = 'scale(1.05)';
+                });
+                
+                visionImage.parentElement.addEventListener('mouseleave', function() {
+                    visionImage.style.transform = 'scale(1)';
+                });
+            }
+
+            // Icon hover effects
+            document.querySelectorAll('.vision-icon').forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'rotate(0deg) scale(1.1)';
+                    this.style.boxShadow = '0 10px 20px rgba(15, 76, 58, 0.2)';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'rotate(-5deg) scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+
+            // Button click effects
+            document.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                    
+                    // Simulate action
+                    if (this.textContent.includes('شراكاتنا')) {
+                        alert('سيتم توجيهك إلى صفحة الشراكات قريباً');
+                    } else if (this.textContent.includes('اتصل بنا')) {
+                        alert('سيتم توجيهك إلى صفحة الاتصال قريباً');
+                    }
+                });
+            });
+
+            // Add floating animation to random elements
+            const floatingElements = document.querySelectorAll('.animate-float');
+            floatingElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.3}s`;
             });
         });
     </script>

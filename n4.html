@@ -3,331 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استثمر في مستقبل المملكة - رؤية 2030</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <title>اتصل بنا - مؤسسة درين للمقاولات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+        
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
         }
-
-        body {
-            font-family: 'Cairo', 'Tajawal', sans-serif;
-            overflow-x: hidden;
-            background: #000;
+        
+        .footer-gradient-bg {
+            background: linear-gradient(135deg, #0a2b1f 0%, #0f4c3a 50%, #0a382a 100%);
+            position: relative;
+            overflow: hidden;
         }
-
-        /* Navigation Styles */
-        nav {
-            position: fixed;
+        
+        .footer-pattern {
+            position: absolute;
             top: 0;
+            right: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 15px 0;
-            background: rgba(255, 255, 255, 0.95);
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231a7a5e' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .footer-card {
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        
+        .footer-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
         }
-
-        .logo {
+        
+        .footer-icon-circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a7a5e, #2a9d78);
+            border-radius: 50%;
             display: flex;
             align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-card:hover .footer-icon-circle {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-link {
+            position: relative;
+            padding-right: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #2a9d78;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #2a9d78;
+            padding-right: 30px;
+            transform: translateX(-5px);
+        }
+        
+        .footer-link:hover::before {
+            opacity: 1;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon:hover {
+            background: #2a9d78;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+        
+        .subscribe-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            padding: 15px 20px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .subscribe-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #2a9d78;
+            box-shadow: 0 0 0 2px rgba(42, 157, 120, 0.2);
+        }
+        
+        .subscribe-btn {
+            background: linear-gradient(135deg, #1a7a5e, #2a9d78);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 10px;
-            font-size: 24px;
-            font-weight: 800;
-            color: #006633;
         }
-
-        .logo-icon {
+        
+        .subscribe-btn:hover {
+            background: linear-gradient(135deg, #2a9d78, #1a7a5e);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin: 40px 0;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #006633, #00994d);
+            background: linear-gradient(135deg, #1a7a5e, #2a9d78);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 24px;
-            font-weight: 900;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-            align-items: center;
-        }
-
-        .nav-links a {
             text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #006633;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: #006633;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
-            padding: 12px 30px;
-            border-radius: 30px;
-            color: #000;
-            font-weight: 700;
-            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-        }
-
-        .lang-switcher {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .lang-btn {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 13px;
-            color: #666;
-        }
-
-        .lang-btn.active,
-        .lang-btn:hover {
-            background: #006633;
-            color: white;
-            border-color: #006633;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .hamburger span {
-            width: 28px;
-            height: 3px;
-            background: #006633;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
             opacity: 0;
+            transform: translateY(20px);
         }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
-        }
-
-        .hero-slide.active {
+        
+        .back-to-top.visible {
             opacity: 1;
-            z-index: 1;
+            transform: translateY(0);
         }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            animation: kenburns 20s ease-out infinite;
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
-
-        @keyframes kenburns {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 102, 51, 0.85) 0%, rgba(0, 51, 26, 0.7) 100%);
-            z-index: 2;
-        }
-
-        .hero-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
-            z-index: 3;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 4;
-            height: 100%;
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 250px;
+            background: rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
+            justify-content: center;
+        }
+        
+        .working-hours {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .hour-item {
+            display: flex;
             justify-content: space-between;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .hero-text {
-            flex: 1;
-            max-width: 700px;
-            animation: slideInRight 1s ease-out;
+        
+        .hour-item:last-child {
+            border-bottom: none;
         }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-title {
-            font-size: 72px;
-            font-weight: 900;
-            color: white;
-            line-height: 1.2;
-            margin-bottom: 25px;
-            text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 28px;
-            color: #d4af37;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-shadow: 1px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .hero-description {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.95);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .hero-btn {
-            padding: 18px 40px;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hero-btn-primary {
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
-            color: #000;
-            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        .hero-btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.6);
-        }
-
-        .hero-btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px);
-        }
-
-        /* Stats Section */
-       
-
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -338,770 +248,389 @@
                 transform: translateY(0);
             }
         }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 25px 35px;
-            text-align: center;
-            transition: all 0.3s ease;
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
         }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .stat-number {
-            font-size: 42px;
-            font-weight: 900;
-            color: #d4af37;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            color: white;
-            font-weight: 600;
-        }
-
-        .stat-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        /* Hero Image Side */
-        .hero-image-container {
-            flex: 1;
+        
+        .payment-methods {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: slideInLeft 1s ease-out;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-featured-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 25px;
-            padding: 30px;
-            max-width: 450px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
-        }
-
-        .featured-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        .featured-title {
-            font-size: 28px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        .featured-description {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-        }
-
-        /* Thumbnail Carousel */
-        .thumbnail-carousel {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            width: 90%;
-            max-width: 1300px;
-        }
-
-        .carousel-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 10px 0;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 rgba(255, 255, 255, 0.2);
-        }
-
-        .carousel-container::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .carousel-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        .carousel-container::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 10px;
-        }
-
-        .thumbnail-item {
-            min-width: 250px;
-            height: 140px;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.4s ease;
-            border: 3px solid transparent;
-        }
-
-        .thumbnail-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            border-color: #d4af37;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-        }
-
-        .thumbnail-item.active {
-            border-color: #d4af37;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-        }
-
-        .thumbnail-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .thumbnail-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-        }
-
-        .thumbnail-title {
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-        }
-
-        .thumbnail-subtitle {
-            color: #d4af37;
-            font-size: 13px;
-            font-weight: 500;
-            margin-top: 3px;
-        }
-
-        /* Navigation Arrows */
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        
+        .payment-icon {
             width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 6;
-        }
-
-        .carousel-nav:hover {
-            background: rgba(212, 175, 55, 0.8);
-            border-color: #d4af37;
-        }
-
-        .carousel-nav.prev {
-            left: 20px;
-        }
-
-        .carousel-nav.next {
-            right: 20px;
-        }
-
-        .carousel-nav svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 1000;
-            background: #25D366;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.15);
-            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-float svg {
-            width: 35px;
-            height: 35px;
-            fill: white;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-content {
-                flex-direction: column;
-                padding: 30px;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .hero-text {
-                max-width: 100%;
-            }
-
-            .hero-title {
-                font-size: 52px;
-            }
-
-            .hero-subtitle {
-                font-size: 24px;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .hero-image-container {
-                display: none;
-            }
-
-            .thumbnail-item {
-                min-width: 200px;
-                height: 120px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links,
-            .lang-switcher {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: rgba(255, 255, 255, 0.98);
-                flex-direction: column;
-                padding: 30px;
-                transition: right 0.4s ease;
-                backdrop-filter: blur(10px);
-            }
-
-            .nav-links.active,
-            .lang-switcher.active {
-                right: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero-title {
-                font-size: 42px;
-            }
-
-            .hero-subtitle {
-                font-size: 20px;
-            }
-
-            .hero-description {
-                font-size: 16px;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .stat-card {
-                width: 100%;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .hero-btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .thumbnail-item {
-                min-width: 180px;
-                height: 100px;
-            }
-
-            .thumbnail-title {
-                font-size: 14px;
-            }
-
-            .carousel-nav {
-                width: 40px;
-                height: 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 15px;
-            }
-
-            .hero-content {
-                padding: 20px;
-            }
-
-            .hero-title {
-                font-size: 32px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .stat-number {
-                font-size: 32px;
-            }
-
-            .thumbnail-carousel {
-                width: 95%;
-            }
-
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                left: 20px;
-            }
+            font-size: 18px;
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">🏛️</div>
-                <span>الاستثمار</span>
+<body class="bg-gray-50">
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Footer Section -->
+    <footer class="footer-gradient-bg text-white pt-16 pb-8 px-4 md:px-8">
+        <div class="footer-pattern"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="animate-fadeInUp">
+                    <div class="footer-card p-6 h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="footer-icon-circle">
+                                <i class="fas fa-building text-xl"></i>
+                            </div>
+                            <div class="mr-4">
+                                <h3 class="text-xl font-bold">مؤسسة درين للمقاولات</h3>
+                                <p class="text-gray-300 text-sm">شركة رائدة منذ 2005</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            مؤسسة رائدة في مجال المقاولات والتشغيل والصيانة، تقدم خدمات عالية الجودة بمهنية واحترافية، وتساهم في تحقيق رؤية المملكة 2030.
+                        </p>
+                        <div class="flex space-x-4 space-x-reverse">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="animate-fadeInUp" style="animation-delay: 0.1s">
+                    <div class="footer-card p-6 h-full">
+                        <h3 class="text-xl font-bold mb-6 pb-3 border-b border-gray-700">روابط سريعة</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-home ml-2"></i> الصفحة الرئيسية
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-info-circle ml-2"></i> من نحن
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-cogs ml-2"></i> خدماتنا
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-project-diagram ml-2"></i> مشاريعنا
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-eye ml-2"></i> رؤيتنا
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-phone ml-2"></i> اتصل بنا
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="animate-fadeInUp" style="animation-delay: 0.2s">
+                    <div class="footer-card p-6 h-full">
+                        <h3 class="text-xl font-bold mb-6 pb-3 border-b border-gray-700">معلومات الاتصال</h3>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">العنوان</h4>
+                                <p class="text-gray-300 text-sm">المملكة العربية السعودية، الرياض، حي الملك فهد</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">الهاتف</h4>
+                                <p class="text-gray-300 text-sm">+966 11 123 4567</p>
+                                <p class="text-gray-300 text-sm">+966 50 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">البريد الإلكتروني</h4>
+                                <p class="text-gray-300 text-sm">info@darin-contracting.com</p>
+                                <p class="text-gray-300 text-sm">support@darin-contracting.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Newsletter & Map -->
+                <div class="animate-fadeInUp" style="animation-delay: 0.3s">
+                    <div class="space-y-6">
+                        <!-- Newsletter -->
+                        <div class="footer-card p-6">
+                            <h3 class="text-xl font-bold mb-4">اشترك في نشرتنا</h3>
+                            <p class="text-gray-300 mb-4 text-sm">
+                                اشترك لتصلك آخر أخبارنا وعروضنا الخاصة
+                            </p>
+                            <form class="space-y-4">
+                                <input type="email" 
+                                       placeholder="بريدك الإلكتروني" 
+                                       class="subscribe-input" 
+                                       required>
+                                <button type="submit" class="subscribe-btn w-full">
+                                    <i class="fas fa-paper-plane"></i>
+                                    اشترك الآن
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Working Hours -->
+                        <div class="footer-card p-6">
+                            <h3 class="text-xl font-bold mb-4">ساعات العمل</h3>
+                            <div class="working-hours">
+                                <div class="hour-item">
+                                    <span>الأحد - الخميس</span>
+                                    <span class="text-gray-300">8:00 ص - 5:00 م</span>
+                                </div>
+                                <div class="hour-item">
+                                    <span>الجمعة</span>
+                                    <span class="text-gray-300">10:00 ص - 2:00 م</span>
+                                </div>
+                                <div class="hour-item">
+                                    <span>السبت</span>
+                                    <span class="text-gray-300">إجازة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Services Section -->
+            <div class="mb-12 animate-fadeInUp" style="animation-delay: 0.4s">
+                <h3 class="text-xl font-bold mb-6 text-center">خدماتنا الرئيسية</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-road text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">البنية التحتية</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-tools text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">التشغيل والصيانة</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-hard-hat text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">مقاولات خاصة</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-building text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">مباني سكنية</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-bolt text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">تمديدات كهرباء</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-cogs text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">أعمال ميكانيكية</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Section -->
+            <div class="mb-12 animate-fadeInUp" style="animation-delay: 0.5s">
+                <div class="footer-card p-6">
+                    <h3 class="text-xl font-bold mb-4">موقعنا على الخريطة</h3>
+                    <div class="map-container">
+                        <!-- هنا يمكن إضافة خريطة جوجل -->
+                        <div class="text-center p-8">
+                            <i class="fas fa-map-marked-alt text-4xl mb-4 text-gray-400"></i>
+                            <p class="text-gray-400">خريطة موقع المؤسسة</p>
+                            <button class="mt-4 px-6 py-2 bg-[#2a9d78] text-white rounded-lg hover:bg-[#1a7a5e] transition-colors">
+                                <i class="fas fa-directions ml-2"></i>
+                                احصل على الاتجاهات
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Divider -->
+            <div class="footer-divider"></div>
+            
+            <!-- Bottom Footer -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <!-- Copyright -->
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">
+                        © 2024 مؤسسة درين للمقاولات. جميع الحقوق محفوظة.
+                    </p>
+                </div>
+                
+                <!-- Logo -->
+                <div class="text-center">
+                    <div class="inline-flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-[#1a7a5e] to-[#2a9d78] rounded-lg flex items-center justify-center ml-3">
+                            <i class="fas fa-building text-white"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xl">درين</div>
+                            <div class="text-gray-400 text-sm">للمقاولات</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Policies -->
+                <div class="text-center md:text-left">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">
+                            سياسة الخصوصية
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">
+                            شروط الاستخدام
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">
+                            سياسة الاسترجاع
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">
+                            الأسئلة الشائعة
+                        </a>
+                    </div>
+                    
+                    <!-- Payment Methods -->
+                    <div class="payment-methods justify-center md:justify-start mt-4">
+                        <div class="payment-icon">
+                            <i class="fab fa-cc-visa"></i>
+                        </div>
+                        <div class="payment-icon">
+                            <i class="fab fa-cc-mastercard"></i>
+                        </div>
+                        <div class="payment-icon">
+                            <i class="fab fa-cc-paypal"></i>
+                        </div>
+                        <div class="payment-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#projects">المشاريع</a></li>
-                <li><a href="#opportunities">الفرص الاستثمارية</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="#contact">تواصل معنا</a></li>
-                <li><a href="#" class="nav-cta">ابدأ الاستثمار الآن</a></li>
-            </ul>
-
-            <div class="lang-switcher">
-                <button class="lang-btn active">العربية</button>
-                <button class="lang-btn">English</button>
-                <button class="lang-btn">中文</button>
+            <!-- WhatsApp Float -->
+            <div class="fixed bottom-30 left-20 z-50">
+                <a href="https://wa.me/966501234567" 
+                   target="_blank" 
+                   class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-fadeInUp"
+                   style="animation-delay: 0.6s">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
             </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <!-- Slide 1 -->
-        <div class="hero-slide active" data-slide="0">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">استثمر في مستقبل المملكة</h1>
-                    <p class="hero-subtitle">رؤية 2030 تفتح آفاقاً جديدة</p>
-                    <p class="hero-description">
-                        اكتشف فرصاً استثمارية في ظل نمو الاقتصاد السعودي المتنوع. نحن نربطك بالمشاريع الواعدة والشركاء الاستراتيجيين لتحقيق أهدافك.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            ابدأ الاستثمار الآن ←
-                        </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            تصفح محفظة المشاريع
-                        </a>
-                    </div>
-                  
-                </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&h=300&fit=crop" alt="Vision 2030" class="featured-image">
-                        <h3 class="featured-title">استثمر في مستقبل المملكة</h3>
-                        <p class="featured-description">انضم إلى رحلة التحول الاقتصادي الكبرى واستثمر في أكبر المشاريع التنموية في المنطقة</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="hero-slide" data-slide="1">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">مشاريع البنية التحتية المتقدمة</h1>
-                    <p class="hero-subtitle">استثمارات تصل إلى +500 مليار ريال</p>
-                    <p class="hero-description">
-                        شارك في بناء المدن الذكية والبنية التحتية الحديثة التي تشكل مستقبل المملكة وتحقق عوائد استثنائية للمستثمرين.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            استكشف المشاريع ←
-                        </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            تحميل دليل المستثمر
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop" alt="Infrastructure" class="featured-image">
-                        <h3 class="featured-title">مشاريع البنية التحتية</h3>
-                        <p class="featured-description">استثمر في المشاريع التي تبني مستقبل المملكة وتحقق عوائد طويلة الأجل</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="hero-slide" data-slide="2">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">الطاقة المتجددة والاستدامة</h1>
-                    <p class="hero-subtitle">نحو مستقبل أخضر ومستدام</p>
-                    <p class="hero-description">
-                        استثمر في مشاريع الطاقة المتجددة والطاقة الشمسية التي تدعم رؤية السعودية الخضراء وتحقق عوائد مستدامة.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            مشاريع الطاقة النظيفة ←
-                        </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            معرفة المزيد
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&h=300&fit=crop" alt="Green Energy" class="featured-image">
-                        <h3 class="featured-title">الطاقة المتجددة</h3>
-                        <p class="featured-description">انضم إلى مستقبل الطاقة النظيفة واستثمر في مشاريع مستدامة تحقق عوائد مضمونة</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="hero-slide" data-slide="3">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">التكنولوجيا والابتكار</h1>
-                    <p class="hero-subtitle">قيادة التحول الرقمي في المنطقة</p>
-                    <p class="hero-description">
-                        استثمر في مشاريع التقنية والذكاء الاصطناعي التي تقود التحول الرقمي وتبني اقتصاد المستقبل.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            مشاريع التقنية ←
-                        </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            تواصل مع الخبراء
-                        </a>
-                    </div>
-                   
-                </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop" alt="Technology" class="featured-image">
-                        <h3 class="featured-title">التكنولوجيا والابتكار</h3>
-                        <p class="featured-description">كن جزءاً من ثورة التقنية واستثمر في مشاريع تشكل مستقبل المنطقة</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="hero-slide" data-slide="4">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">السياحة والترفيه</h1>
-                    <p class="hero-subtitle">وجهات عالمية تجذب الملايين</p>
-                    <p class="hero-description">
-                        استثمر في قطاع السياحة المتنامي والمشاريع الترفيهية العملاقة التي تستقطب السياح من جميع أنحاء العالم.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            مشاريع السياحة ←
-                        </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            عرض الفرص
-                        </a>
-                    </div>
-                   
-                </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=500&h=300&fit=crop" alt="Tourism" class="featured-image">
-                        <h3 class="featured-title">السياحة والترفيه</h3>
-                        <p class="featured-description">استثمر في قطاع السياحة المزدهر وحقق عوائد استثنائية في أسرع القطاعات نمواً</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Navigation Arrows -->
-        <div class="carousel-nav prev" onclick="changeSlide(-1)">
-            <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
-        </div>
-        <div class="carousel-nav next" onclick="changeSlide(1)">
-            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-        </div>
-
-        <!-- Thumbnail Carousel -->
-        <div class="thumbnail-carousel">
-            <div class="carousel-container">
-                <div class="thumbnail-item active" onclick="goToSlide(0)">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=300&h=200&fit=crop" alt="Vision 2030" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">استثمر في مستقبل المملكة</div>
-                        <div class="thumbnail-subtitle">رؤية 2030</div>
-                    </div>
-                </div>
-                <div class="thumbnail-item" onclick="goToSlide(1)">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop" alt="Infrastructure" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">مشاريع البنية التحتية</div>
-                        <div class="thumbnail-subtitle">+500 مليار ريال</div>
-                    </div>
-                </div>
-                <div class="thumbnail-item" onclick="goToSlide(2)">
-                    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=300&h=200&fit=crop" alt="Green Energy" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">الطاقة المتجددة</div>
-                        <div class="thumbnail-subtitle">مستقبل أخضر</div>
-                    </div>
-                </div>
-                <div class="thumbnail-item" onclick="goToSlide(3)">
-                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=300&h=200&fit=crop" alt="Technology" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">التكنولوجيا والابتكار</div>
-                        <div class="thumbnail-subtitle">التحول الرقمي</div>
-                    </div>
-                </div>
-                <div class="thumbnail-item" onclick="goToSlide(4)">
-                    <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=300&h=200&fit=crop" alt="Tourism" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">السياحة والترفيه</div>
-                        <div class="thumbnail-subtitle">100 مليون سائح</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WhatsApp Float Button -->
-    <div class="whatsapp-float">
-        <svg viewBox="0 0 32 32">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.957 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62-6.11 13.62-13.62 13.62zM21.305 19.26c-0.346-0.174-2.049-1.007-2.366-1.123-0.316-0.117-0.547-0.174-0.776 0.174s-0.892 1.123-1.094 1.347c-0.201 0.231-0.403 0.26-0.749 0.087s-1.46-0.538-2.779-1.715c-1.027-0.915-1.72-2.045-1.922-2.391s-0.022-0.536 0.152-0.709c0.156-0.155 0.346-0.403 0.518-0.605s0.231-0.346 0.346-0.577c0.116-0.231 0.058-0.433-0.028-0.605s-0.776-1.87-1.063-2.565c-0.28-0.672-0.56-0.58-0.776-0.591-0.2-0.010-0.431-0.012-0.661-0.012s-0.603 0.087-0.92 0.433c-0.316 0.346-1.206 1.179-1.206 2.873s1.235 3.333 1.406 3.561c0.172 0.231 2.395 3.654 5.799 5.125 0.811 0.352 1.445 0.562 1.938 0.719 0.814 0.257 1.555 0.221 2.141 0.134 0.653-0.097 2.049-0.831 2.337-1.636s0.289-1.494 0.202-1.636c-0.086-0.14-0.317-0.231-0.663-0.403z"/>
-        </svg>
-    </div>
+    </footer>
 
     <script>
-        // Variables
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const thumbnails = document.querySelectorAll('.thumbnail-item');
-        let autoSlideInterval;
-
-        // Navigation Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            }
-        });
-
-        // Slide Functions
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top Button
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
                 }
             });
-
-            thumbnails.forEach((thumb, i) => {
-                thumb.classList.remove('active');
-                if (i === index) {
-                    thumb.classList.add('active');
-                }
+            
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-
-            currentSlide = index;
-        }
-
-        function changeSlide(direction) {
-            let newIndex = currentSlide + direction;
             
-            if (newIndex >= slides.length) {
-                newIndex = 0;
-            } else if (newIndex < 0) {
-                newIndex = slides.length - 1;
+            // Newsletter Form Submission
+            const newsletterForm = document.querySelector('form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    if (emailInput.value) {
+                        // هنا يمكنك إضافة كود إرسال النموذج
+                        alert('شكراً لاشتراكك في نشرتنا! سنرسل لك آخر التحديثات قريباً.');
+                        emailInput.value = '';
+                    }
+                });
             }
             
-            showSlide(newIndex);
-            resetAutoSlide();
-        }
-
-        function goToSlide(index) {
-            showSlide(index);
-            resetAutoSlide();
-        }
-
-        // Auto slide
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                changeSlide(1);
-            }, 5000); // Change slide every 5 seconds
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-
-        // Initialize
-        startAutoSlide();
-
-        // Pause auto-slide on hover
-        const heroSection = document.querySelector('.hero-section');
-        heroSection.addEventListener('mouseenter', () => {
-            clearInterval(autoSlideInterval);
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Animate elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Observe all elements with animation class
+            document.querySelectorAll('.animate-fadeInUp').forEach((el) => {
+                observer.observe(el);
+            });
+            
+            // Add hover effects to service cards
+            document.querySelectorAll('.footer-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
         });
-
-        heroSection.addEventListener('mouseleave', () => {
-            startAutoSlide();
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                changeSlide(1);
-            } else if (e.key === 'ArrowRight') {
-                changeSlide(-1);
-            }
-        });
-
-        // Touch swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        heroSection.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        heroSection.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                changeSlide(1);
-            }
-            if (touchEndX > touchStartX + 50) {
-                changeSlide(-1);
-            }
-        }
     </script>
 </body>
 </html>
