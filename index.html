@@ -9,7 +9,534 @@
      <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <style>
+          @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            overflow-x: hidden;
+            background: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation Styles - Transparent at first */
+        .projects-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background: transparent;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .projects-nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+
+        .projects-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .projects-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 26px; /* أكبر حجم */
+            font-weight: 800;
+            color: #006633;
+        }
+
+        .projects-logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #006633, #00994d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 900;
+            overflow: hidden;
+        }
+
+        .projects-logo-icon img {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .projects-logo:hover .projects-logo-icon {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .projects-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .projects-nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 18px; /* أكبر حجم */
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .projects-nav:not(.scrolled) .projects-nav-links a {
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .projects-nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .projects-nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px; /* أسمك */
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .projects-nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .projects-nav:not(.scrolled) .projects-nav-links a::after {
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+        }
+
+        .projects-nav-cta {
+            
+            padding: 15px 35px; /* أكبر */
+          
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+           
+           
+            font-size: 17px; 
+            width: 100px;
+        }
+
+      
+
+        .projects-nav:not(.scrolled) .projects-nav-cta {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .projects-nav:not(.scrolled) .projects-nav-cta:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .projects-lang-switcher {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .projects-lang-btn {
+            padding: 9px 18px; /* أكبر */
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 15px; /* أكبر */
+            color: #666;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 600;
+        }
+
+        .projects-nav:not(.scrolled) .projects-lang-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .projects-lang-btn.active,
+        .projects-lang-btn:hover {
+            background: #006633;
+            color: white;
+            border-color: #006633;
+        }
+
+        /* Hamburger Menu */
+        .projects-hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+            padding: 10px;
+            margin-left: -10px;
+        }
+
+        .projects-hamburger span {
+            width: 32px; /* أكبر */
+            height: 4px; /* أكبر */
+            background: #006633;
+            border-radius: 3px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .projects-nav:not(.scrolled) .projects-hamburger span {
+            background: white;
+        }
+
+        .projects-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(9px, 9px);
+            background: #006633;
+        }
+
+        .projects-hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .projects-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(9px, -9px);
+            background: #006633;
+        }
+
+        /* Mobile Menu */
+        .projects-mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 30px 40px;
+        }
+
+        .projects-mobile-menu.active {
+            right: 0;
+        }
+
+        .projects-mobile-nav-links {
+            list-style: none;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .projects-mobile-nav-links li {
+            width: 100%;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: projects-slideIn 0.5s forwards;
+        }
+
+        .projects-mobile-nav-links li:nth-child(1) { animation-delay: 0.1s; }
+        .projects-mobile-nav-links li:nth-child(2) { animation-delay: 0.15s; }
+        .projects-mobile-nav-links li:nth-child(3) { animation-delay: 0.2s; }
+        .projects-mobile-nav-links li:nth-child(4) { animation-delay: 0.25s; }
+        .projects-mobile-nav-links li:nth-child(5) { animation-delay: 0.3s; }
+        .projects-mobile-nav-links li:nth-child(6) { animation-delay: 0.35s; }
+        .projects-mobile-nav-links li:nth-child(7) { animation-delay: 0.4s; }
+        .projects-mobile-nav-links li:nth-child(8) { animation-delay: 0.45s; }
+
+        @keyframes projects-slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .projects-mobile-nav-links a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            font-size: 22px; /* كبير */
+            font-weight: 600;
+            padding: 18px 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .projects-mobile-nav-links a:hover {
+            background: rgba(0, 102, 51, 0.05);
+            color: #006633;
+            transform: translateX(-10px);
+            border-color: rgba(0, 102, 51, 0.1);
+        }
+
+        .projects-mobile-nav-cta {
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            color: #000;
+            font-weight: 700;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            font-size: 20px; /* أكبر */
+        }
+
+        .projects-mobile-nav-cta:hover {
+            background: linear-gradient(135deg, #f4d03f, #d4af37);
+            transform: translateY(-3px) translateX(-10px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Close button */
+        .projects-mobile-close {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: none;
+            border: none;
+            font-size: 28px; /* أكبر */
+            color: #333;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            display: none;
+        }
+
+        /* Hero Section */
+        .projects-hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #006633 0%, #00994d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .projects-hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .projects-nav-container {
+                padding: 0 30px;
+            }
+            
+            .projects-nav-links {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .projects-nav-container {
+                padding: 0 25px;
+            }
+            
+            .projects-nav-links {
+                gap: 25px;
+            }
+            
+            .projects-nav-links a {
+                font-size: 17px;
+            }
+            
+            .projects-nav-cta {
+                padding: 14px 30px;
+                font-size: 16px;
+            }
+            
+            .projects-logo {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .projects-nav-links {
+                display: none;
+            }
+            
+            .projects-lang-switcher {
+                display: none;
+            }
+            
+            .projects-hamburger {
+                display: flex;
+            }
+            
+            .projects-mobile-close {
+                display: block;
+            }
+            
+            .projects-nav-container {
+                padding: 0 20px;
+            }
+            
+            .projects-logo {
+                font-size: 22px;
+            }
+            
+            .projects-logo-icon {
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-nav {
+                padding: 18px 0;
+            }
+            
+            .projects-nav.scrolled {
+                padding: 15px 0;
+            }
+            
+            .projects-nav-container {
+                padding: 0 15px;
+            }
+            
+            .projects-logo {
+                font-size: 20px;
+                gap: 10px;
+            }
+            
+            .projects-logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+            
+            .projects-mobile-nav-links a {
+                font-size: 20px;
+                padding: 16px 20px;
+            }
+            
+            .projects-mobile-nav-cta {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-logo {
+                font-size: 18px;
+            }
+            
+            .projects-logo-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .projects-mobile-nav-links a {
+                font-size: 18px;
+                padding: 14px 18px;
+            }
+            
+            .projects-mobile-menu {
+                padding: 80px 20px 30px;
+            }
+            
+            .projects-mobile-close {
+                top: 20px;
+                left: 20px;
+                font-size: 24px;
+            }
+            
+            .projects-mobile-nav-cta {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .projects-logo {
+                font-size: 16px;
+            }
+            
+            .projects-logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            .projects-mobile-nav-links a {
+                font-size: 16px;
+                padding: 12px 15px;
+            }
+            
+            .projects-mobile-nav-cta {
+                font-size: 15px;
+            }
+        }
+
+        /* Animation for page content when mobile menu is open */
+        body.projects-mobile-open {
+            overflow: hidden;
+        }
+
+        body.projects-mobile-open::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            animation: projects-fadeIn 0.3s ease;
+        }
+
+        @keyframes projects-fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
     <style>
+          @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -71,6 +598,10 @@
             color: white;
             font-size: 24px;
             font-weight: 900;
+        }
+        
+        .logo-icon img{
+            border-radius: 50%;
         }
 
         .nav-links {
@@ -177,15 +708,15 @@
             transform: rotate(-45deg) translate(8px, -8px);
         }
 
-        /* Hero Section */
-        .hero-section {
+        /* Projects Hero Section */
+        .projects-hero-section {
             position: relative;
             height: 100vh;
             overflow: hidden;
             margin-top: 0;
         }
 
-        .hero-slide {
+        .projects-hero-slide {
             position: absolute;
             top: 0;
             left: 0;
@@ -195,12 +726,12 @@
             transition: opacity 1.2s ease-in-out;
         }
 
-        .hero-slide.active {
+        .projects-hero-slide.active {
             opacity: 1;
             z-index: 1;
         }
 
-        .hero-background {
+        .projects-hero-background {
             position: absolute;
             top: 0;
             left: 0;
@@ -217,7 +748,7 @@
             100% { transform: scale(1); }
         }
 
-        .hero-overlay {
+        .projects-hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -227,7 +758,7 @@
             z-index: 2;
         }
 
-        .hero-pattern {
+        .projects-hero-pattern {
             position: absolute;
             top: 0;
             left: 0;
@@ -239,7 +770,7 @@
             z-index: 3;
         }
 
-        .hero-content {
+        .projects-hero-content {
             position: relative;
             z-index: 10;
             height: 100%;
@@ -251,7 +782,7 @@
             padding: 0 50px;
         }
 
-        .hero-text {
+        .projects-hero-text {
             flex: 1;
             max-width: 700px;
             animation: slideInRight 1s ease-out;
@@ -271,7 +802,7 @@
             }
         }
 
-        .hero-title {
+        .projects-hero-title {
             font-size: 52px;
             font-weight: 900;
             color: white;
@@ -281,7 +812,7 @@
             letter-spacing: -0.5px;
         }
 
-        .hero-subtitle {
+        .projects-hero-subtitle {
             font-size: 28px;
             color: #d4af37;
             font-weight: 700;
@@ -289,7 +820,7 @@
             text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .hero-description {
+        .projects-hero-description {
             font-size: 18px;
             color: rgba(255, 255, 255, 0.95);
             line-height: 1.8;
@@ -299,13 +830,13 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
-        .hero-buttons {
+        .projects-hero-buttons {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
         }
 
-        .hero-btn {
+        .projects-hero-btn {
             padding: 18px 40px;
             font-size: 18px;
             font-weight: 700;
@@ -318,32 +849,32 @@
             font-family: 'Tajawal', sans-serif;
         }
 
-        .hero-btn-primary {
+        .projects-hero-btn-primary {
             background: linear-gradient(135deg, #d4af37, #f4d03f);
             color: #000;
             box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
         }
 
-        .hero-btn-primary:hover {
+        .projects-hero-btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 35px rgba(212, 175, 55, 0.6);
         }
 
-        .hero-btn-secondary {
+        .projects-hero-btn-secondary {
             background: rgba(255, 255, 255, 0.15);
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
         }
 
-        .hero-btn-secondary:hover {
+        .projects-hero-btn-secondary:hover {
             background: rgba(255, 255, 255, 0.25);
             border-color: rgba(255, 255, 255, 0.5);
             transform: translateY(-3px);
         }
 
         /* Stats Section */
-        .hero-stats {
+        .projects-hero-stats {
             display: flex;
             gap: 30px;
             margin-top: 50px;
@@ -361,7 +892,7 @@
             }
         }
 
-        .stat-card {
+        .projects-stat-card {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -372,13 +903,13 @@
             min-width: 180px;
         }
 
-        .stat-card:hover {
+        .projects-stat-card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.18);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .stat-number {
+        .projects-stat-number {
             font-size: 42px;
             font-weight: 900;
             color: #d4af37;
@@ -387,19 +918,19 @@
             font-family: 'Tajawal', sans-serif;
         }
 
-        .stat-label {
+        .projects-stat-label {
             font-size: 16px;
             color: white;
             font-weight: 600;
         }
 
-        .stat-icon {
+        .projects-stat-icon {
             font-size: 32px;
             margin-bottom: 10px;
         }
 
         /* Hero Image Side */
-        .hero-image-container {
+        .projects-hero-image-container {
             flex: 1;
             display: flex;
             align-items: center;
@@ -420,7 +951,7 @@
             }
         }
 
-        .hero-featured-card {
+        .projects-featured-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.25);
@@ -430,7 +961,7 @@
             box-shadow: 0 15px 50px rgba(0,0,0,0.3);
         }
 
-        .featured-image {
+        .projects-featured-image {
             width: 100%;
             height: 300px;
             object-fit: cover;
@@ -438,115 +969,112 @@
             margin-bottom: 20px;
         }
 
-        .featured-title {
+        .projects-featured-title {
             font-size: 28px;
             font-weight: 800;
             color: white;
             margin-bottom: 15px;
         }
 
-        .featured-description {
+        .projects-featured-description {
             font-size: 16px;
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
         }
 
         /* Thumbnail Carousel */
-        .thumbnail-carousel {
+        .projects-thumbnail-carousel {
             position: absolute;
-            bottom: -80px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 12;
             width: 90%;
-            padding: 10;
-            max-width: 1300px;
+            max-width: 1200px;
+           
+           
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
         }
 
-        .carousel-container {
+        .projects-carousel-container {
             display: flex;
-            gap: 20px;
-            overflow-x: auto;
+            gap: 12px;
+            margin: auto;
             scroll-behavior: smooth;
-            padding: 10px 0;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 rgba(255, 255, 255, 0.2);
+            padding: 5px 0;
+            scrollbar-width: none;
+            
         }
 
-        .carousel-container::-webkit-scrollbar {
-            height: 6px;
+        .projects-carousel-container::-webkit-scrollbar {
+            display: none;
         }
 
-        .carousel-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        .carousel-container::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 10px;
-        }
-
-        .thumbnail-item {
-            min-width: 250px;
-            height: 140px;
-            border-radius: 15px;
+        .projects-thumbnail-item {
+            min-width: 160px;
+            height: 90px;
+            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
             position: relative;
             transition: all 0.4s ease;
-            border: 3px solid transparent;
+            border: 2px solid transparent;
+            flex-shrink: 0;
         }
 
-        .thumbnail-item:hover {
-            transform: translateY(-10px) scale(1.05);
+        .projects-thumbnail-item:hover {
+            transform: translateY(-3px);
             border-color: #d4af37;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
 
-        .thumbnail-item.active {
+        .projects-thumbnail-item.active {
             border-color: #d4af37;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            transform: translateY(-3px);
         }
 
-        .thumbnail-image {
+        .projects-thumbnail-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .thumbnail-overlay {
+        .projects-thumbnail-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 15px;
+            padding: 8px;
             background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
         }
 
-        .thumbnail-title {
+        .projects-thumbnail-title {
             color: white;
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
         }
 
-        .thumbnail-subtitle {
+        .projects-thumbnail-subtitle {
             color: #d4af37;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 500;
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
         /* Navigation Arrows */
-        .carousel-nav {
+        .projects-carousel-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -556,22 +1084,23 @@
             z-index: 13;
         }
 
-        .carousel-nav:hover {
+        .projects-carousel-nav:hover {
             background: rgba(212, 175, 55, 0.8);
             border-color: #d4af37;
+            transform: translateY(-50%) scale(1.1);
         }
 
-        .carousel-nav.prev {
+        .projects-carousel-nav.prev {
             left: 20px;
         }
 
-        .carousel-nav.next {
+        .projects-carousel-nav.next {
             right: 20px;
         }
 
-        .carousel-nav svg {
-            width: 24px;
-            height: 24px;
+        .projects-carousel-nav svg {
+            width: 18px;
+            height: 18px;
             fill: white;
         }
 
@@ -582,8 +1111,8 @@
             left: 30px;
             z-index: 1000;
             background: #25D366;
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -596,33 +1125,34 @@
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.15);
-            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
         }
 
         .whatsapp-float svg {
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             fill: white;
         }
 
         /* Slide Counter */
-        .slide-counter {
+        .projects-slide-counter {
             position: absolute;
             bottom: 30px;
             right: 30px;
             background: rgba(0, 0, 0, 0.5);
             color: white;
-            padding: 5px 15px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             z-index: 100;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
         }
 
         /* Auto Slide Indicator */
@@ -630,94 +1160,101 @@
             position: absolute;
             bottom: 30px;
             left: 30px;
-            color: white;
-            font-size: 14px;
-            z-index: 100;
             background: rgba(0, 0, 0, 0.5);
-            padding: 5px 15px;
+            color: white;
+            padding: 6px 12px;
             border-radius: 20px;
+            font-size: 13px;
+            z-index: 100;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
         }
 
-        /* Progress Bar */
-        .progress-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            z-index: 100;
-            overflow: hidden;
+        .timer-dots {
+            display: flex;
+            gap: 3px;
         }
 
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(to right, #d4af37, #f4d03f);
-            width: 0%;
-            transition: width 5s linear;
+        .timer-dot {
+            width: 5px;
+            height: 5px;
+            background: #d4af37;
+            border-radius: 50%;
+            animation: blink 1s infinite;
         }
 
-        .progress-bar-fill.active {
-            width: 100%;
+        .timer-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .timer-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .hero-content {
+            .projects-hero-content {
                 padding: 0 30px;
             }
             
-            .hero-title {
-                font-size: 60px;
+            .projects-hero-title {
+                font-size: 48px;
             }
             
-            .hero-subtitle {
-                font-size: 24px;
+            .projects-hero-subtitle {
+                font-size: 22px;
             }
         }
 
         @media (max-width: 1024px) {
-            .hero-content {
+            .projects-hero-content {
                 flex-direction: column;
                 padding: 30px;
                 justify-content: center;
                 text-align: center;
             }
 
-            .hero-text {
+            .projects-hero-text {
                 max-width: 100%;
                 margin-bottom: 40px;
             }
 
-            .hero-title {
-                font-size: 52px;
+            .projects-hero-title {
+                font-size: 42px;
             }
 
-            .hero-subtitle {
-                font-size: 24px;
+            .projects-hero-subtitle {
+                font-size: 20px;
             }
 
-            .hero-description {
+            .projects-hero-description {
                 margin: 0 auto 40px;
             }
 
-            .hero-stats {
+            .projects-hero-stats {
                 justify-content: center;
                 flex-wrap: wrap;
             }
 
-            .hero-image-container {
+            .projects-hero-image-container {
                 display: none;
             }
 
-            .thumbnail-item {
-                min-width: 200px;
-                height: 120px;
+            .projects-thumbnail-item {
+                min-width: 140px;
+                height: 80px;
             }
 
-            .slide-counter {
+            .projects-slide-counter {
                 right: 20px;
                 bottom: 20px;
             }
@@ -768,63 +1305,70 @@
                 display: flex;
             }
 
-            .hero-title {
-                font-size: 42px;
+            .projects-hero-title {
+                font-size: 36px;
             }
 
-            .hero-subtitle {
-                font-size: 20px;
+            .projects-hero-subtitle {
+                font-size: 18px;
             }
 
-            .hero-description {
+            .projects-hero-description {
                 font-size: 16px;
             }
 
-            .hero-stats {
+            .projects-hero-stats {
                 flex-direction: column;
                 gap: 15px;
             }
 
-            .stat-card {
+            .projects-stat-card {
                 width: 100%;
             }
 
-            .hero-buttons {
+            .projects-hero-buttons {
                 flex-direction: column;
                 width: 100%;
             }
 
-            .hero-btn {
+            .projects-hero-btn {
                 width: 100%;
                 justify-content: center;
             }
 
-            .thumbnail-item {
-                min-width: 180px;
-                height: 100px;
+            .projects-thumbnail-item {
+                min-width: 120px;
+                height: 70px;
             }
 
-            .thumbnail-title {
-                font-size: 14px;
+            .projects-thumbnail-title {
+                font-size: 12px;
             }
 
-            .carousel-nav {
-                width: 40px;
-                height: 40px;
+            .projects-carousel-nav {
+                width: 35px;
+                height: 35px;
             }
             
-            .carousel-nav.prev {
+            .projects-carousel-nav.prev {
                 left: 10px;
             }
             
-            .carousel-nav.next {
+            .projects-carousel-nav.next {
                 right: 10px;
             }
 
-            .slide-counter,
+            .projects-slide-counter,
             .auto-slide-indicator {
                 font-size: 12px;
-                padding: 4px 10px;
+                padding: 5px 10px;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                left: 20px;
             }
         }
 
@@ -843,104 +1387,63 @@
                 font-size: 20px;
             }
 
-            .hero-content {
+            .projects-hero-content {
                 padding: 20px;
             }
 
-            .hero-title {
-                font-size: 32px;
+            .projects-hero-title {
+                font-size: 28px;
             }
 
-            .hero-subtitle {
-                font-size: 18px;
+            .projects-hero-subtitle {
+                font-size: 16px;
             }
 
-            .hero-description {
-                font-size: 15px;
+            .projects-hero-description {
+                font-size: 14px;
             }
 
-            .hero-btn {
+            .projects-hero-btn {
                 padding: 15px 30px;
                 font-size: 16px;
             }
 
-            .stat-number {
+            .projects-stat-number {
                 font-size: 32px;
             }
 
-            .thumbnail-carousel {
+            .projects-thumbnail-carousel {
                 width: 95%;
-                bottom: 20px;
+                bottom: 15px;
+                padding: 10px;
+                margin-top: 20px;
+            }
+
+            .projects-thumbnail-item {
+                min-width: 100px;
+                height: 60px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .projects-thumbnail-title {
+                font-size: 10px;
+            }
+
+            .projects-thumbnail-subtitle {
+                font-size: 9px;
             }
 
             .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                left: 20px;
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                left: 15px;
             }
 
-            .slide-counter,
+            .projects-slide-counter,
             .auto-slide-indicator {
                 display: none;
-            }
-        }
-    </style>
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
-        
-        * {
-            font-family: 'Cairo', sans-serif;
-        }
-        
-        .dareen-card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .dareen-card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .dareen-slide-transition {
-            transition: opacity 1s ease-in-out;
-        }
-        
-        .dareen-btn-glow {
-            box-shadow: 0 0 20px rgba(0, 102, 51, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .dareen-btn-glow:hover {
-            box-shadow: 0 0 30px rgba(0, 102, 51, 0.5);
-            transform: scale(1.05);
-        }
-        
-        .dareen-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
-        }
-        
-        .dareen-project-badge {
-            background: linear-gradient(135deg, #0f4c3a 0%, #1a7a5e 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
-        /* تحسينات للعرض على الجوال */
-        @media (max-width: 768px) {
-            .dareen-mobile-flex-col {
-                flex-direction: column;
-            }
-            
-            .dareen-mobile-text-center {
-                text-align: center;
-            }
-            
-            .dareen-mobile-full-width {
-                width: 100%;
             }
         }
     </style>
@@ -1773,6 +2276,386 @@
             }
         }
     </style>
+
+    <!-- work -->
+         <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .projects-gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f4f8 100%);
+        }
+        
+        .gallery-container {
+            box-shadow: 0 20px 60px rgba(15, 76, 58, 0.1);
+            border-radius: 25px;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            height: 100%;
+        }
+        
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 70px rgba(15, 76, 58, 0.2);
+        }
+        
+        .project-image-container {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(15, 76, 58, 0.9));
+            opacity: 0;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-badge {
+            background: linear-gradient(135deg, #0f4c3a, #1a7a5e);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: badgePulse 2s infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(15, 76, 58, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 8px rgba(15, 76, 58, 0.1);
+            }
+        }
+        
+        .project-type {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #0f4c3a;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(15, 76, 58, 0.9);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: #f8faf9;
+            border-radius: 10px;
+            padding: 10px 15px;
+            text-align: center;
+            flex: 1;
+            min-width: 80px;
+        }
+        
+        .gallery-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #0f4c3a, #1a7a5e);
+            color: white;
+            border-color: #0f4c3a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(15, 76, 58, 0.15);
+        }
+        
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .lightbox-container {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            background: #0f4c3a;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            background: #1a7a5e;
+            transform: rotate(90deg);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 76, 58, 0.8);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox-prev {
+            right: -70px;
+        }
+        
+        .lightbox-next {
+            left: -70px;
+        }
+        
+        .lightbox-nav:hover {
+            background: #1a7a5e;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .lightbox-caption {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to left, #0f4c3a, #1a7a5e);
+            border-radius: 10px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .project-hover-icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 15px;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-hover-icons {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .hover-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f4c3a;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hover-icon:hover {
+            background: #0f4c3a;
+            color: white;
+            transform: scale(1.2);
+        }
+        
+        .projects-stats-bar {
+            background: linear-gradient(135deg, #0f4c3a, #1a7a5e);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .project-masonry {
+            column-count: 3;
+            column-gap: 20px;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 1024px) {
+            .project-masonry {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-masonry {
+                column-count: 1;
+            }
+            
+            .project-image-container {
+                height: 250px;
+            }
+            
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            .lightbox-prev {
+                right: -50px;
+            }
+            
+            .lightbox-next {
+                left: -50px;
+            }
+        }
+    </style>
     <!-- contact -->
          <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
@@ -2141,7 +3024,7 @@
         .footer-icon-circle {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #1a7a5e, #2a9d78);
+            
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -2149,6 +3032,9 @@
             margin-bottom: 20px;
             transition: all 0.3s ease;
         }
+         .footer-icon-circle img{
+            border-radius: 50%;
+         }
         
         .footer-card:hover .footer-icon-circle {
             transform: scale(1.1) rotate(5deg);
@@ -2367,312 +3253,373 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <img src="./asstes/img/logo.png" alt="">
+      <!-- Navigation -->
+    <nav class="projects-nav" id="projectsNavbar">
+        <div class="projects-nav-container">
+            <div class="projects-logo">
+                <div class="projects-logo-icon">
+                    <img src="./asstes/img/logo-2.png" alt="درين للمقاولات">
                 </div>
-                <span>Dreen</span>
-            </div>
-            
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="text-[#debc43]">درين للمقاولات</span>
             </div>
 
-            <ul class="nav-links" id="navLinks">
+            
+
+            <ul class="projects-nav-links">
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#projects">المشاريع</a></li>
-                <li><a href="#opportunities">الفرص الاستثمارية</a></li>
                 <li><a href="#about">من نحن</a></li>
                 <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#our-vision">رؤيتنا</a></li>
+                <li><a href="#projects-gallery">معرض أعمالنا</a></li>
                 <li><a href="#contact">تواصل معنا</a></li>
-                <li><a href="#" class="nav-cta">ابدأ الاستثمار الآن</a></li>
+                <li><a href="tel:0508090790" class="projects-nav-cta">اتصل الآن</a></li>
             </ul>
+
+            <div class="projects-hamburger" id="projectsHamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
+    <!-- Mobile Menu Overlay -->
+    <div class="projects-mobile-menu" id="projectsMobileMenu">
+        <button class="projects-mobile-close" id="projectsCloseMobile">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="projects-mobile-nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#projects">المشاريع</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#our-vision">رؤيتنا</a></li>
+            <li><a href="#projects-gallery">معرض أعمالنا</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+            <li><a href="tel:0508090790" class="projects-mobile-nav-cta">اتصل الآن</a></li>
+        </ul>
+    </div>
+
+
+
+    <script>
+        // Navigation functionality
+        const projectsNavbar = document.getElementById('projectsNavbar');
+        const projectsHamburger = document.getElementById('projectsHamburger');
+        const projectsMobileMenu = document.getElementById('projectsMobileMenu');
+        const projectsCloseMobile = document.getElementById('projectsCloseMobile');
+        const projectsMobileLinks = document.querySelectorAll('.projects-mobile-nav-links a');
+
+        // Handle scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                projectsNavbar.classList.add('scrolled');
+            } else {
+                projectsNavbar.classList.remove('scrolled');
+            }
+        });
+
+        // Handle hamburger click
+        projectsHamburger.addEventListener('click', () => {
+            projectsHamburger.classList.toggle('active');
+            projectsMobileMenu.classList.toggle('active');
+            document.body.classList.toggle('projects-mobile-open');
+        });
+
+        // Handle close button click
+        projectsCloseMobile.addEventListener('click', () => {
+            closeProjectsMobileMenu();
+        });
+
+        // Close mobile menu when clicking on a link
+        projectsMobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeProjectsMobileMenu();
+            });
+        });
+
+        // Function to close mobile menu
+        function closeProjectsMobileMenu() {
+            projectsHamburger.classList.remove('active');
+            projectsMobileMenu.classList.remove('active');
+            document.body.classList.remove('projects-mobile-open');
+        }
+
+        // Close menu when clicking outside
+        projectsMobileMenu.addEventListener('click', (e) => {
+            if (e.target === projectsMobileMenu) {
+                closeProjectsMobileMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900) {
+                closeProjectsMobileMenu();
+            }
+        });
+
+        // Language switcher functionality
+        const projectsLangBtns = document.querySelectorAll('.projects-lang-btn');
+        projectsLangBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                projectsLangBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Here you would implement actual language switching
+                console.log(`Language changed to: ${btn.textContent}`);
+            });
+        });
+
+        // Initialize navbar state
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check initial scroll position
+            if (window.scrollY > 50) {
+                projectsNavbar.classList.add('scrolled');
+            } else {
+                projectsNavbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+     <!-- Projects Hero Section -->
+    <section class="projects-hero-section" id="home">
         <!-- Progress Bar -->
-        <div class="progress-bar">
-            <div class="progress-bar-fill" id="progressBar"></div>
+        <div class="projects-progress-bar">
+            <div class="projects-progress-bar-fill" id="projectsProgressBar"></div>
         </div>
 
-        <!-- Slide 1 -->
-        <div class="hero-slide active" data-slide="0">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">استثمر في مستقبل المملكة</h1>
-                    <p class="hero-subtitle">رؤية 2030 تفتح آفاقاً جديدة</p>
-                    <p class="hero-description">
-                        اكتشف فرصاً استثمارية في ظل نمو الاقتصاد السعودي المتنوع. نحن نربطك بالمشاريع الواعدة والشركاء الاستراتيجيين لتحقيق أهدافك.
+        <!-- Slide 1 - أعمال المقاولات الخاصة -->
+        <div class="projects-hero-slide active" data-slide="0">
+            <div class="projects-hero-background" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&h=1080&fit=crop');"></div>
+            <div class="projects-hero-overlay"></div>
+            <div class="projects-hero-pattern"></div>
+            <div class="projects-hero-content">
+                <div class="projects-hero-text">
+                    <h1 class="projects-hero-title">أعمال المقاولات الخاصة</h1>
+                    <p class="projects-hero-subtitle">تميز في تنفيذ المشاريع الخاصة</p>
+                    <p class="projects-hero-description">
+                        ننفذ مشاريع المقاولات الخاصة بدقة عالية وجودة ممتازة، بدءًا من التصميم وحتى التسليم النهائي، مع الالتزام بأعلى معايير السلامة والجودة.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            ابدأ الاستثمار الآن ←
+                    <div class="projects-hero-buttons">
+                        <a href="#" class="projects-hero-btn projects-hero-btn-primary">
+                            طلب خدمة مقاولات ←
                         </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            تصفح محفظة المشاريع
-                        </a>
-                    </div>
-                 
-                </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&h=300&fit=crop" alt="Vision 2030" class="featured-image">
-                        <h3 class="featured-title">استثمر في مستقبل المملكة</h3>
-                        <p class="featured-description">انضم إلى رحلة التحول الاقتصادي الكبرى واستثمر في أكبر المشاريع التنموية في المنطقة</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="hero-slide" data-slide="1">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">مشاريع البنية التحتية المتقدمة</h1>
-                    <p class="hero-subtitle">استثمارات تصل إلى +500 مليار ريال</p>
-                    <p class="hero-description">
-                        شارك في بناء المدن الذكية والبنية التحتية الحديثة التي تشكل مستقبل المملكة وتحقق عوائد استثنائية للمستثمرين.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            استكشف المشاريع ←
-                        </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            تحميل دليل المستثمر
+                        <a href="#" class="projects-hero-btn projects-hero-btn-secondary">
+                            تصفح أعمالنا السابقة
                         </a>
                     </div>
                   
                 </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop" alt="Infrastructure" class="featured-image">
-                        <h3 class="featured-title">مشاريع البنية التحتية</h3>
-                        <p class="featured-description">استثمر في المشاريع التي تبني مستقبل المملكة وتحقق عوائد طويلة الأجل</p>
+                <div class="projects-hero-image-container">
+                    <div class="projects-featured-card">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&h=300&fit=crop" alt="أعمال المقاولات الخاصة" class="projects-featured-image">
+                        <h3 class="projects-featured-title">أعمال المقاولات الخاصة</h3>
+                        <p class="projects-featured-description">تنفيذ مشاريع المقاولات الخاصة بأعلى معايير الجودة والكفاءة المهنية، مع ضمان التسليم في الوقت المحدد</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3 -->
-        <div class="hero-slide" data-slide="2">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">الطاقة المتجددة والاستدامة</h1>
-                    <p class="hero-subtitle">نحو مستقبل أخضر ومستدام</p>
-                    <p class="hero-description">
-                        استثمر في مشاريع الطاقة المتجددة والطاقة الشمسية التي تدعم رؤية السعودية الخضراء وتحقق عوائد مستدامة.
+        <!-- Slide 2 - البنية التحتية -->
+        <div class="projects-hero-slide" data-slide="1">
+            <div class="projects-hero-background" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop');"></div>
+            <div class="projects-hero-overlay"></div>
+            <div class="projects-hero-pattern"></div>
+            <div class="projects-hero-content">
+                <div class="projects-hero-text">
+                    <h1 class="projects-hero-title">البنية التحتية</h1>
+                    <p class="projects-hero-subtitle">بناء أسس المستقبل المتين</p>
+                    <p class="projects-hero-description">
+                        ننفذ مشاريع البنية التحتية المتكاملة بما في ذلك الطرق، الجسور، الأنفاق، وشبكات الصرف الصحي باستخدام أحدث التقنيات والمواد المعتمدة.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            مشاريع الطاقة النظيفة ←
+                    <div class="projects-hero-buttons">
+                        <a href="#" class="projects-hero-btn projects-hero-btn-primary">
+                            مشاريع البنية التحتية ←
                         </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            معرفة المزيد
+                        <a href="#" class="projects-hero-btn projects-hero-btn-secondary">
+                            تحميل الكتيب التعريفي
                         </a>
                     </div>
                   
                 </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&h=300&fit=crop" alt="Green Energy" class="featured-image">
-                        <h3 class="featured-title">الطاقة المتجددة</h3>
-                        <p class="featured-description">انضم إلى مستقبل الطاقة النظيفة واستثمر في مشاريع مستدامة تحقق عوائد مضمونة</p>
+                <div class="projects-hero-image-container">
+                    <div class="projects-featured-card">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop" alt="البنية التحتية" class="projects-featured-image">
+                        <h3 class="projects-featured-title">البنية التحتية</h3>
+                        <p class="projects-featured-description">تنفيذ مشاريع البنية التحتية المتكاملة بمعايير عالمية تساهم في بناء المجتمعات الحديثة والمستدامة</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 4 -->
-        <div class="hero-slide" data-slide="3">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">التكنولوجيا والابتكار</h1>
-                    <p class="hero-subtitle">قيادة التحول الرقمي في المنطقة</p>
-                    <p class="hero-description">
-                        استثمر في مشاريع التقنية والذكاء الاصطناعي التي تقود التحول الرقمي وتبني اقتصاد المستقبل.
+        <!-- Slide 3 - أعمال تمديدات الكهرباء -->
+        <div class="projects-hero-slide" data-slide="2">
+            <div class="projects-hero-background" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1920&h=1080&fit=crop');"></div>
+            <div class="projects-hero-overlay"></div>
+            <div class="projects-hero-pattern"></div>
+            <div class="projects-hero-content">
+                <div class="projects-hero-text">
+                    <h1 class="projects-hero-title">أعمال تمديدات الكهرباء</h1>
+                    <p class="projects-hero-subtitle">طاقة آمنة وموثوقة</p>
+                    <p class="projects-hero-description">
+                        نقدم حلولاً شاملة لتمديدات الكهرباء للمباني السكنية والتجارية والصناعية، مع ضمان الامتثال الكامل لأنظمة السلامة الكهربائية.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            مشاريع التقنية ←
+                    <div class="projects-hero-buttons">
+                        <a href="#" class="projects-hero-btn projects-hero-btn-primary">
+                            خدمات الكهرباء ←
                         </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            تواصل مع الخبراء
+                        <a href="#" class="projects-hero-btn projects-hero-btn-secondary">
+                            طلب استشارة مجانية
                         </a>
                     </div>
-                   
+                  
                 </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop" alt="Technology" class="featured-image">
-                        <h3 class="featured-title">التكنولوجيا والابتكار</h3>
-                        <p class="featured-description">كن جزءاً من ثورة التقنية واستثمر في مشاريع تشكل مستقبل المنطقة</p>
+                <div class="projects-hero-image-container">
+                    <div class="projects-featured-card">
+                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&h=300&fit=crop" alt="أعمال تمديدات الكهرباء" class="projects-featured-image">
+                        <h3 class="projects-featured-title">أعمال تمديدات الكهرباء</h3>
+                        <p class="projects-featured-description">تنفيذ تمديدات كهربائية آمنة وموثوقة باستخدام أحدث التقنيات والمعايير العالمية لضمان كفاءة وأمان الشبكات الكهربائية</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 5 -->
-        <div class="hero-slide" data-slide="4">
-            <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=1920&h=1080&fit=crop');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-pattern"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">السياحة والترفيه</h1>
-                    <p class="hero-subtitle">وجهات عالمية تجذب الملايين</p>
-                    <p class="hero-description">
-                        استثمر في قطاع السياحة المتنامي والمشاريع الترفيهية العملاقة التي تستقطب السياح من جميع أنحاء العالم.
+        <!-- Slide 4 - الأعمال الميكانيكية -->
+        <div class="projects-hero-slide" data-slide="3">
+            <div class="projects-hero-background" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1920&h=1080&fit=crop');"></div>
+            <div class="projects-hero-overlay"></div>
+            <div class="projects-hero-pattern"></div>
+            <div class="projects-hero-content">
+                <div class="projects-hero-text">
+                    <h1 class="projects-hero-title">الأعمال الميكانيكية</h1>
+                    <p class="projects-hero-subtitle">هندسة ميكانيكية دقيقة</p>
+                    <p class="projects-hero-description">
+                        ننفذ أعمال التكييف والتهوية والتدفئة (HVAC)، وتركيب الأنظمة الميكانيكية، وصيانة المعدات الصناعية بأعلى معايير الجودة.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#" class="hero-btn hero-btn-primary">
-                            مشاريع السياحة ←
+                    <div class="projects-hero-buttons">
+                        <a href="#" class="projects-hero-btn projects-hero-btn-primary">
+                            الأعمال الميكانيكية ←
                         </a>
-                        <a href="#" class="hero-btn hero-btn-secondary">
-                            عرض الفرص
+                        <a href="#" class="projects-hero-btn projects-hero-btn-secondary">
+                            تواصل مع خبرائنا
                         </a>
                     </div>
                     
                 </div>
-                <div class="hero-image-container">
-                    <div class="hero-featured-card">
-                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=500&h=300&fit=crop" alt="Tourism" class="featured-image">
-                        <h3 class="featured-title">السياحة والترفيه</h3>
-                        <p class="featured-description">استثمر في قطاع السياحة المزدهر وحقق عوائد استثنائية في أسرع القطاعات نمواً</p>
+                <div class="projects-hero-image-container">
+                    <div class="projects-featured-card">
+                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop" alt="الأعمال الميكانيكية" class="projects-featured-image">
+                        <h3 class="projects-featured-title">الأعمال الميكانيكية</h3>
+                        <p class="projects-featured-description">تصميم وتنفيذ وصيانة الأنظمة الميكانيكية المتكاملة باستخدام أحدث التقنيات لضمان الكفاءة والموثوقية</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Navigation Arrows -->
-        <div class="carousel-nav prev" onclick="changeSlide(-1)">
-            <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
-        </div>
-        <div class="carousel-nav next" onclick="changeSlide(1)">
-            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+        <!-- Slide 5 - التشغيل والصيانة -->
+        <div class="projects-hero-slide" data-slide="4">
+            <div class="projects-hero-background" style="background-image: url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=1920&h=1080&fit=crop');"></div>
+            <div class="projects-hero-overlay"></div>
+            <div class="projects-hero-pattern"></div>
+            <div class="projects-hero-content">
+                <div class="projects-hero-text">
+                    <h1 class="projects-hero-title">التشغيل والصيانة</h1>
+                    <p class="projects-hero-subtitle">استدامة وكفاءة طويلة الأمد</p>
+                    <p class="projects-hero-description">
+                        نقدم خدمات التشغيل والصيانة الشاملة للمباني والمنشآت، مع خطط صيانة وقائية واستباقية لضمان استمرارية العمل وكفاءة الأنظمة.
+                    </p>
+                    <div class="projects-hero-buttons">
+                        <a href="#" class="projects-hero-btn projects-hero-btn-primary">
+                            عقود الصيانة ←
+                        </a>
+                        <a href="#" class="projects-hero-btn projects-hero-btn-secondary">
+                            عرض العروض
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="projects-hero-image-container">
+                    <div class="projects-featured-card">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=500&h=300&fit=crop" alt="التشغيل والصيانة" class="projects-featured-image">
+                        <h3 class="projects-featured-title">التشغيل والصيانة</h3>
+                        <p class="projects-featured-description">خدمات تشغيل وصيانة متكاملة لضمان الاستدامة والكفاءة التشغيلية للمنشآت على المدى الطويل</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
+      
+
         <!-- Thumbnail Carousel -->
-        <div class="thumbnail-carousel">
-            <div class="carousel-container">
-                <div class="thumbnail-item active" onclick="goToSlide(0)">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=300&h=200&fit=crop" alt="Vision 2030" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">استثمر في مستقبل المملكة</div>
-                        <div class="thumbnail-subtitle">رؤية 2030</div>
+        <div class="projects-thumbnail-carousel">
+            <div class="projects-carousel-container">
+                <div class="projects-thumbnail-item active" onclick="goToProjectSlide(0)">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=300&h=200&fit=crop" alt="أعمال المقاولات الخاصة" class="projects-thumbnail-image">
+                    <div class="projects-thumbnail-overlay">
+                        <div class="projects-thumbnail-title">أعمال المقاولات الخاصة</div>
+                        <div class="projects-thumbnail-subtitle">جودة ودقة في التنفيذ</div>
                     </div>
                 </div>
-                <div class="thumbnail-item" onclick="goToSlide(1)">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop" alt="Infrastructure" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">مشاريع البنية التحتية</div>
-                        <div class="thumbnail-subtitle">+500 مليار ريال</div>
+                <div class="projects-thumbnail-item" onclick="goToProjectSlide(1)">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop" alt="البنية التحتية" class="projects-thumbnail-image">
+                    <div class="projects-thumbnail-overlay">
+                        <div class="projects-thumbnail-title">البنية التحتية</div>
+                        <div class="projects-thumbnail-subtitle">بناء أسس المستقبل</div>
                     </div>
                 </div>
-                <div class="thumbnail-item" onclick="goToSlide(2)">
-                    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=300&h=200&fit=crop" alt="Green Energy" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">الطاقة المتجددة</div>
-                        <div class="thumbnail-subtitle">مستقبل أخضر</div>
+                <div class="projects-thumbnail-item" onclick="goToProjectSlide(2)">
+                    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=300&h=200&fit=crop" alt="أعمال تمديدات الكهرباء" class="projects-thumbnail-image">
+                    <div class="projects-thumbnail-overlay">
+                        <div class="projects-thumbnail-title">تمديدات الكهرباء</div>
+                        <div class="projects-thumbnail-subtitle">طاقة آمنة وموثوقة</div>
                     </div>
                 </div>
-                <div class="thumbnail-item" onclick="goToSlide(3)">
-                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=300&h=200&fit=crop" alt="Technology" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">التكنولوجيا والابتكار</div>
-                        <div class="thumbnail-subtitle">التحول الرقمي</div>
+                <div class="projects-thumbnail-item" onclick="goToProjectSlide(3)">
+                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=300&h=200&fit=crop" alt="الأعمال الميكانيكية" class="projects-thumbnail-image">
+                    <div class="projects-thumbnail-overlay">
+                        <div class="projects-thumbnail-title">الأعمال الميكانيكية</div>
+                        <div class="projects-thumbnail-subtitle">هندسة ميكانيكية دقيقة</div>
                     </div>
                 </div>
-                <div class="thumbnail-item" onclick="goToSlide(4)">
-                    <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=300&h=200&fit=crop" alt="Tourism" class="thumbnail-image">
-                    <div class="thumbnail-overlay">
-                        <div class="thumbnail-title">السياحة والترفيه</div>
-                        <div class="thumbnail-subtitle">100 مليون سائح</div>
+                <div class="projects-thumbnail-item" onclick="goToProjectSlide(4)">
+                    <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=300&h=200&fit=crop" alt="التشغيل والصيانة" class="projects-thumbnail-image">
+                    <div class="projects-thumbnail-overlay">
+                        <div class="projects-thumbnail-title">التشغيل والصيانة</div>
+                        <div class="projects-thumbnail-subtitle">استدامة وكفاءة</div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide Counter -->
-        <div class="slide-counter" id="slideCounter">
-            <span id="currentSlideNumber">1</span> / <span id="totalSlides">5</span>
+        <div class="projects-slide-counter" id="projectsSlideCounter">
+            <span id="projectsCurrentSlideNumber">1</span> / <span id="projectsTotalSlides">5</span>
         </div>
 
-       
+     
     </section>
 
     <!-- WhatsApp Float Button -->
     <div class="whatsapp-float">
         <svg viewBox="0 0 32 32">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.957 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62-6.11 13.62-13.62 13.62zM21.305 19.26c-0.346-0.174-2.049-1.007-2.366-1.123-0.316-0.117-0.547-0.174-0.776 0.174s-0.892 1.123-1.094 1.347c-0.201 0.231-0.403 0.26-0.749 0.087s-1.46-0.538-2.779-1.715c-1.027-0.915-1.72-2.045-1.922-2.391s-0.022-0.536 0.152-0.709c0.156-0.155 0.346-0.403 0.518-0.605s0.231-0.346 0.346-0.577c0.116-0.231 0.058-0.433-0.028-0.605s-0.776-1.87-1.063-2.565c-0.28-0.672-0.56-0.58-0.776-0.591-0.2-0.010-0.431-0.012-0.661-0.012s-0.603 0.087-0.92 0.433c-0.316 0.346-1.206 1.179-1.206 2.873s1.235 3.333 1.406 3.561c0.172 0.231 2.395 3.654 5.799 5.125 0.811 0.352 1.445 0.562 1.938 0.719 0.814 0.257 1.555 0.221 2.141 0.134 0.653-0.097 2.049-0.831 2.337-1.636s0.289-1.494 0.202-1.636c-0.086-0.14-0.317-0.231-0.663-0.403z"/>
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.957 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62-6.11 13.62-13.62 13.62zM21.305 19.26c-0.346-0.174-2.049-1.007-2.366-1.123-0.316-0.117-0.547 0.174-0.776 0.174s-0.892 1.123-1.094 1.347c-0.201 0.231-0.403 0.26-0.749 0.087s-1.46-0.538-2.779-1.715c-1.027-0.915-1.72-2.045-1.922-2.391s-0.022-0.536 0.152-0.709c0.156-0.155 0.346-0.403 0.518-0.605s0.231-0.346 0.346-0.577c0.116-0.231 0.058-0.433-0.028-0.605s-0.776-1.87-1.063-2.565c-0.28-0.672-0.56-0.58-0.776-0.591-0.2-0.010-0.431-0.012-0.661-0.012s-0.603 0.087-0.92 0.433c-0.316 0.346-1.206 1.179-1.206 2.873s1.235 3.333 1.406 3.561c0.172 0.231 2.395 3.654 5.799 5.125 0.811 0.352 1.445 0.562 1.938 0.719 0.814 0.257 1.555 0.221 2.141 0.134 0.653-0.097 2.049-0.831 2.337-1.636s0.289-1.494 0.202-1.636c-0.086-0.14-0.317-0.231-0.663-0.403z"/>
         </svg>
     </div>
 
     <script>
-        // حل المشكلة: تم تبسيط الكود لإزالة التعقيدات
-        
         // Variables
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const thumbnails = document.querySelectorAll('.thumbnail-item');
-        let autoSlideInterval;
+        let currentProjectSlide = 0;
+        const projectSlides = document.querySelectorAll('.projects-hero-slide');
+        const projectThumbnails = document.querySelectorAll('.projects-thumbnail-item');
+        let projectAutoSlideInterval;
         const SLIDE_DURATION = 5000; // 5 ثواني
 
-        // Navigation Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Set navbar to transparent on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const navbar = document.getElementById('navbar');
-            navbar.classList.remove('scrolled');
-        });
-
-        // Slide Functions - SIMPLIFIED
-        function showSlide(index) {
+        // Slide Functions - WORKING VERSION
+        function showProjectSlide(index) {
             // Hide all slides
-            slides.forEach((slide, i) => {
+            projectSlides.forEach((slide, i) => {
                 slide.classList.remove('active');
                 if (i === index) {
                     slide.classList.add('active');
@@ -2680,113 +3627,121 @@
             });
 
             // Update thumbnails
-            thumbnails.forEach((thumb, i) => {
+            projectThumbnails.forEach((thumb, i) => {
                 thumb.classList.remove('active');
                 if (i === index) {
                     thumb.classList.add('active');
                 }
             });
 
-            currentSlide = index;
+            currentProjectSlide = index;
             
             // Update slide counter
-            updateSlideCounter();
+            updateProjectSlideCounter();
         }
 
-        function changeSlide(direction) {
-            let newIndex = currentSlide + direction;
+        function changeProjectSlide(direction) {
+            // Stop current auto-slide
+            clearInterval(projectAutoSlideInterval);
             
-            if (newIndex >= slides.length) {
+            let newIndex = currentProjectSlide + direction;
+            
+            if (newIndex >= projectSlides.length) {
                 newIndex = 0;
             } else if (newIndex < 0) {
-                newIndex = slides.length - 1;
+                newIndex = projectSlides.length - 1;
             }
             
-            showSlide(newIndex);
+            showProjectSlide(newIndex);
+            
+            // Restart auto-slide
+            startProjectAutoSlide();
         }
 
-        function goToSlide(index) {
-            showSlide(index);
+        function goToProjectSlide(index) {
+            // Stop current auto-slide
+            clearInterval(projectAutoSlideInterval);
+            
+            showProjectSlide(index);
+            
+            // Restart auto-slide
+            startProjectAutoSlide();
         }
 
         // Update slide counter
-        function updateSlideCounter() {
-            const currentSlideNumber = document.getElementById('currentSlideNumber');
-            const totalSlides = document.getElementById('totalSlides');
+        function updateProjectSlideCounter() {
+            const currentSlideNumber = document.getElementById('projectsCurrentSlideNumber');
+            const totalSlides = document.getElementById('projectsTotalSlides');
             
             if (currentSlideNumber && totalSlides) {
-                currentSlideNumber.textContent = currentSlide + 1;
-                totalSlides.textContent = slides.length;
+                currentSlideNumber.textContent = currentProjectSlide + 1;
+                totalSlides.textContent = projectSlides.length;
             }
         }
 
-        // Auto slide function - SIMPLIFIED
-        function startAutoSlide() {
-            console.log('بدء التغيير التلقائي - كل 5 ثواني');
-            autoSlideInterval = setInterval(() => {
-                console.log('تغيير الشريحة تلقائياً...');
-                
-                let nextSlide = currentSlide + 1;
-                if (nextSlide >= slides.length) {
+        // Auto slide function - WORKING NOW
+        function startProjectAutoSlide() {
+            // Clear any existing interval
+            clearInterval(projectAutoSlideInterval);
+            
+            // Start new interval
+            projectAutoSlideInterval = setInterval(() => {
+                let nextSlide = currentProjectSlide + 1;
+                if (nextSlide >= projectSlides.length) {
                     nextSlide = 0;
                 }
                 
-                showSlide(nextSlide);
+                showProjectSlide(nextSlide);
             }, SLIDE_DURATION);
         }
 
-        // Initialize - SIMPLIFIED
+        // Initialize - SIMPLE AND WORKING
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('تهيئة عرض الشرائح...');
+            console.log('تهيئة عرض مشاريع المقاولات...');
             
             // Initialize slide counter
-            updateSlideCounter();
+            updateProjectSlideCounter();
             
             // Show first slide
-            showSlide(0);
+            showProjectSlide(0);
             
             // Start auto slide immediately
-            startAutoSlide();
+            startProjectAutoSlide();
             
             // Add click events to thumbnails
-            thumbnails.forEach((thumbnail, index) => {
-                thumbnail.addEventListener('click', () => {
-                    // Reset auto slide when user interacts
-                    clearInterval(autoSlideInterval);
-                    goToSlide(index);
-                    startAutoSlide();
+            projectThumbnails.forEach((thumbnail, index) => {
+                // Remove any existing click events
+                thumbnail.onclick = null;
+                
+                // Add new click event
+                thumbnail.addEventListener('click', function() {
+                    goToProjectSlide(index);
                 });
             });
             
             // Pause auto-slide on hover (optional)
-            const heroSection = document.querySelector('.hero-section');
+            const projectsHeroSection = document.querySelector('.projects-hero-section');
             
-            heroSection.addEventListener('mouseenter', () => {
-                clearInterval(autoSlideInterval);
-                console.log('التغيير التلقائي متوقف مؤقتاً');
+            projectsHeroSection.addEventListener('mouseenter', () => {
+                clearInterval(projectAutoSlideInterval);
             });
             
-            heroSection.addEventListener('mouseleave', () => {
-                startAutoSlide();
-                console.log('التغيير التلقائي مستأنف');
+            projectsHeroSection.addEventListener('mouseleave', () => {
+                startProjectAutoSlide();
             });
         });
         
-        // Make functions globally accessible
-        window.changeSlide = function(direction) {
-            clearInterval(autoSlideInterval);
-            changeSlide(direction);
-            startAutoSlide();
+        // Make functions globally accessible for onclick attributes
+        window.changeProjectSlide = function(direction) {
+            changeProjectSlide(direction);
         };
         
-        window.goToSlide = function(index) {
-            clearInterval(autoSlideInterval);
-            goToSlide(index);
-            startAutoSlide();
+        window.goToProjectSlide = function(index) {
+            goToProjectSlide(index);
         };
     </script>
 
-    <section class="bg-white min-h-screen py-8 md:py-16 px-4">
+    <section class="bg-white min-h-screen py-8 md:py-16 px-4" id="projects">
          <div class="max-w-7xl mx-auto">
         <!-- Header Section -->
         <div class="text-center mb-12 md:mb-16">
@@ -3850,14 +4805,14 @@
                                 تشغيل وصيانة المباني الحكومية وفق أحدث المعايير الفنية والهندسية المعتمدة، مع ضمان الكفاءة التشغيلية العالية والالتزام بمواصفات السلامة.
                             </p>
                             <div class="flex space-x-4 space-x-reverse">
-                                <button class="btn-call flex-1">
+                                <a  href="tel:0508090790" class="btn-call flex-1">
                                     <i class="fas fa-phone ml-2"></i>
                                     إتصل بنا
-                                </button>
-                                <button class="btn-whatsapp flex-1">
+                                </a>
+                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
                                     <i class="fab fa-whatsapp ml-2"></i>
                                     واتساب
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -3886,14 +4841,14 @@
                                 خدمات متكاملة لتشغيل وصيانة المباني التجارية لضمان استمرارية العمل وتحسين تجربة المستخدمين والعملاء.
                             </p>
                             <div class="flex space-x-4 space-x-reverse">
-                                <button class="btn-call flex-1">
+                                <a href="tel:0508090790" class="btn-call flex-1">
                                     <i class="fas fa-phone ml-2"></i>
                                     إتصل بنا
-                                </button>
-                                <button class="btn-whatsapp flex-1">
+                                </a>
+                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
                                     <i class="fab fa-whatsapp ml-2"></i>
                                     واتساب
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -3922,14 +4877,14 @@
                                 صيانة وتشغيل المنشآت الصناعية بكفاءة عالية، مع التركيز على السلامة والاستدامة التشغيلية والحد من الأعطال.
                             </p>
                             <div class="flex space-x-4 space-x-reverse">
-                                <button class="btn-call flex-1">
+                                <a href="tel:0508090790" class="btn-call flex-1">
                                     <i class="fas fa-phone ml-2"></i>
                                     إتصل بنا
-                                </button>
-                                <button class="btn-whatsapp flex-1">
+                                </a>
+                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
                                     <i class="fab fa-whatsapp ml-2"></i>
                                     واتساب
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -3958,14 +4913,14 @@
                                 تشغيل وصيانة المنشآت التعليمية لتوفير بيئة آمنة ومناسبة للعملية التعليمية والتعلمية بجميع مرافقها.
                             </p>
                             <div class="flex space-x-4 space-x-reverse">
-                                <button class="btn-call flex-1">
+                                <a href="tel:0508090790" class="btn-call flex-1">
                                     <i class="fas fa-phone ml-2"></i>
                                     إتصل بنا
-                                </button>
-                                <button class="btn-whatsapp flex-1">
+                                </a>
+                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
                                     <i class="fab fa-whatsapp ml-2"></i>
                                     واتساب
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -3994,14 +4949,14 @@
                                 نبدأ بدراسة الجدوى مروراً بالتصميم الأولي والتفصيلي وصولاً إلى التنفيذ بأعلى معايير الجودة والكفاءة.
                             </p>
                             <div class="flex space-x-4 space-x-reverse">
-                                <button class="btn-call flex-1">
+                                <a href="tel:0508090790" class="btn-call flex-1">
                                     <i class="fas fa-phone ml-2"></i>
                                     إتصل بنا
-                                </button>
-                                <button class="btn-whatsapp flex-1">
+                                </a>
+                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
                                     <i class="fab fa-whatsapp ml-2"></i>
                                     واتساب
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -4030,14 +4985,14 @@
                                 تصميم وتنفيذ أنظمة الكهرباء بكافة أنواعها مع ضمان السلامة والكفاءة التشغيلية العالية والالتزام بالمواصفات القياسية.
                             </p>
                             <div class="flex space-x-4 space-x-reverse">
-                                <button class="btn-call flex-1">
+                                <a href="tel:0508090790" class="btn-call flex-1">
                                     <i class="fas fa-phone ml-2"></i>
                                     إتصل بنا
-                                </button>
-                                <button class="btn-whatsapp flex-1">
+                                </a>
+                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
                                     <i class="fab fa-whatsapp ml-2"></i>
                                     واتساب
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -4156,7 +5111,7 @@
     </script>
 
         <!-- Vision Section -->
-    <section id="vision" class="py-16 md:py-20 px-4 md:px-8">
+    <section id="our-vision" class="py-16 md:py-20 px-4 md:px-8">
         <div class="max-w-6xl mx-auto">
             <!-- Section Header -->
             <div class="text-center mb-16">
@@ -4460,8 +5415,509 @@
         });
     </script>
 
+       <!-- Projects Gallery Section -->
+    <section id="projects-gallery" class="py-16 md:py-24 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 md:mb-20">
+                <span class="project-badge mb-4">
+                    <i class="fas fa-trophy mr-2"></i> إنجازاتنا البارزة
+                </span>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    معرض <span class="text-[#0f4c3a]">مشاريعنا</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInUp">
+                    مجموعة من أبرز مشاريعنا التي نفخر بتنفيذها بتقنية عالية وجودة لا مثيل لها
+                </p>
+            </div>
+
+            <!-- Projects Statistics -->
+            <div class="projects-stats-bar animate-fadeInUp" style="animation-delay: 0.2s">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold mb-2">50+</div>
+                        <div class="text-sm opacity-90">مشروع منجز</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold mb-2">18+</div>
+                        <div class="text-sm opacity-90">سنة خبرة</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold mb-2">623+</div>
+                        <div class="text-sm opacity-90">فريق عمل</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold mb-2">100%</div>
+                        <div class="text-sm opacity-90">رضا العملاء</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="gallery-filter mb-12 animate-fadeInUp" style="animation-delay: 0.3s">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th-large ml-2"></i> جميع المشاريع
+                </button>
+                <button class="filter-btn" data-filter="government">
+                    <i class="fas fa-landmark ml-2"></i> مباني حكومية
+                </button>
+                <button class="filter-btn" data-filter="commercial">
+                    <i class="fas fa-building ml-2"></i> مباني تجارية
+                </button>
+                <button class="filter-btn" data-filter="educational">
+                    <i class="fas fa-graduation-cap ml-2"></i> مباني تعليمية
+                </button>
+                <button class="filter-btn" data-filter="infrastructure">
+                    <i class="fas fa-road ml-2"></i> بنية تحتية
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="project-masonry">
+                <!-- Project 1 -->
+                <div class="masonry-item project-card" data-category="government">
+                    <div class="project-image-container">
+                        <div class="project-number">01</div>
+                        <div class="project-type">حكومي</div>
+                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="مبنى هيئة حقوق الإنسان بالرياض" 
+                             class="project-image">
+                        <div class="project-overlay">
+                            <div>
+                                <h4 class="text-white text-xl font-bold mb-2">مبنى هيئة حقوق الإنسان</h4>
+                                <p class="text-white text-sm opacity-90">الرياض - خدمات الصيانة المتكاملة</p>
+                            </div>
+                        </div>
+                        <div class="project-hover-icons">
+                            <div class="hover-icon" onclick="openLightbox(0)">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">مبنى هيئة حقوق الإنسان</h3>
+                        <p class="text-gray-600 mb-4">
+                            تنفيذ أعمال الصيانة والتشغيل المتكاملة لمبنى هيئة حقوق الإنسان بالرياض بأعلى معايير الجودة.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="text-[#0f4c3a] font-bold">12 شهر</div>
+                                <div class="text-xs text-gray-500">مدة المشروع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="text-[#1a7a5e] font-bold">مكتمل</div>
+                                <div class="text-xs text-gray-500">الحالة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="masonry-item project-card" data-category="educational">
+                    <div class="project-image-container">
+                        <div class="project-number">02</div>
+                        <div class="project-type">تعليمي</div>
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="كليات السليل" 
+                             class="project-image">
+                        <div class="project-overlay">
+                            <div>
+                                <h4 class="text-white text-xl font-bold mb-2">كليات السليل</h4>
+                                <p class="text-white text-sm opacity-90">تشغيل وصيانة المنشآت التعليمية</p>
+                            </div>
+                        </div>
+                        <div class="project-hover-icons">
+                            <div class="hover-icon" onclick="openLightbox(1)">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">كليات السليل</h3>
+                        <p class="text-gray-600 mb-4">
+                            تشغيل وصيانة المنشآت التعليمية بكليات السليل مع توفير بيئة تعليمية آمنة ومتطورة.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="text-[#0f4c3a] font-bold">18 شهر</div>
+                                <div class="text-xs text-gray-500">مدة المشروع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="text-[#1a7a5e] font-bold">مكتمل</div>
+                                <div class="text-xs text-gray-500">الحالة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="masonry-item project-card" data-category="commercial">
+                    <div class="project-image-container">
+                        <div class="project-number">03</div>
+                        <div class="project-type">تجاري</div>
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="مدينة رياضية بالوادي" 
+                             class="project-image">
+                        <div class="project-overlay">
+                            <div>
+                                <h4 class="text-white text-xl font-bold mb-2">مدينة رياضية بالوادي</h4>
+                                <p class="text-white text-sm opacity-90">تشغيل وصيانة المرافق الرياضية</p>
+                            </div>
+                        </div>
+                        <div class="project-hover-icons">
+                            <div class="hover-icon" onclick="openLightbox(2)">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">مدينة رياضية بالوادي</h3>
+                        <p class="text-gray-600 mb-4">
+                            تشغيل وصيانة المرافق الرياضية بالمدينة الرياضية مع ضمان أعلى معايير السلامة والأداء.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="text-[#0f4c3a] font-bold">24 شهر</div>
+                                <div class="text-xs text-gray-500">مدة المشروع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="text-[#1a7a5e] font-bold">مكتمل</div>
+                                <div class="text-xs text-gray-500">الحالة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="masonry-item project-card" data-category="government">
+                    <div class="project-image-container">
+                        <div class="project-number">04</div>
+                        <div class="project-type">حكومي</div>
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="فرع الجامعة بمحافظة الأفلاج" 
+                             class="project-image">
+                        <div class="project-overlay">
+                            <div>
+                                <h4 class="text-white text-xl font-bold mb-2">فرع الجامعة بالأفلاج</h4>
+                                <p class="text-white text-sm opacity-90">خدمات الصيانة والنظافة الشاملة</p>
+                            </div>
+                        </div>
+                        <div class="project-hover-icons">
+                            <div class="hover-icon" onclick="openLightbox(3)">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">فرع الجامعة بمحافظة الأفلاج</h3>
+                        <p class="text-gray-600 mb-4">
+                            تقديم خدمات الصيانة والنظافة الشاملة لفرع الجامعة مع الالتزام بأعلى معايير الجودة.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="text-[#0f4c3a] font-bold">15 شهر</div>
+                                <div class="text-xs text-gray-500">مدة المشروع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="text-[#1a7a5e] font-bold">مكتمل</div>
+                                <div class="text-xs text-gray-500">الحالة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="masonry-item project-card" data-category="infrastructure">
+                    <div class="project-image-container">
+                        <div class="project-number">05</div>
+                        <div class="project-type">بنية تحتية</div>
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="أعمال الكهرباء والميكانيكا" 
+                             class="project-image">
+                        <div class="project-overlay">
+                            <div>
+                                <h4 class="text-white text-xl font-bold mb-2">أعمال الكهرباء والميكانيكا</h4>
+                                <p class="text-white text-sm opacity-90">تمديدات أنظمة متكاملة</p>
+                            </div>
+                        </div>
+                        <div class="project-hover-icons">
+                            <div class="hover-icon" onclick="openLightbox(4)">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">أعمال الكهرباء والميكانيكا</h3>
+                        <p class="text-gray-600 mb-4">
+                            تنفيذ أعمال تمديدات الكهرباء والأعمال الميكانيكية بأنظمة متطورة وآمنة.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="text-[#0f4c3a] font-bold">8 شهر</div>
+                                <div class="text-xs text-gray-500">مدة المشروع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="text-[#1a7a5e] font-bold">مكتمل</div>
+                                <div class="text-xs text-gray500">الحالة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="masonry-item project-card" data-category="commercial">
+                    <div class="project-image-container">
+                        <div class="project-number">06</div>
+                        <div class="project-type">تجاري</div>
+                        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="نادي الشعلة بالخرج" 
+                             class="project-image">
+                        <div class="project-overlay">
+                            <div>
+                                <h4 class="text-white text-xl font-bold mb-2">نادي الشعلة بالخرج</h4>
+                                <p class="text-white text-sm opacity-90">خدمات الصيانة والنظافة</p>
+                            </div>
+                        </div>
+                        <div class="project-hover-icons">
+                            <div class="hover-icon" onclick="openLightbox(5)">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">نادي الشعلة بالخرج</h3>
+                        <p class="text-gray-600 mb-4">
+                            تقديم خدمات الصيانة والنظافة الشاملة لنادي الشعلة مع الحفاظ على جودة الخدمات.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="text-[#0f4c3a] font-bold">10 شهر</div>
+                                <div class="text-xs text-gray-500">مدة المشروع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="text-[#1a7a5e] font-bold">مكتمل</div>
+                                <div class="text-xs text-gray-500">الحالة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Projects -->
+            <div class="text-center mt-16 animate-fadeInUp" style="animation-delay: 0.8s">
+                <button id="loadMore" class="bg-gradient-to-r from-[#0f4c3a] to-[#1a7a5e] text-white px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-plus-circle ml-2"></i>
+                    عرض المزيد من المشاريع
+                </button>
+                <p class="text-gray-500 mt-4">عرض 6 من 50+ مشروع ناجح</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-overlay">
+        <div class="lightbox-container">
+            <div class="lightbox-close" onclick="closeLightbox()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="lightbox-nav lightbox-prev" onclick="prevImage()">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="lightbox-nav lightbox-next" onclick="nextImage()">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <img id="lightbox-img" class="lightbox-image" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        // بيانات المشاريع
+        const projects = [
+            {
+                id: 0,
+                title: "مبنى هيئة حقوق الإنسان",
+                category: "government",
+                image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "تنفيذ أعمال الصيانة والتشغيل المتكاملة لمبنى هيئة حقوق الإنسان بالرياض بأعلى معايير الجودة.",
+                location: "الرياض",
+                duration: "12 شهر",
+                status: "مكتمل",
+                year: "2023"
+            },
+            {
+                id: 1,
+                title: "كليات السليل",
+                category: "educational",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "تشغيل وصيانة المنشآت التعليمية بكليات السليل مع توفير بيئة تعليمية آمنة ومتطورة.",
+                location: "السليل",
+                duration: "18 شهر",
+                status: "مكتمل",
+                year: "2022"
+            },
+            {
+                id: 2,
+                title: "مدينة رياضية بالوادي",
+                category: "commercial",
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "تشغيل وصيانة المرافق الرياضية بالمدينة الرياضية مع ضمان أعلى معايير السلامة والأداء.",
+                location: "الوادي",
+                duration: "24 شهر",
+                status: "مكتمل",
+                year: "2021"
+            },
+            {
+                id: 3,
+                title: "فرع الجامعة بمحافظة الأفلاج",
+                category: "government",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "تقديم خدمات الصيانة والنظافة الشاملة لفرع الجامعة مع الالتزام بأعلى معايير الجودة.",
+                location: "الأفلاج",
+                duration: "15 شهر",
+                status: "مكتمل",
+                year: "2020"
+            },
+            {
+                id: 4,
+                title: "أعمال الكهرباء والميكانيكا",
+                category: "infrastructure",
+                image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "تنفيذ أعمال تمديدات الكهرباء والأعمال الميكانيكية بأنظمة متطورة وآمنة.",
+                location: "الرياض",
+                duration: "8 شهر",
+                status: "مكتمل",
+                year: "2019"
+            },
+            {
+                id: 5,
+                title: "نادي الشعلة بالخرج",
+                category: "commercial",
+                image: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "تقديم خدمات الصيانة والنظافة الشاملة لنادي الشعلة مع الحفاظ على جودة الخدمات.",
+                location: "الخرج",
+                duration: "10 شهر",
+                status: "مكتمل",
+                year: "2018"
+            }
+        ];
+
+        let currentImageIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Animate project cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            projectCards.forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Load more projects button
+            const loadMoreBtn = document.getElementById('loadMore');
+            let projectsLoaded = 6;
+            
+            loadMoreBtn.addEventListener('click', function() {
+                // في الواقع، هنا يمكن جلب المزيد من المشاريع من قاعدة بيانات
+                // لكن لأغراض العرض، سنظهر رسالة
+                this.innerHTML = '<i class="fas fa-sync-alt ml-2 animate-spin"></i> جاري التحميل...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    alert('سيتم عرض المزيد من المشاريع قريباً...');
+                    this.innerHTML = '<i class="fas fa-plus-circle ml-2"></i> عرض المزيد من المشاريع';
+                    this.disabled = false;
+                }, 1500);
+            });
+            
+            // Keyboard navigation for lightbox
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    } else if (e.key === 'ArrowRight') {
+                        prevImage();
+                    } else if (e.key === 'ArrowLeft') {
+                        nextImage();
+                    }
+                }
+            });
+        });
+        
+        // Lightbox functions
+        function openLightbox(index) {
+            currentImageIndex = index;
+            lightboxImg.src = projects[index].image;
+            lightboxCaption.textContent = projects[index].title;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + projects.length) % projects.length;
+            lightboxImg.src = projects[currentImageIndex].image;
+            lightboxCaption.textContent = projects[currentImageIndex].title;
+        }
+        
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % projects.length;
+            lightboxImg.src = projects[currentImageIndex].image;
+            lightboxCaption.textContent = projects[currentImageIndex].title;
+        }
+        
+
+    </script>
+
         <!-- Connect Section -->
-    <section id="connect" class="py-16 md:py-24 px-4 md:px-8">
+    <section id="contact" class="py-16 md:py-24 px-4 md:px-8">
         <div class="max-w-7xl mx-auto">
             <!-- Section Header -->
             <div class="text-center mb-16 md:mb-20">
@@ -4548,8 +6004,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-gray-900 mb-1">العنوان</h4>
-                                <p class="text-gray-600">المملكة العربية السعودية - الرياض</p>
-                                <p class="text-gray-600 text-sm">حي الملك فهد، شارع الأمير محمد</p>
+                                <p class="text-gray-600">المملكة العربية السعودية</p>
+                                <p class="text-gray-600 text-sm">عقارية الستين الملز - الرياض</p>
                             </div>
                         </div>
                         
@@ -4847,7 +6303,7 @@
                     <div class="footer-card p-6 h-full">
                         <div class="flex items-center mb-6">
                             <div class="footer-icon-circle">
-                                <i class="fas fa-building text-xl"></i>
+                               <img src="./asstes/img/logo-2.png" alt="">
                             </div>
                             <div class="mr-4">
                                 <h3 class="text-xl font-bold">مؤسسة درين للمقاولات</h3>
@@ -4915,7 +6371,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold mb-1">العنوان</h4>
-                                <p class="text-gray-300 text-sm">المملكة العربية السعودية، الرياض، حي الملك فهد</p>
+                                <p class="text-gray-300 text-sm">المملكة العربية السعودية، عقارية الستين الملز الرياض</p>
                             </div>
                         </div>
                         
@@ -5017,23 +6473,29 @@
                 </div>
             </div>
             
-            <!-- Map Section -->
-            <div class="mb-12 animate-fadeInUp" style="animation-delay: 0.5s">
-                <div class="footer-card p-6">
-                    <h3 class="text-xl font-bold mb-4">موقعنا على الخريطة</h3>
-                    <div class="map-container">
-                        <!-- هنا يمكن إضافة خريطة جوجل -->
-                        <div class="text-center p-8">
-                            <i class="fas fa-map-marked-alt text-4xl mb-4 text-gray-400"></i>
-                            <p class="text-gray-400">خريطة موقع المؤسسة</p>
-                            <button class="mt-4 px-6 py-2 bg-[#2a9d78] text-white rounded-lg hover:bg-[#1a7a5e] transition-colors">
-                                <i class="fas fa-directions ml-2"></i>
-                                احصل على الاتجاهات
-                            </button>
-                        </div>
-                    </div>
-                </div>
+           <!-- Map Section -->
+<div class="mb-12 animate-fadeInUp" style="animation-delay: 0.5s">
+    <div class="footer-card p-6">
+        <h3 class="text-xl font-bold mb-4">موقعنا على الخريطة</h3>
+
+        <div class="map-container text-center">
+            <!-- Google Map -->
+            <div class="w-full h-64 rounded-xl overflow-hidden shadow-lg mb-4">
+                <iframe
+                    src="https://www.google.com/maps?q=Saudi%20Arabia&output=embed"
+                    class="w-full h-full border-0"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
+
+           
+
+          
+        </div>
+    </div>
+</div>
+
             
             <!-- Footer Divider -->
             <div class="footer-divider"></div>
@@ -5050,8 +6512,8 @@
                 <!-- Logo -->
                 <div class="text-center">
                     <div class="inline-flex items-center">
-                        <div class="w-10 h-10 bg-gradient-to-br from-[#1a7a5e] to-[#2a9d78] rounded-lg flex items-center justify-center ml-3">
-                            <i class="fas fa-building text-white"></i>
+                        <div class="w-10 h-10   rounded-lg flex items-center justify-center ml-3">
+                            <img class="rounded-full" src="./asstes/img/logo-2.png" alt="">
                         </div>
                         <div class="text-right">
                             <div class="font-bold text-xl">درين</div>
