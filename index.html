@@ -1773,6 +1773,272 @@
             }
         }
     </style>
+    <!-- footer -->
+         <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .footer-gradient-bg {
+            background: linear-gradient(135deg, #0a2b1f 0%, #0f4c3a 50%, #0a382a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231a7a5e' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .footer-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-icon-circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a7a5e, #2a9d78);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-card:hover .footer-icon-circle {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-link {
+            position: relative;
+            padding-right: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #2a9d78;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #2a9d78;
+            padding-right: 30px;
+            transform: translateX(-5px);
+        }
+        
+        .footer-link:hover::before {
+            opacity: 1;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon:hover {
+            background: #2a9d78;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+        
+        .subscribe-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            padding: 15px 20px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .subscribe-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #2a9d78;
+            box-shadow: 0 0 0 2px rgba(42, 157, 120, 0.2);
+        }
+        
+        .subscribe-btn {
+            background: linear-gradient(135deg, #1a7a5e, #2a9d78);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .subscribe-btn:hover {
+            background: linear-gradient(135deg, #2a9d78, #1a7a5e);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin: 40px 0;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a7a5e, #2a9d78);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 250px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .working-hours {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hour-item:last-child {
+            border-bottom: none;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .payment-icon {
+            width: 50px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -3862,6 +4128,361 @@
             const floatingElements = document.querySelectorAll('.animate-float');
             floatingElements.forEach((element, index) => {
                 element.style.animationDelay = `${index * 0.3}s`;
+            });
+        });
+    </script>
+        <!-- Footer Section -->
+    <footer class="footer-gradient-bg text-white pt-16 pb-8 px-4 md:px-8">
+        <div class="footer-pattern"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="animate-fadeInUp">
+                    <div class="footer-card p-6 h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="footer-icon-circle">
+                                <i class="fas fa-building text-xl"></i>
+                            </div>
+                            <div class="mr-4">
+                                <h3 class="text-xl font-bold">مؤسسة درين للمقاولات</h3>
+                                <p class="text-gray-300 text-sm">شركة رائدة منذ 2005</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            مؤسسة رائدة في مجال المقاولات والتشغيل والصيانة، تقدم خدمات عالية الجودة بمهنية واحترافية، وتساهم في تحقيق رؤية المملكة 2030.
+                        </p>
+                        <div class="flex space-x-4 space-x-reverse">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="animate-fadeInUp" style="animation-delay: 0.1s">
+                    <div class="footer-card p-6 h-full">
+                        <h3 class="text-xl font-bold mb-6 pb-3 border-b border-gray-700">روابط سريعة</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-home ml-2"></i> الصفحة الرئيسية
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-info-circle ml-2"></i> من نحن
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-cogs ml-2"></i> خدماتنا
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-project-diagram ml-2"></i> مشاريعنا
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-eye ml-2"></i> رؤيتنا
+                            </a>
+                            <a href="#" class="footer-link block text-gray-300 hover:text-white">
+                                <i class="fas fa-phone ml-2"></i> اتصل بنا
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="animate-fadeInUp" style="animation-delay: 0.2s">
+                    <div class="footer-card p-6 h-full">
+                        <h3 class="text-xl font-bold mb-6 pb-3 border-b border-gray-700">معلومات الاتصال</h3>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">العنوان</h4>
+                                <p class="text-gray-300 text-sm">المملكة العربية السعودية، الرياض، حي الملك فهد</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">الهاتف</h4>
+                                <p class="text-gray-300 text-sm">+966 11 123 4567</p>
+                                <p class="text-gray-300 text-sm">+966 50 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">البريد الإلكتروني</h4>
+                                <p class="text-gray-300 text-sm">info@darin-contracting.com</p>
+                                <p class="text-gray-300 text-sm">support@darin-contracting.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Newsletter & Map -->
+                <div class="animate-fadeInUp" style="animation-delay: 0.3s">
+                    <div class="space-y-6">
+                        <!-- Newsletter -->
+                        <div class="footer-card p-6">
+                            <h3 class="text-xl font-bold mb-4">اشترك في نشرتنا</h3>
+                            <p class="text-gray-300 mb-4 text-sm">
+                                اشترك لتصلك آخر أخبارنا وعروضنا الخاصة
+                            </p>
+                            <form class="space-y-4">
+                                <input type="email" 
+                                       placeholder="بريدك الإلكتروني" 
+                                       class="subscribe-input" 
+                                       required>
+                                <button type="submit" class="subscribe-btn w-full">
+                                    <i class="fas fa-paper-plane"></i>
+                                    اشترك الآن
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Working Hours -->
+                        <div class="footer-card p-6">
+                            <h3 class="text-xl font-bold mb-4">ساعات العمل</h3>
+                            <div class="working-hours">
+                                <div class="hour-item">
+                                    <span>الأحد - الخميس</span>
+                                    <span class="text-gray-300">8:00 ص - 5:00 م</span>
+                                </div>
+                                <div class="hour-item">
+                                    <span>الجمعة</span>
+                                    <span class="text-gray-300">10:00 ص - 2:00 م</span>
+                                </div>
+                                <div class="hour-item">
+                                    <span>السبت</span>
+                                    <span class="text-gray-300">إجازة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Services Section -->
+            <div class="mb-12 animate-fadeInUp" style="animation-delay: 0.4s">
+                <h3 class="text-xl font-bold mb-6 text-center">خدماتنا الرئيسية</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-road text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">البنية التحتية</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-tools text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">التشغيل والصيانة</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-hard-hat text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">مقاولات خاصة</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-building text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">مباني سكنية</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-bolt text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">تمديدات كهرباء</div>
+                    </div>
+                    <div class="footer-card p-4 text-center">
+                        <i class="fas fa-cogs text-2xl mb-2 text-[#2a9d78]"></i>
+                        <div class="text-sm">أعمال ميكانيكية</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Section -->
+            <div class="mb-12 animate-fadeInUp" style="animation-delay: 0.5s">
+                <div class="footer-card p-6">
+                    <h3 class="text-xl font-bold mb-4">موقعنا على الخريطة</h3>
+                    <div class="map-container">
+                        <!-- هنا يمكن إضافة خريطة جوجل -->
+                        <div class="text-center p-8">
+                            <i class="fas fa-map-marked-alt text-4xl mb-4 text-gray-400"></i>
+                            <p class="text-gray-400">خريطة موقع المؤسسة</p>
+                            <button class="mt-4 px-6 py-2 bg-[#2a9d78] text-white rounded-lg hover:bg-[#1a7a5e] transition-colors">
+                                <i class="fas fa-directions ml-2"></i>
+                                احصل على الاتجاهات
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Divider -->
+            <div class="footer-divider"></div>
+            
+            <!-- Bottom Footer -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <!-- Copyright -->
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">
+                        © 2024 مؤسسة درين للمقاولات. جميع الحقوق محفوظة.
+                    </p>
+                </div>
+                
+                <!-- Logo -->
+                <div class="text-center">
+                    <div class="inline-flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-[#1a7a5e] to-[#2a9d78] rounded-lg flex items-center justify-center ml-3">
+                            <i class="fas fa-building text-white"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xl">درين</div>
+                            <div class="text-gray-400 text-sm">للمقاولات</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Policies -->
+                <div class="text-center md:text-left">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">
+                            سياسة الخصوصية
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">
+                            شروط الاستخدام
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">
+                            سياسة الاسترجاع
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">
+                            الأسئلة الشائعة
+                        </a>
+                    </div>
+                    
+                    <!-- Payment Methods -->
+                    <div class="payment-methods justify-center md:justify-start mt-4">
+                        <div class="payment-icon">
+                            <i class="fab fa-cc-visa"></i>
+                        </div>
+                        <div class="payment-icon">
+                            <i class="fab fa-cc-mastercard"></i>
+                        </div>
+                        <div class="payment-icon">
+                            <i class="fab fa-cc-paypal"></i>
+                        </div>
+                        <div class="payment-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Float -->
+            <div class="fixed bottom-30 left-20 z-50">
+                <a href="https://wa.me/966501234567" 
+                   target="_blank" 
+                   class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-fadeInUp"
+                   style="animation-delay: 0.6s">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top Button
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Newsletter Form Submission
+            const newsletterForm = document.querySelector('form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    if (emailInput.value) {
+                        // هنا يمكنك إضافة كود إرسال النموذج
+                        alert('شكراً لاشتراكك في نشرتنا! سنرسل لك آخر التحديثات قريباً.');
+                        emailInput.value = '';
+                    }
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Animate elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Observe all elements with animation class
+            document.querySelectorAll('.animate-fadeInUp').forEach((el) => {
+                observer.observe(el);
+            });
+            
+            // Add hover effects to service cards
+            document.querySelectorAll('.footer-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
             });
         });
     </script>
