@@ -10,7 +10,284 @@
      <link rel="stylesheet" href="./asstes/css/style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<!-- services -->
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        /* Service Badge */
+        .service-badge {
+            background: linear-gradient(135deg, rgba(25, 68, 128, 0.1), rgba(25, 68, 128, 0.2));
+            color: #194480;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(25, 68, 128, 0.2);
+        }
+        
+        /* Section Title */
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to left, #194480, #0f2f5f);
+            border-radius: 2px;
+        }
+        
+        /* Service Categories */
+        .service-category {
+            background: #f8fafc;
+            border: 2px solid transparent;
+            padding: 15px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-category:hover {
+            background: white;
+            border-color: #194480;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(25, 68, 128, 0.1);
+        }
+        
+        .service-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(25, 68, 128, 0.05);
+            transition: width 0.3s ease;
+        }
+        
+        .service-category:hover::before {
+            width: 100%;
+        }
+        
+        /* Service Card */
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(25, 68, 128, 0.15);
+        }
+        
+        .service-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        .service-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(25, 68, 128, 0.9);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .service-type-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #194480;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 40%, rgba(25, 68, 128, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            z-index: 1;
+        }
+        
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+        
+        /* Buttons */
+        .btn-call {
+            background: linear-gradient(135deg, #194480, #0f2f5f);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-call:hover {
+            background: linear-gradient(135deg, #0f2f5f, #194480);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(25, 68, 128, 0.3);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* View All Services Button */
+        .btn-view-all {
+            background: white;
+            color: #194480;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            border: 2px solid #194480;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 30px auto 0;
+        }
+        
+        .btn-view-all:hover {
+            background: #194480;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(25, 68, 128, 0.2);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        /* Featured Services Title */
+        .featured-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+        }
+        
+        .featured-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #194480, transparent);
+            border-radius: 2px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .service-image-container {
+                height: 200px;
+            }
+            
+            .btn-view-all {
+                padding: 12px 30px;
+                font-size: 15px;
+            }
+            
+            .service-badge {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
       <!-- Navigation -->
@@ -28,11 +305,11 @@
             <ul class="projects-nav-links">
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#projects">المشاريع</a></li>
-                <li><a href="#about">من نحن</a></li>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="#our-vision">رؤيتنا</a></li>
+                <li><a href="./pages/about.html">من نحن</a></li>
+                <li><a href="./pages/services.html">خدماتنا</a></li>
+              
                 <li><a href="./pages/service-request.html"> طلب خدمة</a></li>
-                <li><a href="#contact">تواصل معنا</a></li>
+                <li><a href="./pages/contact-us.html">تواصل معنا</a></li>
                 <li><a href="tel:0508090790" class="projects-nav-cta">اتصل الآن</a></li>
             </ul>
 
@@ -52,11 +329,10 @@
         <ul class="projects-mobile-nav-links">
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#projects">المشاريع</a></li>
-            <li><a href="#about">من نحن</a></li>
-            <li><a href="#services">خدماتنا</a></li>
-            <li><a href="#our-vision">رؤيتنا</a></li>
+            <li><a href="./pages/about.html">من نحن</a></li>
+            <li><a href="./pages/services.html">خدماتنا</a></li>
             <li><a href="./pages/service-request.html"> طلب خدمة </a></li>
-            <li><a href="#contact">تواصل معنا</a></li>
+            <li><a href="./pages/contact-us.html">تواصل معنا</a></li>
             <li><a href="tel:0508090790" class="projects-mobile-nav-cta">اتصل الآن</a></li>
         </ul>
     </div>
@@ -360,6 +636,15 @@
 
      
     </section>
+
+
+<!-- Floating Call Button -->
+<div class="call-float">
+    <a href="tel:0508090790" title="اتصل بنا الآن">
+     <i class="fa-solid fa-phone" style="font-size: 25px; color: white;"></i>
+
+    </a>
+</div>
 
     <!-- WhatsApp Float Button -->
     <div class="whatsapp-float">
@@ -1097,10 +1382,10 @@
             <!-- Section Header -->
             <div class="text-center mb-16 md:mb-20">
                 <span class="about-badge mb-4">
-                    <i class="fas fa-building mr-2"></i> مؤسسة رائدة منذ 2005
+                    <i class="fas fa-building mr-2"></i> رائدة منذ 2005
                 </span>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                    <span class="text-[#194480]">من نحن</span> في مؤسسة درين للمقاولات
+                    <span class="text-[#194480]">من نحن</span> في درين للمقاولات
                 </h1>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                     نخبة من الخبراء والمتخصصين في مجال الصيانة والنظافة وتشغيل المشاريع الحكومية
@@ -1120,7 +1405,7 @@
                             خبرتنا الواسعة
                         </h2>
                         <p class="text-gray-700 text-lg mb-6">
-                            نمتلك في مؤسسة درين للمقاولات خبرة واسعة وكبيرة في مجال الصيانة والنظافة، وتشغيل المشاريع الحكومية مع الكثير من القطاعات الحكومية والخاصة.
+                            نمتلك في درين للمقاولات خبرة واسعة وكبيرة في مجال الصيانة والنظافة، وتشغيل المشاريع الحكومية مع الكثير من القطاعات الحكومية والخاصة.
                         </p>
                         
                         <!-- Stats Grid -->
@@ -1331,226 +1616,38 @@
         });
     </script>
 
-        <!-- Director's Message Section -->
-    <section id="director-message" class="py-16 md:py-20 px-4 md:px-8">
-        <div class="max-w-5xl mx-auto">
-            <!-- Section Header -->
-            <div class="text-center mb-12 md:mb-16">
-                <span class="director-title-badge">
-                    <i class="fas fa-user-tie mr-2"></i> كلمة المدير العام
-                </span>
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    رسالة من <span class="text-[#194480]">قيادتنا</span>
-                </h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    نظرة مستقبلية ورؤية طموحة لمسيرة مؤسسة درين للمقاولات
-                </p>
-            </div>
 
-            <!-- Main Message Card -->
-            <div class="director-card bg-white p-6 md:p-10 animate-fadeInUp">
-                <i class="fas fa-quote-right director-quote-icon"></i>
-                
-                <div class="relative z-10">
-                    <!-- Opening Statement -->
-                    <div class="director-highlight">
-                        <p class="text-lg md:text-xl text-gray-800 leading-relaxed">
-                            <span class="font-bold text-[#194480]">البداية كانت حلمًا،</span> ثم أصبحت – بفضل الله – واقعًا ملموسًا، وبجهد العاملين المخلصين، حيث عبرنا الصعاب في مؤسسة درين للمقاولات، وحققنا النجاحات تلو النجاحات، حتى وصلنا إلى مقدمة الصفوة من الشركات في المملكة.
-                        </p>
-                    </div>
-                    
-                    <!-- First Paragraph -->
-                    <div class="mb-8">
-                        <p class="text-gray-700 text-lg leading-relaxed mb-6">
-                            لم نألُ جهدًا حتى نحافظ على موقعنا في الصدارة، وفي ظل النمو الاقتصادي والنهضة العمرانية الكبرى التي تمر بها المملكة، والموقع الجغرافي المتميز، واكبت المملكة تحركات اقتصادية حديثة ومتطورة ساعدت على جذب المستثمرين وزيادة النشاط الاقتصادي في البلاد.
-                        </p>
-                    </div>
-                    
-                    <!-- Second Paragraph -->
-                    <div class="mb-8">
-                        <p class="text-gray-700 text-lg leading-relaxed mb-6">
-                            ولذلك فقد حرصنا على التطوير المستمر لرفع كفاءة مؤسسة درين للمقاولات، بسياسات وخطط استراتيجية نطمح من خلالها إلى المساهمة الفعّالة في إثراء مجالتنا، وكسب ثقة عملائنا، من خلال ترسيخ مبادئ المصداقية والمهنية والالتزام.
-                        </p>
-                    </div>
-                    
-                    <!-- Third Paragraph -->
-                    <div class="mb-8">
-                        <p class="text-gray-700 text-lg leading-relaxed mb-6">
-                            منذ أن بدأنا في مؤسسة درين للمقاولات ممارسة نشاطنا، ونمت سمعتنا لدى عملائنا كإحدى أبرز الشركات في المملكة في جودة الأداء على كافة الأصعدة، وهو ما نلمسه من رضا عملائنا، والذي يُعد أساس نجاحنا ومبعث فخرنا.
-                        </p>
-                    </div>
-                    
-                    <!-- Final Paragraph -->
-                    <div class="director-accent-border pr-4">
-                        <p class="text-gray-700 text-lg leading-relaxed">
-                            ويقف خلف كل ذلك فريق عمل يعمل بروح واحدة، لدى كل فرد منه إحساس قوي بالمسؤولية، ويبذل كل ما بوسعه ليقدم أفضل ما يمكن الحصول عليه.
-                        </p>
-                    </div>
-                    
-                    <!-- Signature -->
-                    <div class="text-left mt-10">
-                        <div class="director-signature">
-                            المدير العام
-                        </div>
-                        <p class="text-gray-600 mt-2">مؤسسة درين للمقاولات</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Key Principles -->
-            <div class="grid md:grid-cols-3 gap-6 mt-12">
-                <div class="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#194480] to-[#194480] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-handshake text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">المصداقية</h3>
-                    <p class="text-gray-600">الشفافية والصدق في جميع تعاملاتنا</p>
-                </div>
-                
-                <div class="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#194480] to-[#194480] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-medal text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">المهنية</h3>
-                    <p class="text-gray-600">التخصص والخبرة في تنفيذ المشاريع</p>
-                </div>
-                
-                <div class="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all duration-300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#194480] to-[#194480] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-clock text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">الالتزام</h3>
-                    <p class="text-gray-600">الالتزام بالمواعيد والجودة المتفق عليها</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effects
-            const cards = document.querySelectorAll('.director-card, .bg-white.rounded-xl');
-            
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // Add scroll animation
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fadeInUp');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.bg-white.rounded-xl').forEach((el) => {
-                observer.observe(el);
-            });
-        });
-    </script>
-
-        <!-- Services Section -->
-    <section id="services" class="py-16 md:py-24 px-4 md:px-8">
+    <!-- Services Section -->
+    <section id="services" class="py-16 md:py-20 px-4 md:px-8">
         <div class="max-w-7xl mx-auto">
             <!-- Section Header -->
-            <div class="text-center mb-16 md:mb-20">
+            <div class="text-center mb-16">
                 <span class="service-badge mb-4">
-                    <i class="fas fa-cogs mr-2"></i> خبرة واسعة في مجالات متعددة
+                    <i class="fas fa-cogs ml-2"></i> خبرة واسعة في مجالات متعددة
                 </span>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 section-title">
                     <span class="text-[#194480]">خدماتنا</span> المتكاملة
                 </h1>
                 <p class="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto">
-                    نتمتع في مؤسسة درين للمقاولات بخبرة واسعة اكتسبناها من خلال تنفيذنا للعديد من المشاريع الضخمة في مجالات متعددة
+                    نتمتع في درين للمقاولات بخبرة واسعة اكتسبناها من خلال تنفيذنا للعديد من المشاريع الضخمة في مجالات متعددة
                 </p>
             </div>
 
-            <!-- Categories -->
+            <!-- Featured Services - 3 Services Only -->
             <div class="mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">مجالات تخصصنا</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                    <div class="service-category">
-                        <div class="flex items-center">
-                            <i class="fas fa-road text-[#194480] text-xl ml-3"></i>
-                            <h3 class="text-lg font-bold text-gray-900">البنية التحتية</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="service-category">
-                        <div class="flex items-center">
-                            <i class="fas fa-tools text-[#194480] text-xl ml-3"></i>
-                            <h3 class="text-lg font-bold text-gray-900">التشغيل والصيانة</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="service-category">
-                        <div class="flex items-center">
-                            <i class="fas fa-hard-hat text-[#194480] text-xl ml-3"></i>
-                            <h3 class="text-lg font-bold text-gray-900">أعمال المقاولات الخاصة</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="service-category">
-                        <div class="flex items-center">
-                            <i class="fas fa-building text-[#194480] text-xl ml-3"></i>
-                            <h3 class="text-lg font-bold text-gray-900">المباني السكنية والتجارية</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="service-category">
-                        <div class="flex items-center">
-                            <i class="fas fa-bolt text-[#194480] text-xl ml-3"></i>
-                            <h3 class="text-lg font-bold text-gray-900">أعمال تمديدات الكهرباء</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="service-category">
-                        <div class="flex items-center">
-                            <i class="fas fa-cogs text-[#194480] text-xl ml-3"></i>
-                            <h3 class="text-lg font-bold text-gray-900">الأعمال الميكانيكية</h3>
-                        </div>
-                    </div>
-                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 text-center featured-title">
+                    خدماتنا الرئيسية
+                </h2>
                 
-                <div class="bg-gradient-to-r from-[#194480] to-[#194480] rounded-2xl p-8 text-white">
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="md:w-2/3 mb-6 md:mb-0">
-                            <h3 class="text-xl md:text-2xl font-bold mb-4">خبرة متخصصة في التشغيل والصيانة</h3>
-                            <p class="opacity-90">
-                                نفذنا العديد من الأعمال المتخصصة في مجال التشغيل والصيانة، مما أكسبنا خبرة كبيرة في تلبية احتياجات المباني بعد تسليمها وضمان استمرارية كفاءتها.
-                            </p>
-                        </div>
-                        <div class="md:w-1/3 text-center">
-                            <div class="inline-block bg-white/20 rounded-full p-6 backdrop-blur-sm">
-                                <i class="fas fa-certificate text-4xl"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Our Services -->
-            <div>
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-12 text-center">خدماتنا المتخصصة</h2>
-                
-                <!-- Services Grid -->
+                <!-- Services Grid (3 Services Only) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
                     
                     <!-- Service 1: Government Buildings -->
                     <div class="service-card animate-fadeInUp" style="animation-delay: 0.1s">
                         <div class="service-image-container">
                             <div class="service-number">01</div>
-                            <div class="service-type-badge">
-                                <i class="fas fa-landmark ml-1"></i> حكومي
-                            </div>
-                            <!-- هنا ضع رابط الصورة الفعلية -->
+                          
                             <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                  alt="المباني الحكومية" 
                                  class="service-image">
@@ -1567,7 +1664,7 @@
                                 تشغيل وصيانة المباني الحكومية وفق أحدث المعايير الفنية والهندسية المعتمدة، مع ضمان الكفاءة التشغيلية العالية والالتزام بمواصفات السلامة.
                             </p>
                             <div class="flex space-x-4 space-x-reverse">
-                                <a  href="tel:0508090790" class="btn-call flex-1">
+                                <a href="tel:0508090790" class="btn-call flex-1">
                                     <i class="fas fa-phone ml-2"></i>
                                     إتصل بنا
                                 </a>
@@ -1583,10 +1680,7 @@
                     <div class="service-card animate-fadeInUp" style="animation-delay: 0.2s">
                         <div class="service-image-container">
                             <div class="service-number">02</div>
-                            <div class="service-type-badge">
-                                <i class="fas fa-store ml-1"></i> تجاري
-                            </div>
-                            <!-- هنا ضع رابط الصورة الفعلية -->
+                           
                             <img src="https://images.unsplash.com/photo-1487956382158-bb926046304a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                  alt="المباني التجارية" 
                                  class="service-image">
@@ -1615,86 +1709,11 @@
                         </div>
                     </div>
                     
-                    <!-- Service 3: Industrial Buildings -->
+                    <!-- Service 3: Operation & Maintenance -->
                     <div class="service-card animate-fadeInUp" style="animation-delay: 0.3s">
                         <div class="service-image-container">
                             <div class="service-number">03</div>
-                            <div class="service-type-badge">
-                                <i class="fas fa-industry ml-1"></i> صناعي
-                            </div>
-                            <!-- هنا ضع رابط الصورة الفعلية -->
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                                 alt="المباني الصناعية" 
-                                 class="service-image">
-                            <div class="service-overlay">
-                                <div class="text-right">
-                                    <h4 class="text-white text-xl font-bold mb-2">المباني الصناعية</h4>
-                                    <p class="text-white text-sm opacity-90">صيانة وتشغيل متخصص</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">المباني الصناعية</h3>
-                            <p class="text-gray-600 mb-6 leading-relaxed">
-                                صيانة وتشغيل المنشآت الصناعية بكفاءة عالية، مع التركيز على السلامة والاستدامة التشغيلية والحد من الأعطال.
-                            </p>
-                            <div class="flex space-x-4 space-x-reverse">
-                                <a href="tel:0508090790" class="btn-call flex-1">
-                                    <i class="fas fa-phone ml-2"></i>
-                                    إتصل بنا
-                                </a>
-                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
-                                    <i class="fab fa-whatsapp ml-2"></i>
-                                    واتساب
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Service 4: Educational Buildings -->
-                    <div class="service-card animate-fadeInUp" style="animation-delay: 0.4s">
-                        <div class="service-image-container">
-                            <div class="service-number">04</div>
-                            <div class="service-type-badge">
-                                <i class="fas fa-graduation-cap ml-1"></i> تعليمي
-                            </div>
-                            <!-- هنا ضع رابط الصورة الفعلية -->
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                                 alt="المباني التعليمية" 
-                                 class="service-image">
-                            <div class="service-overlay">
-                                <div class="text-right">
-                                    <h4 class="text-white text-xl font-bold mb-2">المباني التعليمية</h4>
-                                    <p class="text-white text-sm opacity-90">بيئة تعليمية آمنة</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">المباني التعليمية</h3>
-                            <p class="text-gray-600 mb-6 leading-relaxed">
-                                تشغيل وصيانة المنشآت التعليمية لتوفير بيئة آمنة ومناسبة للعملية التعليمية والتعلمية بجميع مرافقها.
-                            </p>
-                            <div class="flex space-x-4 space-x-reverse">
-                                <a href="tel:0508090790" class="btn-call flex-1">
-                                    <i class="fas fa-phone ml-2"></i>
-                                    إتصل بنا
-                                </a>
-                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
-                                    <i class="fab fa-whatsapp ml-2"></i>
-                                    واتساب
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Service 5: Operation & Maintenance -->
-                    <div class="service-card animate-fadeInUp" style="animation-delay: 0.5s">
-                        <div class="service-image-container">
-                            <div class="service-number">05</div>
-                            <div class="service-type-badge">
-                                <i class="fas fa-cogs ml-1"></i> تشغيل وصيانة
-                            </div>
-                            <!-- هنا ضع رابط الصورة الفعلية -->
+                           
                             <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                                  alt="التشغيل والصيانة" 
                                  class="service-image">
@@ -1722,45 +1741,19 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Service 6: Electrical Works -->
-                    <div class="service-card animate-fadeInUp" style="animation-delay: 0.6s">
-                        <div class="service-image-container">
-                            <div class="service-number">06</div>
-                            <div class="service-type-badge">
-                                <i class="fas fa-bolt ml-1"></i> كهرباء
-                            </div>
-                            <!-- هنا ضع رابط الصورة الفعلية -->
-                            <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                                 alt="تمديدات الكهرباء" 
-                                 class="service-image">
-                            <div class="service-overlay">
-                                <div class="text-right">
-                                    <h4 class="text-white text-xl font-bold mb-2">تمديدات الكهرباء</h4>
-                                    <p class="text-white text-sm opacity-90">أنظمة متطورة وآمنة</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3">أعمال تمديدات الكهرباء</h3>
-                            <p class="text-gray-600 mb-6 leading-relaxed">
-                                تصميم وتنفيذ أنظمة الكهرباء بكافة أنواعها مع ضمان السلامة والكفاءة التشغيلية العالية والالتزام بالمواصفات القياسية.
-                            </p>
-                            <div class="flex space-x-4 space-x-reverse">
-                                <a href="tel:0508090790" class="btn-call flex-1">
-                                    <i class="fas fa-phone ml-2"></i>
-                                    إتصل بنا
-                                </a>
-                                <a href="https://wa.me/966114770705" class="btn-whatsapp flex-1">
-                                    <i class="fab fa-whatsapp ml-2"></i>
-                                    واتساب
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                
+                <!-- View All Services Button -->
+                <div class="text-center mt-12">
+                    <a href="./pages/services.html" class="btn-view-all animate-fadeInUp" style="animation-delay: 0.4s">
+                        <span>عرض جميع الخدمات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
                 </div>
             </div>
-            
+
+           
+
             <!-- Process Section -->
             <div class="mt-20 bg-white rounded-2xl p-8 shadow-xl">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">مراحل العمل في مشاريعنا</h2>
@@ -1824,15 +1817,16 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
                         entry.target.classList.add('visible');
                         observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
             
-            // Observe all service cards
-            document.querySelectorAll('.service-card').forEach((card) => {
-                observer.observe(card);
+            // Observe all service cards and buttons
+            document.querySelectorAll('.service-card, .btn-view-all').forEach((element) => {
+                observer.observe(element);
             });
             
             // Add hover animation delay to service categories
@@ -1843,680 +1837,51 @@
             
             // Add click functionality for buttons
             document.querySelectorAll('.btn-call').forEach(button => {
-                button.addEventListener('click', function() {
-                    // هنا يمكنك إضافة رقم الهاتف الفعلي
-                    window.location.href = 'tel:+966500000000';
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // يمكنك تعديل رقم الهاتف هنا
+                    window.location.href = 'tel:0508090790';
                 });
             });
             
             document.querySelectorAll('.btn-whatsapp').forEach(button => {
-                button.addEventListener('click', function() {
-                    // هنا يمكنك إضافة رقم الواتساب الفعلي
-                    window.open('https://wa.me/966500000000', '_blank');
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // يمكنك تعديل رقم الواتساب هنا
+                    window.open('https://wa.me/966114770705', '_blank');
                 });
             });
+            
+            // View All Services Button functionality
+            const viewAllBtn = document.querySelector('.btn-view-all');
+            if (viewAllBtn) {
+                viewAllBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // هنا يمكنك تغيير الرابط حسب الصفحة التي تريدها
+                    window.location.href = 'all-services.html';
+                    
+                    // أو إظهار رسالة مؤقتة إذا لم تكن الصفحة جاهزة
+                    // alert('صفحة جميع الخدمات قيد التطوير...');
+                });
+            }
             
             // Preload images for better user experience
             const imageUrls = [
                 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
                 'https://images.unsplash.com/photo-1487956382158-bb926046304a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
             ];
             
             imageUrls.forEach(url => {
                 const img = new Image();
                 img.src = url;
             });
-        });
-    </script>
-
-        <!-- Vision Section -->
-    <section id="our-vision" class="py-16 md:py-20 px-4 md:px-8">
-        <div class="max-w-6xl mx-auto">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <span class="vision-badge mb-4">
-                    <i class="fas fa-eye mr-2"></i> رؤيتنا المستقبلية
-                </span>
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fadeInUp">
-                    نحو <span class="text-[#194480] text-glow">الريادة</span> والتميز
-                </h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto animate-fadeInUp" style="animation-delay: 0.2s">
-                    نرسم ملامح المستقبل بخطى ثابتة نحو تحقيق أهدافنا الطموحة
-                </p>
-            </div>
-
-            <!-- Main Vision Container -->
-            <div class="vision-container animate-fadeInUp" style="animation-delay: 0.3s">
-                <div class="grid lg:grid-cols-3">
-                    <!-- Image Column - Left Side -->
-                    <div class="lg:col-span-1">
-                        <div class="vision-image-section">
-                            <div class="floating-elements">
-                                <div class="floating-element"></div>
-                                <div class="floating-element"></div>
-                                <div class="floating-element"></div>
-                            </div>
-                            
-                            <!-- Image Container -->
-                            <div class="vision-image-wrapper">
-                                <!-- هنا ضع رابط الصورة الفعلية -->
-                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                                     alt="رؤية مؤسسة درين للمقاولات" 
-                                     class="vision-image">
-                                <div class="vision-image-overlay">
-                                    <div class="image-caption">
-                                        <h4 class="font-bold text-gray-900">طموح نحو المستقبل</h4>
-                                        <p class="text-sm text-gray-600">الريادة في مجال المقاولات</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Quote under image -->
-                            <div class="image-quote">
-                                <div class="image-quote-icon">
-                                    <i class="fas fa-quote-right text-white"></i>
-                                </div>
-                                <p class="text-gray-700 mb-4 italic">
-                                    "النجاح ليس صدفة، بل هو نتيجة التخطيط الاستراتيجي والعمل الدؤوب والالتزام بالتميز في كل ما نقدمه."
-                                </p>
-                                <div class="quote-author">
-                                    <div class="author-avatar">
-                                        <i class="fas fa-user-tie text-white"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-bold text-gray-900">فريق القيادة</div>
-                                        <div class="text-sm text-gray-600">مؤسسة درين للمقاولات</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Quick Stats under quote -->
-                            <div class="mt-6 grid grid-cols-2 gap-3">
-                                <div class="bg-white rounded-lg p-4 text-center border border-gray-100 shadow-sm">
-                                    <div class="text-xl font-bold text-[#194480]">+18</div>
-                                    <div class="text-xs text-gray-600">سنة خبرة</div>
-                                </div>
-                                <div class="bg-white rounded-lg p-4 text-center border border-gray-100 shadow-sm">
-                                    <div class="text-xl font-bold text-[#194480]">623+</div>
-                                    <div class="text-xs text-gray-600">فني متخصص</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Content Column - Right Side -->
-                    <div class="lg:col-span-2">
-                        <div class="vision-content">
-                            <!-- Vision Introduction -->
-                            <div class="mb-10">
-                                <h2 class="text-2xl font-bold text-gray-900 mb-6 section-title">
-                                    رؤيتنا
-                                </h2>
-                                <p class="text-gray-700 text-lg leading-relaxed mb-6 animate-fadeInUp" style="animation-delay: 0.4s">
-                                    نسعى لأن نكون شركة متميزة على مستوى المملكة، ذات استثمارات متعددة، وأن نتميز بقدراتنا على القيادة والمشاركة في تأسيس المشاريع والشركات بمنهجية علمية مدروسة.
-                                </p>
-                            </div>
-                            
-                            <!-- Vision Points -->
-                            <div class="mb-10">
-                                <div class="vision-point" style="transition-delay: 0.1s">
-                                    <div class="vision-icon">
-                                        <i class="fas fa-chart-line text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-gray-900 mb-3">استثمارات استراتيجية كبرى</h3>
-                                    <p class="text-gray-600 leading-relaxed">
-                                        نطمح إلى الدخول في استثمارات استراتيجية كبرى، وأن نكون الشركة الرائدة والمتخصصة في مجال المقاولات والتشغيل والصيانة.
-                                    </p>
-                                </div>
-                                
-                                <div class="vision-point" style="transition-delay: 0.2s">
-                                    <div class="vision-icon">
-                                        <i class="fas fa-medal text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-gray-900 mb-3">الجودة والابتكار</h3>
-                                    <p class="text-gray-600 leading-relaxed">
-                                        نتطلع لأن نكون من الشركات الرائدة في تقديم خدمات صيانة متكاملة تتميز بأعلى درجات الجودة والإتقان، مع الالتزام التام بالابتكار وتطوير جودة المنتجات.
-                                    </p>
-                                </div>
-                                
-                                <div class="vision-point" style="transition-delay: 0.3s">
-                                    <div class="vision-icon">
-                                        <i class="fas fa-handshake text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-gray-900 mb-3">ثقة العملاء</h3>
-                                    <p class="text-gray-600 leading-relaxed">
-                                        لنكون الخيار الأول في مجال عملنا، وكسب ثقة الدولة والأفراد من خلال أدائنا المتميز وخدماتنا عالية الجودة.
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- Vision 2030 -->
-                            <div class="vision-2030" style="transition-delay: 0.4s">
-                                <div class="relative z-10">
-                                    <div class="flex items-center mb-4">
-                                        <div class="bg-[#194480] text-white w-10 h-10 rounded-full flex items-center justify-center ml-3 animate-float">
-                                            <i class="fas fa-flag"></i>
-                                        </div>
-                                        <h3 class="text-xl font-bold text-gray-900">مساهمتنا في رؤية 2030</h3>
-                                    </div>
-                                    <p class="text-gray-700">
-                                        ونسعى لأن نكون أحد المساهمين الفاعلين في التحول الاقتصادي للمملكة، وفق رؤية المملكة 2030، من خلال تقديم حلول مبتكرة وخدمات متميزة تساهم في تحقيق أهداف الرؤية الطموحة.
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- Stats -->
-                            <div class="vision-stats">
-                                <div class="stat-box" style="transition-delay: 0.5s">
-                                    <div class="text-2xl font-bold text-[#194480] mb-2">الريادة</div>
-                                    <div class="text-sm text-gray-600">في مجال المقاولات</div>
-                                </div>
-                                
-                                <div class="stat-box" style="transition-delay: 0.6s">
-                                    <div class="text-2xl font-bold text-[#194480] mb-2">الجودة</div>
-                                    <div class="text-sm text-gray-600">أعلى معايير الإتقان</div>
-                                </div>
-                                
-                                <div class="stat-box" style="transition-delay: 0.7s">
-                                    <div class="text-2xl font-bold text-[#194480] mb-2">الابتكار</div>
-                                    <div class="text-sm text-gray-600">حلول مبتكرة ومتطورة</div>
-                                </div>
-                                
-                                <div class="stat-box" style="transition-delay: 0.8s">
-                                    <div class="text-2xl font-bold text-[#194480] mb-2">الثقة</div>
-                                    <div class="text-sm text-gray-600">ثقة الدولة والأفراد</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vision Values -->
-            <div class="mt-16">
-                <h2 class="text-2xl font-bold text-gray-900 mb-10 text-center animate-fadeInUp" style="animation-delay: 0.5s">
-                    قيمنا نحو تحقيق الرؤية
-                </h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border-t-4 border-[#194480] transform hover:-translate-y-2 animate-fadeInUp" style="animation-delay: 0.6s">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-[#194480] text-white w-12 h-12 rounded-full flex items-center justify-center ml-4 animate-float">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">التركيز الاستراتيجي</h3>
-                        </div>
-                        <p class="text-gray-600">
-                            نركز جهودنا على المجالات التي تمتلك فيها المؤسسة ميزة تنافسية واضحة، لتحقيق النمو المستدام.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border-t-4 border-[#194480] transform hover:-translate-y-2 animate-fadeInUp" style="animation-delay: 0.7s">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-[#194480] text-white w-12 h-12 rounded-full flex items-center justify-center ml-4 animate-float" style="animation-delay: 0.2s">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">التعاون والشراكات</h3>
-                        </div>
-                        <p class="text-gray-600">
-                            نؤمن بأهمية الشراكات الاستراتيجية لتحقيق الرؤية المشتركة وتعزيز تأثيرنا في السوق.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border-t-4 border-[#194480] transform hover:-translate-y-2 animate-fadeInUp" style="animation-delay: 0.8s">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-[#194480] text-white w-12 h-12 rounded-full flex items-center justify-center ml-4 animate-float" style="animation-delay: 0.4s">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">النمو المستمر</h3>
-                        </div>
-                        <p class="text-gray-600">
-                            نسعى للتطوير المستمر وتحسين أدائنا لمواكبة التطورات في قطاع المقاولات والتشغيل.
-                        </p>
-                    </div>
-                </div>
-            </div>
             
-            <!-- Call to Action -->
-            <div class="mt-16 text-center animate-fadeInUp" style="animation-delay: 0.9s">
-                <div class="inline-block bg-gradient-to-r from-[#194480] to-[#194480] rounded-2xl p-2 animate-float">
-                    <div class="bg-white rounded-xl p-8 md:p-10">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">نحو مستقبل مشترك</h3>
-                        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
-                            نؤمن بأن تحقيق الرؤية يتطلب العمل الجماعي والشراكات الاستراتيجية. نرحب بفرص التعاون لتحقيق أهدافنا المشتركة.
-                        </p>
-                        <div class="flex flex-wrap justify-center gap-4">
-                            <a href="https://wa.me/966114770705" class="bg-[#194480] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#194480] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                                <i class="fas fa-handshake ml-2"></i>
-                                تعرف على شراكاتنا
-                            </a>
-                            <a href="tel:0508090790" class="bg-white text-[#194480] border border-[#194480] px-8 py-3 rounded-lg font-semibold hover:bg-[#194480] hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                                <i class="fas fa-phone ml-2"></i>
-                                اتصل بنا
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Intersection Observer for animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('vision-point') || 
-                            entry.target.classList.contains('vision-2030') || 
-                            entry.target.classList.contains('stat-box')) {
-                            entry.target.classList.add('animated');
-                        }
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -20px 0px'
-            });
-
-            // Observe all elements that need animation
-            document.querySelectorAll('.vision-point, .vision-2030, .stat-box').forEach((el) => {
-                observer.observe(el);
-            });
-
-            // Image hover effect
-            const visionImage = document.querySelector('.vision-image');
-            if (visionImage) {
-                visionImage.parentElement.addEventListener('mouseenter', function() {
-                    visionImage.style.transform = 'scale(1.05)';
-                });
-                
-                visionImage.parentElement.addEventListener('mouseleave', function() {
-                    visionImage.style.transform = 'scale(1)';
-                });
-            }
-
-            // Icon hover effects
-            document.querySelectorAll('.vision-icon').forEach(icon => {
-                icon.addEventListener('mouseenter', function() {
-                    this.style.transform = 'rotate(0deg) scale(1.1)';
-                    this.style.boxShadow = '0 10px 20px rgba(15, 76, 58, 0.2)';
-                });
-                
-                icon.addEventListener('mouseleave', function() {
-                    this.style.transform = 'rotate(-5deg) scale(1)';
-                    this.style.boxShadow = 'none';
-                });
-            });
-
-            // Button click effects
-            document.querySelectorAll('button').forEach(button => {
-                button.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 200);
-                    
-                    // Simulate action
-                    if (this.textContent.includes('شراكاتنا')) {
-                        alert('سيتم توجيهك إلى صفحة الشراكات قريباً');
-                    } else if (this.textContent.includes('اتصل بنا')) {
-                        alert('سيتم توجيهك إلى صفحة الاتصال قريباً');
-                    }
-                });
-            });
-
-            // Add floating animation to random elements
-            const floatingElements = document.querySelectorAll('.animate-float');
-            floatingElements.forEach((element, index) => {
-                element.style.animationDelay = `${index * 0.3}s`;
-            });
-        });
-    </script>
-
-
-        <!-- Connect Section -->
-    <section id="contact" class="py-16 md:py-24 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto">
-            <!-- Section Header -->
-            <div class="text-center mb-16 md:mb-20">
-                <span class="connect-tag mb-4">
-                    <i class="fas fa-headset mr-2"></i> تواصل مباشر
-                </span>
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                    تواصل <span class="text-[#194480]">معنا</span>
-                </h1>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                    نحن هنا للإجابة على استفساراتك. اتصل بنا بأي وسيلة تناسبك
-                </p>
-            </div>
-
-          
-
-            <!-- Contact Information -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- الهاتف الثابت -->
-                <div class="appear-animation" style="animation-delay: 0.2s">
-                    <div class="connect-card">
-                        <div class="text-center">
-                            <div class="connect-icon-wrapper mx-auto">
-                                <i class="fas fa-phone-alt text-white text-2xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">الهاتف الثابت</h3>
-                            <div class="connect-label">للاستفسارات العامة</div>
-                            <div class="phone-display">+966 11 477 0705</div>
-                            <p class="text-gray-600 mb-6">
-                                الخط الأرضي للمؤسسة، متاح خلال ساعات العمل
-                            </p>
-                            <button onclick="dialNumber('+966114770705')" class="call-action">
-                                <i class="fas fa-phone"></i>
-                                اتصل الآن
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- الجوال والرسائل -->
-                <div class="appear-animation" style="animation-delay: 0.4s">
-                    <div class="connect-card">
-                        <div class="text-center">
-                            <div class="connect-icon-wrapper mx-auto">
-                                <i class="fab fa-whatsapp text-white text-2xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">الجوال والرسائل</h3>
-                            <div class="connect-label">للتواصل الفوري</div>
-                            <div class="phone-display">+966 50 809 0790</div>
-                            <p class="text-gray-600 mb-6">
-                                متاح على واتساب للرسائل والاستفسارات العاجلة
-                            </p>
-                            <button onclick="startWhatsApp()" class="whatsapp-action">
-                                <i class="fab fa-whatsapp"></i>
-                                راسلنا على واتساب
-                            </button>
-                            <button onclick="dialNumber('+966508090790')" class="call-action">
-                                <i class="fas fa-mobile-alt"></i>
-                                اتصل بالجوال
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- معلومات التواصل -->
-                <div class="appear-animation" style="animation-delay: 0.6s">
-                    <div class="connect-card">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6 connect-heading">معلومات التواصل</h3>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-envelope text-[#194480] text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">البريد الإلكتروني</h4>
-                                <p class="text-gray-600">info@dreen.com.sa</p>
-                            
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-map-marker-alt text-[#194480] text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">العنوان</h4>
-                               
-                                <p class="text-gray-600 text-sm">عقارية الستين الملز - الرياض</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-fax text-[#194480] text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">الفاكس</h4>
-                                <p class="text-gray-600">+966 11 477 0706</p>
-                                <p class="text-gray-600 text-sm">للاستفسارات الكتابية</p>
-                            </div>
-                        </div>
-                        
-                        <!-- وسائل التواصل -->
-                        <div class="social-connect">
-                            <a href="#" class="social-circle text-[#194480] hover:text-white">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-circle text-[#194480] hover:text-white">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="social-circle text-[#194480] hover:text-white">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Work Hours & Branches -->
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- أوقات الدوام -->
-                <div class="appear-animation" style="animation-delay: 0.8s">
-                    <div class="work-schedule">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6">
-                            <i class="fas fa-clock text-[#194480] ml-2"></i>
-                            أوقات الدوام
-                        </h3>
-                        
-                        <div class="time-slot">
-                            <span class="font-bold text-gray-900">الأحد - الخميس</span>
-                            <span class="text-gray-700">8:00 صباحاً - 5:00 مساءً</span>
-                        </div>
-                        
-                        <div class="time-slot">
-                            <span class="font-bold text-gray-900">الجمعة</span>
-                            <span class="text-gray-700">10:00 صباحاً - 2:00 ظهراً</span>
-                        </div>
-                        
-                        <div class="time-slot">
-                            <span class="font-bold text-gray-900">السبت</span>
-                            <span class="text-gray-700">إجازة</span>
-                        </div>
-                        
-                      <div class="urgent-contact mt-8">
-    <div class="flex items-center justify-center mb-3">
-        <i class="fas fa-hard-hat text-xl text-[#194480] ml-2"></i>
-        <h4 class="font-bold text-gray-900">التواصل لأعمال المقاولات</h4>
-    </div>
-
-    <div class="phone-display" style="font-size: 20px;">
-        +966 50 809 0790
-    </div>
-
-    <p class="text-gray-600 text-sm mt-2">
-        للاستفسارات العاجلة بخصوص مشاريع المقاولات والتنفيذ الميداني
-    </p>
-</div>
-
-                    </div>
-                </div>
-                
-                <!-- فروعنا -->
-                <div class="appear-animation" style="animation-delay: 1s">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6 connect-heading">فروعنا</h3>
-                    
-                    <div class="branch-card">
-                        <div class="flex items-start mb-4">
-                            <div class="bg-[#194480] text-white w-10 h-10 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">المقر الرئيسي - الرياض</h4>
-                                <p class="text-gray-600 text-sm">شارع الأمير محمد، حي الملك فهد</p>
-                            </div>
-                        </div>
-                        <div class="text-sm text-gray-500">
-                            <i class="fas fa-phone ml-2"></i> +966 11 477 0705
-                        </div>
-                    </div>
-                    
-                    <div class="branch-card">
-                        <div class="flex items-start mb-4">
-                            <div class="bg-[#194480] text-white w-10 h-10 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
-                                <i class="fas fa-hard-hat"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">فرع المشاريع - جدة</h4>
-                                <p class="text-gray-600 text-sm">حي الصحافة، شارع الملك فهد</p>
-                            </div>
-                        </div>
-                        <div class="text-sm text-gray-500">
-                            <i class="fas fa-phone ml-2"></i> +966 12 345 6789
-                        </div>
-                    </div>
-                    
-                    <div class="branch-card">
-                        <div class="flex items-start mb-4">
-                            <div class="bg-[#194480] text-white w-10 h-10 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">مركز الخدمة - الدمام</h4>
-                                <p class="text-gray-600 text-sm">حي النخيل، طريق الملك عبدالله</p>
-                            </div>
-                        </div>
-                        <div class="text-sm text-gray-500">
-                            <i class="fas fa-phone ml-2"></i> +966 13 987 6543
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // تهيئة خريطة جوجل للتواصل
-        function initContactMap() {
-            // إحداثيات موقع المؤسسة (الرياض)
-            const companyLocation = { lat: 24.7136, lng: 46.6753 };
-            
-            const contactMap = new google.maps.Map(document.getElementById("contactMap"), {
-                zoom: 15,
-                center: companyLocation,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                styles: [
-                    {
-                        featureType: "all",
-                        elementType: "geometry",
-                        stylers: [{ color: "#f5f5f5" }]
-                    },
-                    {
-                        featureType: "water",
-                        elementType: "geometry",
-                        stylers: [{ color: "#c9c9c9" }]
-                    }
-                ]
-            });
-            
-            const locationPin = new google.maps.Marker({
-                position: companyLocation,
-                map: contactMap,
-                title: "مؤسسة درين للمقاولات",
-                animation: google.maps.Animation.DROP,
-                icon: {
-                    url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" viewBox="0 0 40 50">
-                            <path fill="#194480" d="M20 0C10.8 0 3.33 7.47 3.33 16.67c0 5 2.33 9.47 6 12.4l10.67 16.93 10.67-16.93c3.67-2.93 6-7.4 6-12.4C36.67 7.47 29.2 0 20 0z"/>
-                            <circle cx="20" cy="16" r="6" fill="#ffffff"/>
-                        </svg>
-                    `),
-                    scaledSize: new google.maps.Size(40, 50),
-                    anchor: new google.maps.Point(20, 50)
-                }
-            });
-            
-            const infoCard = new google.maps.InfoWindow({
-                content: `
-                    <div style="padding: 15px; max-width: 250px;">
-                        <h3 style="color: #194480; font-weight: bold; margin-bottom: 10px;">
-                            <i class="fas fa-building"></i> مؤسسة درين
-                        </h3>
-                        <p style="color: #666; margin-bottom: 5px;">
-                            الرياض، المملكة العربية السعودية
-                        </p>
-                        <p style="color: #194480; font-size: 12px; margin-bottom: 15px;">
-                            <i class="fas fa-phone"></i> +966 11 477 0705
-                        </p>
-                        <button onclick="showDirections()" style="
-                            background: #194480;
-                            color: white;
-                            border: none;
-                            padding: 8px 15px;
-                            border-radius: 5px;
-                            cursor: pointer;
-                            width: 100%;
-                            font-size: 14px;
-                        ">
-                            <i class="fas fa-directions"></i> ابدأ الرحلة
-                        </button>
-                    </div>
-                `
-            });
-            
-            locationPin.addListener("click", () => {
-                infoCard.open(contactMap, locationPin);
-            });
-            
-            // فتح النافذة المعلوماتية تلقائياً
-            setTimeout(() => {
-                infoCard.open(contactMap, locationPin);
-            }, 1000);
-            
-            // حفظ المرجع للخريطة
-            window.contactMap = contactMap;
-            window.companyMarker = locationPin;
-        }
-        
-        // عرض الاتجاهات
-        function showDirections() {
-            const destination = "24.7136,46.6753";
-            window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank');
-        }
-        
-        // الاتصال برقم
-        function dialNumber(number) {
-            window.location.href = `tel:${number}`;
-        }
-        
-        // بدء محادثة واتساب
-        function startWhatsApp() {
-            const phoneNumber = "+966508090790";
-            const welcomeMessage = "مرحباً، أرغب في الاستفسار عن خدمات مؤسسة درين للمقاولات";
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(welcomeMessage)}`;
-            window.open(whatsappURL, '_blank');
-        }
-        
-        // إدارة ظهور العناصر
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('appear-animation');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            document.querySelectorAll('.appear-animation').forEach((el) => {
-                observer.observe(el);
-            });
-            
-            // تأثيرات التحويم على البطاقات
-            document.querySelectorAll('.connect-card').forEach(card => {
+            // Add animation on hover for service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-12px)';
+                    this.style.transform = 'translateY(-10px)';
                 });
                 
                 card.addEventListener('mouseleave', function() {
@@ -2524,42 +1889,11 @@
                 });
             });
         });
-        
-        // التعامل مع فشل تحميل خرائط جوجل
-        window.gm_authFailure = function() {
-            document.getElementById("contactMap").innerHTML = `
-                <div style="
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100%;
-                    background: #f8faf9;
-                    color: #666;
-                    text-align: center;
-                    padding: 20px;
-                    border-radius: 15px;
-                ">
-                    <i class="fas fa-map-marker-alt" style="font-size: 60px; margin-bottom: 20px; color: #194480;"></i>
-                    <h3 style="color: #194480; margin-bottom: 10px; font-weight: bold;">موقعنا على الخريطة</h3>
-                    <p style="margin-bottom: 10px; font-size: 16px;">المملكة العربية السعودية، الرياض</p>
-                    <p style="margin-bottom: 20px; font-size: 14px; color: #666;">حي الملك فهد، شارع الأمير محمد</p>
-                    <button onclick="showDirections()" style="
-                       background: linear-gradient(135deg, #194480, #0f2f5f);
-                        color: white;
-                        border: none;
-                        padding: 12px 25px;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        font-weight: bold;
-                        font-size: 16px;
-                    ">
-                        <i class="fas fa-directions"></i> الذهاب إلى الموقع
-                    </button>
-                </div>
-            `;
-        };
     </script>
+
+
+
+
         <!-- Footer Section -->
     <footer class="footer-gradient-bg text-white pt-16 pb-8 px-4 md:px-8">
         <div class="footer-pattern"></div>
@@ -2575,12 +1909,12 @@
                                <img src="./asstes/img/logo-2.png" alt="">
                             </div>
                             <div class="mr-4">
-                                <h3 class="text-xl font-bold">مؤسسة درين للمقاولات</h3>
+                                <h3 class="text-xl font-bold">درين للمقاولات</h3>
                                 <p class="text-gray-300 text-sm">شركة رائدة منذ 2005</p>
                             </div>
                         </div>
                         <p class="text-gray-300 mb-6 leading-relaxed">
-                            مؤسسة رائدة في مجال المقاولات والتشغيل والصيانة، تقدم خدمات عالية الجودة بمهنية واحترافية، وتساهم في تحقيق رؤية المملكة 2030.
+                            رائدة في مجال المقاولات والتشغيل والصيانة، تقدم خدمات عالية الجودة بمهنية واحترافية، وتساهم في تحقيق رؤية المملكة 2030.
                         </p>
                         <div class="flex space-x-4 space-x-reverse">
                             <a href="#" class="social-icon">
@@ -2775,7 +2109,7 @@
                 <!-- Copyright -->
                 <div class="text-center md:text-right">
                     <p class="text-gray-400">
-                        © 2024 مؤسسة درين للمقاولات. جميع الحقوق محفوظة.
+                        © 2024 درين للمقاولات. جميع الحقوق محفوظة.
                     </p>
                 </div>
                 

@@ -679,270 +679,437 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container mx-auto px-4">
-            <div class="hero-content animate-fadeInUp">
-                <h1 class="hero-title">
-                    طلب خدمة مقاولات <span class="hero-highlight">احترافية</span>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container mx-auto px-4">
+        <div class="hero-content animate-fadeInUp">
+            <h1 class="hero-title">
+                تواصل مع <span class="hero-highlight">شركة درين للمقاولات</span>
+            </h1>
+            
+            <p class="hero-description">
+                نحن هنا لخدمتك! يمكنك التواصل معنا مباشرة عبر الهاتف، واتساب، أو حساباتنا على وسائل التواصل الاجتماعي.  
+                فريقنا المختص جاهز للإجابة على استفساراتك وتقديم الدعم اللازم لمشاريعك.
+            </p>
+            
+            <div class="hero-features">
+                <div class="hero-feature animate-fadeInUp" style="animation-delay: 0.2s">
+                    <i class="fas fa-phone"></i>
+                    <span>اتصل بنا مباشرة على: 0508090790</span>
+                </div>
+                <div class="hero-feature animate-fadeInUp" style="animation-delay: 0.3s">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>تواصل معنا عبر واتساب</span>
+                </div>
+                <div class="hero-feature animate-fadeInUp" style="animation-delay: 0.4s">
+                    <i class="fab fa-facebook-messenger"></i>
+                    <span>رسائل فيسبوك مباشرة</span>
+                </div>
+                <div class="hero-feature animate-fadeInUp" style="animation-delay: 0.5s">
+                    <i class="fas fa-globe"></i>
+                    <span>تابعنا على السوشيال ميديا</span>
+                </div>
+            </div>
+            
+            <div class="hero-buttons animate-fadeInUp animate-float" style="animation-delay: 0.6s">
+                <a href="tel:0508090790" class="hero-btn">
+                    <i class="fas fa-phone"></i>
+                    اتصل الآن
+                </a>
+                <a href="https://wa.me/966508090790" target="_blank" class="hero-btn hero-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    راسلنا على واتساب
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <!-- Connect Section -->
+    <section id="contact" class="py-16 md:py-24 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 md:mb-20">
+                <span class="connect-tag mb-4">
+                    <i class="fas fa-headset mr-2"></i> تواصل مباشر
+                </span>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    تواصل <span class="text-[#194480]">معنا</span>
                 </h1>
-                
-                <p class="hero-description">
-                    اطلب خدمتك الآن واحصل على حلول مقاولات متكاملة بجودة عالية ومواعيد دقيقة. 
-                    فريقنا من المتخصصين جاهز لتنفيذ مشروعك بكفاءة واحترافية.
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                    نحن هنا للإجابة على استفساراتك. اتصل بنا بأي وسيلة تناسبك
                 </p>
-                
-                <div class="hero-features">
-                    <div class="hero-feature animate-fadeInUp" style="animation-delay: 0.2s">
-                        <i class="fas fa-check-circle"></i>
-                        <span>خبرة 15+ سنة في المجال</span>
-                    </div>
-                    <div class="hero-feature animate-fadeInUp" style="animation-delay: 0.3s">
-                        <i class="fas fa-users"></i>
-                        <span>فريق هندسي متخصص</span>
-                    </div>
-                    <div class="hero-feature animate-fadeInUp" style="animation-delay: 0.4s">
-                        <i class="fas fa-medal"></i>
-                        <span>جودة تنفيذ معتمدة</span>
-                    </div>
-                    <div class="hero-feature animate-fadeInUp" style="animation-delay: 0.5s">
-                        <i class="fas fa-clock"></i>
-                        <span>التزام بالمواعيد</span>
+            </div>
+
+          
+
+            <!-- Contact Information -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- الهاتف الثابت -->
+                <div class="appear-animation" style="animation-delay: 0.2s">
+                    <div class="connect-card">
+                        <div class="text-center">
+                            <div class="connect-icon-wrapper mx-auto">
+                                <i class="fas fa-phone-alt text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">الهاتف الثابت</h3>
+                            <div class="connect-label">للاستفسارات العامة</div>
+                            <div class="phone-display">+966 11 477 0705</div>
+                            <p class="text-gray-600 mb-6">
+                                الخط الأرضي للمؤسسة، متاح خلال ساعات العمل
+                            </p>
+                            <button onclick="dialNumber('+966114770705')" class="call-action">
+                                <i class="fas fa-phone"></i>
+                                اتصل الآن
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
-                <button class="hero-btn animate-fadeInUp animate-float" id="scrollToFormBtn" style="animation-delay: 0.6s">
-                    <i class="fas fa-paper-plane"></i>
-                    ابدأ بطلب الخدمة الآن
-                </button>
+                <!-- الجوال والرسائل -->
+                <div class="appear-animation" style="animation-delay: 0.4s">
+                    <div class="connect-card">
+                        <div class="text-center">
+                            <div class="connect-icon-wrapper mx-auto">
+                                <i class="fab fa-whatsapp text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">الجوال والرسائل</h3>
+                            <div class="connect-label">للتواصل الفوري</div>
+                            <div class="phone-display">+966 50 809 0790</div>
+                            <p class="text-gray-600 mb-6">
+                                متاح على واتساب للرسائل والاستفسارات العاجلة
+                            </p>
+                            <button onclick="startWhatsApp()" class="whatsapp-action">
+                                <i class="fab fa-whatsapp"></i>
+                                راسلنا على واتساب
+                            </button>
+                            <button onclick="dialNumber('+966508090790')" class="call-action">
+                                <i class="fas fa-mobile-alt"></i>
+                                اتصل بالجوال
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- معلومات التواصل -->
+                <div class="appear-animation" style="animation-delay: 0.6s">
+                    <div class="connect-card">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 connect-heading">معلومات التواصل</h3>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-envelope text-[#194480] text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">البريد الإلكتروني</h4>
+                                <p class="text-gray-600">info@dreen.com.sa</p>
+                            
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt text-[#194480] text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">العنوان</h4>
+                               
+                                <p class="text-gray-600 text-sm">عقارية الستين الملز - الرياض</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-fax text-[#194480] text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">الفاكس</h4>
+                                <p class="text-gray-600">+966 11 477 0706</p>
+                                <p class="text-gray-600 text-sm">للاستفسارات الكتابية</p>
+                            </div>
+                        </div>
+                        
+                        <!-- وسائل التواصل -->
+                        <div class="social-connect">
+                            <a href="#" class="social-circle text-[#194480] hover:text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-circle text-[#194480] hover:text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-circle text-[#194480] hover:text-white">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Hours & Branches -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- أوقات الدوام -->
+                <div class="appear-animation" style="animation-delay: 0.8s">
+                    <div class="work-schedule">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                            <i class="fas fa-clock text-[#194480] ml-2"></i>
+                            أوقات الدوام
+                        </h3>
+                        
+                        <div class="time-slot">
+                            <span class="font-bold text-gray-900">الأحد - الخميس</span>
+                            <span class="text-gray-700">8:00 صباحاً - 5:00 مساءً</span>
+                        </div>
+                        
+                        <div class="time-slot">
+                            <span class="font-bold text-gray-900">الجمعة</span>
+                            <span class="text-gray-700">10:00 صباحاً - 2:00 ظهراً</span>
+                        </div>
+                        
+                        <div class="time-slot">
+                            <span class="font-bold text-gray-900">السبت</span>
+                            <span class="text-gray-700">إجازة</span>
+                        </div>
+                        
+                      <div class="urgent-contact mt-8">
+    <div class="flex items-center justify-center mb-3">
+        <i class="fas fa-hard-hat text-xl text-[#194480] ml-2"></i>
+        <h4 class="font-bold text-gray-900">التواصل لأعمال المقاولات</h4>
+    </div>
+
+    <div class="phone-display" style="font-size: 20px;">
+        +966 50 809 0790
+    </div>
+
+    <p class="text-gray-600 text-sm mt-2">
+        للاستفسارات العاجلة بخصوص مشاريع المقاولات والتنفيذ الميداني
+    </p>
+</div>
+
+                    </div>
+                </div>
+                
+                <!-- فروعنا -->
+                <div class="appear-animation" style="animation-delay: 1s">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 connect-heading">فروعنا</h3>
+                    
+                    <div class="branch-card">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-[#194480] text-white w-10 h-10 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">المقر الرئيسي - الرياض</h4>
+                                <p class="text-gray-600 text-sm">شارع الأمير محمد، حي الملك فهد</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-phone ml-2"></i> +966 11 477 0705
+                        </div>
+                    </div>
+                    
+                    <div class="branch-card">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-[#194480] text-white w-10 h-10 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">فرع المشاريع - جدة</h4>
+                                <p class="text-gray-600 text-sm">حي الصحافة، شارع الملك فهد</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-phone ml-2"></i> +966 12 345 6789
+                        </div>
+                    </div>
+                    
+                    <div class="branch-card">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-[#194480] text-white w-10 h-10 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">مركز الخدمة - الدمام</h4>
+                                <p class="text-gray-600 text-sm">حي النخيل، طريق الملك عبدالله</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-phone ml-2"></i> +966 13 987 6543
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Form Section -->
-    <section class="form-section" id="requestForm">
-        <div class="main-content">
-            <!-- Info Section -->
-            <div class="info-section animate-fadeInUp" style="animation-delay: 0.2s">
-                <h2 class="info-title">
-                    <i class="fas fa-info-circle"></i>
-                    معلومات عن الخدمات
-                </h2>
-                
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>إدارة التشغيل والصيانة</h3>
-                    <p>
-                        خدمات إدارة وتشغيل وصيانة المرافق بكفاءة عالية، مع فرق عمل مدربة 
-                        وجاهزة للتدخل السريع عند الحاجة.
-                    </p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>تمديدات الكهرباء</h3>
-                    <p>
-                        تمديدات كهربائية متكاملة للمباني والمنشآت الصناعية والتجارية 
-                        وفق أحدث المواصفات والمعايير العالمية.
-                    </p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>الأعمال الميكانيكية</h3>
-                    <p>
-                        أعمال ميكانيكية متخصصة تشمل التكييف والتهوية وأنظمة السباكة 
-                        بكافة أنواعها ومواصفاتها.
-                    </p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-hard-hat"></i>
-                    </div>
-                    <h3>التشييد والبناء</h3>
-                    <p>
-                        تنفيذ مشاريع التشييد والبناء بأحدث التقنيات والمعايير الدولية، 
-                        مع التركيز على السلامة والكفاءة.
-                    </p>
-                </div>
-                
-                <div class="contact-info">
-                    <h3>
-                        <i class="fas fa-headset"></i>
-                        للاستفسارات السريعة
-                    </h3>
-                    
-                    <div class="info-item">
-                        <div class="info-icon-small">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <p>الهاتف</p>
-                            <p>0508090790</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon-small">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <p>البريد الإلكتروني</p>
-                            <p>info@dreen.com.sa</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon-small">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <p>ساعات العمل</p>
-                            <p>8 صباحاً - 5 مساءً</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <script>
+        // تهيئة خريطة جوجل للتواصل
+        function initContactMap() {
+            // إحداثيات موقع ال(الرياض)
+            const companyLocation = { lat: 24.7136, lng: 46.6753 };
             
-            <!-- Form Section -->
-            <div class="form-container animate-fadeInUp" style="animation-delay: 0.4s">
-                <div class="form-header">
-                    <h1>طلب خدمة</h1>
-                    <p>املأ النموذج وسنتواصل معك خلال 24 ساعة</p>
-                </div>
-                
-                <div class="form-body">
-                    <form id="simpleServiceForm">
-                        <div class="form-group">
-                            <label class="form-label" for="serviceType">
-                                <i class="fas fa-tools"></i>
-                                <span class="required-star">*</span> نوع الخدمة المطلوبة
-                            </label>
-                            <select id="serviceType" name="serviceType" class="form-select" required>
-                                <option value="">اختر نوع الخدمة</option>
-                                <option value="ادارة التشغيل">إدارة التشغيل</option>
-                                <option value="الصيانة والمرافق">الصيانة والمرافق</option>
-                                <option value="تمديدات الكهرباء">تمديدات الكهرباء</option>
-                                <option value="الأعمال الميكانيكية">الأعمال الميكانيكية</option>
-                                <option value="التشييد والبناء">التشييد والبناء</option>
-                                <option value="الاستشارات الهندسية">الاستشارات الهندسية</option>
-                                <option value="خدمات أخرى">خدمات أخرى</option>
-                            </select>
-                            <div class="form-error" id="serviceTypeError">يرجى اختيار نوع الخدمة</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="clientType">
-                                <i class="fas fa-user-tie"></i>
-                                <span class="required-star">*</span> نوع العميل
-                            </label>
-                            <select id="clientType" name="clientType" class="form-select" required>
-                                <option value="">اختر نوع العميل</option>
-                                <option value="شركة / مؤسسة">شركة / مؤسسة</option>
-                                <option value="فرد">فرد</option>
-                                <option value="جهة حكومية">جهة حكومية</option>
-                            </select>
-                            <div class="form-error" id="clientTypeError">يرجى اختيار نوع العميل</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span class="required-star">*</span> الموقع / المنطقة
-                            </label>
-                            <select id="location" name="location" class="form-select" required>
-                                <option value="">اختر المنطقة</option>
-                                <option value="الرياض">الرياض</option>
-                                <option value="الخرج">الخرج</option>
-                                <option value="الدلم">الدلم</option>
-                                <option value="الأفلاج">الأفلاج</option>
-                                <option value="السليل">السليل</option>
-                                <option value="الوادي">الوادي</option>
-                                <option value="المنطقة الشرقية">المنطقة الشرقية</option>
-                                <option value="أخرى">أخرى</option>
-                            </select>
-                            <div class="form-error" id="locationError">يرجى اختيار المنطقة</div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="form-group">
-                                <label class="form-label" for="fullName">
-                                    <i class="fas fa-user"></i>
-                                    <span class="required-star">*</span> الاسم الكامل
-                                </label>
-                                <input type="text" id="fullName" name="fullName" class="form-input" placeholder="أدخل الاسم الكامل" required>
-                                <div class="form-error" id="fullNameError">يرجى إدخال الاسم الكامل</div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="phone">
-                                    <i class="fas fa-phone"></i>
-                                    <span class="required-star">*</span> رقم الهاتف
-                                </label>
-                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="05XXXXXXXX" required>
-                                <div class="form-error" id="phoneError">يرجى إدخال رقم هاتف صحيح</div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="email">
-                                <i class="fas fa-envelope"></i>
-                                <span class="required-star">*</span> البريد الإلكتروني
-                            </label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="example@domain.com" required>
-                            <div class="form-error" id="emailError">يرجى إدخال بريد إلكتروني صحيح</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="message">
-                                <i class="fas fa-comment-dots"></i>
-                                تفاصيل إضافية (اختياري)
-                            </label>
-                            <textarea id="message" name="message" class="form-textarea" 
-                                      placeholder="أدخل تفاصيل إضافية عن طلبك..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn" id="submitBtn">
-                            <i class="fas fa-paper-plane"></i>
-                            إرسال الطلب
-                        </button>
-                    </form>
-                    
-                    <!-- Success Message -->
-                    <div class="success-message" id="successMessage">
-                        <div class="success-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-3">تم إرسال طلبك بنجاح!</h2>
-                        <p class="text-gray-600 mb-4">
-                            شكراً لتواصلك مع درين للمقاولات. سنقوم بمراجعة طلبك والتواصل معك في أقرب وقت ممكن.
+            const contactMap = new google.maps.Map(document.getElementById("contactMap"), {
+                zoom: 15,
+                center: companyLocation,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: [
+                    {
+                        featureType: "all",
+                        elementType: "geometry",
+                        stylers: [{ color: "#f5f5f5" }]
+                    },
+                    {
+                        featureType: "water",
+                        elementType: "geometry",
+                        stylers: [{ color: "#c9c9c9" }]
+                    }
+                ]
+            });
+            
+            const locationPin = new google.maps.Marker({
+                position: companyLocation,
+                map: contactMap,
+                title: "درين للمقاولات",
+                animation: google.maps.Animation.DROP,
+                icon: {
+                    url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" viewBox="0 0 40 50">
+                            <path fill="#194480" d="M20 0C10.8 0 3.33 7.47 3.33 16.67c0 5 2.33 9.47 6 12.4l10.67 16.93 10.67-16.93c3.67-2.93 6-7.4 6-12.4C36.67 7.47 29.2 0 20 0z"/>
+                            <circle cx="20" cy="16" r="6" fill="#ffffff"/>
+                        </svg>
+                    `),
+                    scaledSize: new google.maps.Size(40, 50),
+                    anchor: new google.maps.Point(20, 50)
+                }
+            });
+            
+            const infoCard = new google.maps.InfoWindow({
+                content: `
+                    <div style="padding: 15px; max-width: 250px;">
+                        <h3 style="color: #194480; font-weight: bold; margin-bottom: 10px;">
+                            <i class="fas fa-building"></i> درين
+                        </h3>
+                        <p style="color: #666; margin-bottom: 5px;">
+                            الرياض، المملكة العربية السعودية
                         </p>
-                        <div class="bg-gray-50 p-4 rounded-xl mb-4 text-right">
-                            <p class="text-gray-700 mb-1">
-                                <span class="font-bold">رقم الطلب:</span> 
-                                <span id="requestNumber">DRN-2024-001</span>
-                            </p>
-                            <p class="text-gray-700">
-                                <span class="font-bold">تاريخ الطلب:</span> 
-                                <span id="requestDate"></span>
-                            </p>
-                        </div>
-                        <button id="newRequestBtn" class="submit-btn">
-                            <i class="fas fa-plus"></i>
-                            تقديم طلب جديد
+                        <p style="color: #194480; font-size: 12px; margin-bottom: 15px;">
+                            <i class="fas fa-phone"></i> +966 11 477 0705
+                        </p>
+                        <button onclick="showDirections()" style="
+                            background: #194480;
+                            color: white;
+                            border: none;
+                            padding: 8px 15px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            width: 100%;
+                            font-size: 14px;
+                        ">
+                            <i class="fas fa-directions"></i> ابدأ الرحلة
                         </button>
                     </div>
+                `
+            });
+            
+            locationPin.addListener("click", () => {
+                infoCard.open(contactMap, locationPin);
+            });
+            
+            // فتح النافذة المعلوماتية تلقائياً
+            setTimeout(() => {
+                infoCard.open(contactMap, locationPin);
+            }, 1000);
+            
+            // حفظ المرجع للخريطة
+            window.contactMap = contactMap;
+            window.companyMarker = locationPin;
+        }
+        
+        // عرض الاتجاهات
+        function showDirections() {
+            const destination = "24.7136,46.6753";
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank');
+        }
+        
+        // الاتصال برقم
+        function dialNumber(number) {
+            window.location.href = `tel:${number}`;
+        }
+        
+        // بدء محادثة واتساب
+        function startWhatsApp() {
+            const phoneNumber = "+966508090790";
+            const welcomeMessage = "مرحباً، أرغب في الاستفسار عن خدمات درين للمقاولات";
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(welcomeMessage)}`;
+            window.open(whatsappURL, '_blank');
+        }
+        
+        // إدارة ظهور العناصر
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear-animation');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            document.querySelectorAll('.appear-animation').forEach((el) => {
+                observer.observe(el);
+            });
+            
+            // تأثيرات التحويم على البطاقات
+            document.querySelectorAll('.connect-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-12px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+        
+        // التعامل مع فشل تحميل خرائط جوجل
+        window.gm_authFailure = function() {
+            document.getElementById("contactMap").innerHTML = `
+                <div style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    background: #f8faf9;
+                    color: #666;
+                    text-align: center;
+                    padding: 20px;
+                    border-radius: 15px;
+                ">
+                    <i class="fas fa-map-marker-alt" style="font-size: 60px; margin-bottom: 20px; color: #194480;"></i>
+                    <h3 style="color: #194480; margin-bottom: 10px; font-weight: bold;">موقعنا على الخريطة</h3>
+                    <p style="margin-bottom: 10px; font-size: 16px;">المملكة العربية السعودية، الرياض</p>
+                    <p style="margin-bottom: 20px; font-size: 14px; color: #666;">حي الملك فهد، شارع الأمير محمد</p>
+                    <button onclick="showDirections()" style="
+                       background: linear-gradient(135deg, #194480, #0f2f5f);
+                        color: white;
+                        border: none;
+                        padding: 12px 25px;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        font-size: 16px;
+                    ">
+                        <i class="fas fa-directions"></i> الذهاب إلى الموقع
+                    </button>
                 </div>
-            </div>
-        </div>
-    </section>
+            `;
+        };
+    </script>
 
         <!-- Footer Section -->
     <footer class="footer-gradient-bg text-white pt-16 pb-8 px-4 md:px-8 ">
@@ -1223,239 +1390,25 @@
     </footer>
 
 
-<!-- فقط أضف هذا الجزء في نهاية سكربت الفورم الحالي -->
-
-<!-- مكتبة EmailJS -->
 
 
-<script>
-  // تهيئة EmailJS
-  emailjs.init("V0cZZU860ikSX-UF_"); // Public Key
+   <!-- Floating Call Button -->
+<div class="call-float">
+    <a href="tel:0508090790" title="اتصل بنا الآن">
+     <i class="fa-solid fa-phone" style="font-size: 25px; color: white;"></i>
 
-  const form = document.getElementById("simpleServiceForm");
-  const submitBtn = document.getElementById("submitBtn");
-  const successMessage = document.getElementById("successMessage");
-  const requestNumberField = document.getElementById("requestNumber");
-  const requestDateField = document.getElementById("requestDate");
+    </a>
+</div>
 
-  // توليد رقم الطلب والتاريخ تلقائيًا
-  function setRequestInfo() {
-    const now = new Date();
-    requestNumberField.value = `DRN-${now.getFullYear()}-${Math.floor(Math.random() * 1000).toString().padStart(3,'0')}`;
-    requestDateField.value = now.toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
-  }
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/966114770705">
+        <svg viewBox="0 0 32 32">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.957 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62-6.11 13.62-13.62 13.62zM21.305 19.26c-0.346-0.174-2.049-1.007-2.366-1.123-0.316-0.117-0.547 0.174-0.776 0.174s-0.892 1.123-1.094 1.347c-0.201 0.231-0.403 0.26-0.749 0.087s-1.46-0.538-2.779-1.715c-1.027-0.915-1.72-2.045-1.922-2.391s-0.022-0.536 0.152-0.709c0.156-0.155 0.346-0.403 0.518-0.605s0.231-0.346 0.346-0.577c0.116-0.231 0.058-0.433-0.028-0.605s-0.776-1.87-1.063-2.565c-0.28-0.672-0.56-0.58-0.776-0.591-0.2-0.010-0.431-0.012-0.661-0.012s-0.603 0.087-0.92 0.433c-0.316 0.346-1.206 1.179-1.206 2.873s1.235 3.333 1.406 3.561c0.172 0.231 2.395 3.654 5.799 5.125 0.811 0.352 1.445 0.562 1.938 0.719 0.814 0.257 1.555 0.221 2.141 0.134 0.653-0.097 2.049-0.831 2.337-1.636s0.289-1.494 0.202-1.636c-0.086-0.14-0.317-0.231-0.663-0.403z"/>
+        </svg>
+        </a>
+    </div>
 
-  setRequestInfo(); // تشغيل عند تحميل الصفحة
-
-  // ربط الفورم بـ EmailJS
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    if (validateForm()) { // تستخدم نفس دالة validateForm الموجودة لديك
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-
-      emailjs.sendForm(
-        "service_zp0ylo8",    // Service ID
-        "template_k2p00am",      // Template ID (انسخه من EmailJS)
-        this
-      ).then(() => {
-        showSuccessMessage(); // تستخدم نفس دالة showSuccessMessage الموجودة لديك
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب';
-      }, (error) => {
-        alert("❌ حدث خطأ أثناء الإرسال");
-        console.log(error);
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب';
-      });
-    }
-  });
-</script>
-
-
-    <!-- Floating Button -->
-    <button class="floating-button" id="floatingFormBtn" title="طلب خدمة">
-        <i class="fas fa-paper-plane"></i>
-    </button>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // عناصر DOM
-            const form = document.getElementById('simpleServiceForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const successMessage = document.getElementById('successMessage');
-            const newRequestBtn = document.getElementById('newRequestBtn');
-            const scrollToFormBtn = document.getElementById('scrollToFormBtn');
-            const floatingFormBtn = document.getElementById('floatingFormBtn');
-            const requestForm = document.getElementById('requestForm');
-            
-            // التمرير للنموذج
-            scrollToFormBtn.addEventListener('click', function() {
-                requestForm.scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            floatingFormBtn.addEventListener('click', function() {
-                requestForm.scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // إعداد النموذج
-            initForm();
-            
-            // إرسال النموذج
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                if (validateForm()) {
-                    // تعطيل زر الإرسال أثناء المعالجة
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-                    
-                    // محاكاة إرسال النموذج (يمكن استبدالها بـ EmailJS)
-                    setTimeout(() => {
-                        showSuccessMessage();
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب';
-                    }, 1500);
-                }
-            });
-            
-            // زر طلب جديد
-            newRequestBtn.addEventListener('click', function() {
-                resetForm();
-                requestForm.scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // التحقق من صحة الحقول أثناء الكتابة
-            document.getElementById('fullName').addEventListener('input', function() {
-                validateField(this, 'fullNameError', this.value.trim() !== '', 'يرجى إدخال الاسم الكامل');
-            });
-            
-            document.getElementById('phone').addEventListener('input', function() {
-                const phoneRegex = /^05\d{8}$/;
-                validateField(this, 'phoneError', phoneRegex.test(this.value), 'يرجى إدخال رقم هاتف صحيح');
-            });
-            
-            document.getElementById('email').addEventListener('input', function() {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                validateField(this, 'emailError', emailRegex.test(this.value), 'يرجى إدخال بريد إلكتروني صحيح');
-            });
-            
-            document.getElementById('serviceType').addEventListener('change', function() {
-                validateField(this, 'serviceTypeError', this.value !== '', 'يرجى اختيار نوع الخدمة');
-            });
-            
-            document.getElementById('clientType').addEventListener('change', function() {
-                validateField(this, 'clientTypeError', this.value !== '', 'يرجى اختيار نوع العميل');
-            });
-            
-            document.getElementById('location').addEventListener('change', function() {
-                validateField(this, 'locationError', this.value !== '', 'يرجى اختيار المنطقة');
-            });
-            
-            // وظائف المساعدة
-            function initForm() {
-                const now = new Date();
-                const dateStr = now.toLocaleDateString('ar-SA', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                document.getElementById('requestDate').textContent = dateStr;
-                
-                const randomNum = Math.floor(Math.random() * 1000) + 1;
-                document.getElementById('requestNumber').textContent = `DRN-${now.getFullYear()}-${randomNum.toString().padStart(3, '0')}`;
-            }
-            
-            function validateForm() {
-                let isValid = true;
-                
-                // التحقق من الاسم
-                const fullName = document.getElementById('fullName');
-                if (!fullName.value.trim()) {
-                    validateField(fullName, 'fullNameError', false, 'يرجى إدخال الاسم الكامل');
-                    isValid = false;
-                }
-                
-                // التحقق من الهاتف
-                const phone = document.getElementById('phone');
-                const phoneRegex = /^05\d{8}$/;
-                if (!phoneRegex.test(phone.value)) {
-                    validateField(phone, 'phoneError', false, 'يرجى إدخال رقم هاتف صحيح');
-                    isValid = false;
-                }
-                
-                // التحقق من البريد الإلكتروني
-                const email = document.getElementById('email');
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email.value)) {
-                    validateField(email, 'emailError', false, 'يرجى إدخال بريد إلكتروني صحيح');
-                    isValid = false;
-                }
-                
-                // التحقق من نوع الخدمة
-                const serviceType = document.getElementById('serviceType');
-                if (!serviceType.value) {
-                    validateField(serviceType, 'serviceTypeError', false, 'يرجى اختيار نوع الخدمة');
-                    isValid = false;
-                }
-                
-                // التحقق من نوع العميل
-                const clientType = document.getElementById('clientType');
-                if (!clientType.value) {
-                    validateField(clientType, 'clientTypeError', false, 'يرجى اختيار نوع العميل');
-                    isValid = false;
-                }
-                
-                // التحقق من الموقع
-                const location = document.getElementById('location');
-                if (!location.value) {
-                    validateField(location, 'locationError', false, 'يرجى اختيار المنطقة');
-                    isValid = false;
-                }
-                
-                return isValid;
-            }
-            
-            function validateField(field, errorId, condition, errorMessage) {
-                const errorElement = document.getElementById(errorId);
-                const formGroup = field.parentElement;
-                
-                if (!condition) {
-                    formGroup.classList.add('error');
-                    errorElement.textContent = errorMessage;
-                    errorElement.style.display = 'block';
-                    return false;
-                } else {
-                    formGroup.classList.remove('error');
-                    errorElement.style.display = 'none';
-                    return true;
-                }
-            }
-            
-            function showSuccessMessage() {
-                form.style.display = 'none';
-                successMessage.style.display = 'block';
-            }
-            
-            function resetForm() {
-                form.reset();
-                form.style.display = 'block';
-                successMessage.style.display = 'none';
-                
-                document.querySelectorAll('.form-group').forEach(group => {
-                    group.classList.remove('error');
-                });
-                
-                document.querySelectorAll('.form-error').forEach(error => {
-                    error.style.display = 'none';
-                });
-                
-                const now = new Date();
-                const randomNum = Math.floor(Math.random() * 1000) + 1;
-                document.getElementById('requestNumber').textContent = `DRN-${now.getFullYear()}-${randomNum.toString().padStart(3, '0')}`;
-            }
-        });
-    </script>
+ 
 </body>
 </html>
