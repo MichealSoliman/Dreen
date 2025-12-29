@@ -1,395 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاريع شركة درين للمقاولات</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
-        
-        * {
-            font-family: 'Cairo', sans-serif;
-        }
-        
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .slide {
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(1.1);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .btn-glow {
-            box-shadow: 0 0 20px rgba(0, 102, 51, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-glow:hover {
-            box-shadow: 0 0 30px rgba(0, 102, 51, 0.5);
-            transform: scale(1.05);
-        }
-        
-        .overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
-        }
-        
-        /* تحسينات للعرض على الجوال */
-        @media (max-width: 768px) {
-            .mobile-flex-col {
-                flex-direction: column;
-            }
-            
-            .mobile-text-center {
-                text-align: center;
-            }
-            
-            .mobile-full-width {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-<body class="bg-white min-h-screen py-8 md:py-16 px-4">
-    <div class="max-w-7xl mx-auto">
-        <!-- Header Section -->
-        <div class="text-center mb-12 md:mb-16">
-            <div class="flex items-center justify-center gap-3 mb-6 flex-wrap">
-                <span class="px-4 py-2 bg-green-50 text-green-700 border border-green-200 rounded-full text-sm font-medium">
-                    ⭐ استشارات هندسية متكاملة
-                </span>
-                <span class="px-4 py-2 bg-green-50 text-green-700 border border-green-200 rounded-full text-sm font-medium">
-                    🏗️ شركة درين للمقاولات
-                </span>
-            </div>
-            
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
-                المشاريع الهندسية الكبرى
-            </h1>
-            
-            <p class="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                نفخر بتقديم حلول هندسية متكاملة لأضخم المشاريع في المملكة العربية السعودية
-            </p>
-        </div>
-
-        <!-- Main Content Grid -->
-        <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
-            <!-- Left Side - Featured Project Card with Slideshow (الآن على اليسار) -->
-            <div class="order-2 lg:order-1">
-                <div class="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl card-hover h-[400px] md:h-[500px] bg-gray-100">
-                    <!-- Slideshow Container -->
-                    <div class="absolute inset-0" id="slideshow">
-                        <!-- Slides will be inserted here by JavaScript -->
-                    </div>
-                    
-                    <!-- Overlay Content -->
-                    <div class="absolute inset-0 overlay flex flex-col justify-end p-6 md:p-8">
-                        <div class="flex gap-2 mb-3 md:mb-4 flex-wrap">
-                            <span class="px-3 py-1 bg-green-600 rounded-full text-white text-xs md:text-sm font-medium">
-                                🏗️ جاري التنفيذ
-                            </span>
-                            <span class="px-3 py-1 bg-gray-800/80 backdrop-blur-sm rounded-full text-white text-xs md:text-sm">
-                                📍 الرياض
-                            </span>
-                        </div>
-                        
-                        <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-3">
-                            مشروع البوابة الشمالية السكني
-                        </h2>
-                        
-                        <p class="text-white/90 text-sm md:text-base lg:text-lg mb-3 md:mb-4 max-w-lg">
-                            أكبر مجمع سكني متكامل يضم وحدات سكنية عصرية ومرافق خدمية شاملة
-                        </p>
-                        
-                        <div class="flex gap-3">
-                            <button class="flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-white/20 backdrop-blur-md rounded-xl text-white hover:bg-white/30 transition-all text-sm md:text-base">
-                                <span>⚙️</span>
-                                <span>استكشف تفاصيل المشروع</span>
-                            </button>
-                        </div>
-                        
-                        <div class="mt-3 md:mt-4 text-white text-xs md:text-sm">
-                            <span class="font-bold">مدة المشروع:</span> مدينة البوابة الشمالية للطاقة
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Side Content (الآن على اليمين) -->
-            <div class="order-1 lg:order-2 space-y-6 md:space-y-8">
-                <!-- Company Intro Card -->
-                <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 border border-gray-200 shadow-lg">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
-                        أسرع طريق لتأسيس مشروعك
-                    </h3>
-                    <h4 class="text-lg md:text-xl lg:text-2xl font-semibold text-green-700 mb-4 md:mb-6">
-                        مع شركة درين للمقاولات
-                    </h4>
-                    <p class="text-gray-600 text-base md:text-lg mb-6 md:mb-8">
-                        إجراءات مبسطة وسريعة للحصول على تراخيص البناء والتنفيذ الفوري
-                    </p>
-                    
-                    <!-- Statistics Grid -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
-                        <div class="bg-green-50 rounded-xl md:rounded-2xl p-3 md:p-4 text-center border border-green-100">
-                            <div class="text-2xl md:text-3xl font-bold text-green-700 mb-1 md:mb-2">25</div>
-                            <div class="text-gray-700 text-xs md:text-sm">منطقة إدارية</div>
-                        </div>
-                        <div class="bg-green-50 rounded-xl md:rounded-2xl p-3 md:p-4 text-center border border-green-100">
-                            <div class="text-2xl md:text-3xl font-bold text-green-700 mb-1 md:mb-2">+80</div>
-                            <div class="text-gray-700 text-xs md:text-sm">مشروع كبير</div>
-                        </div>
-                        <div class="bg-green-50 rounded-xl md:rounded-2xl p-3 md:p-4 text-center border border-green-100">
-                            <div class="text-2xl md:text-3xl font-bold text-green-700 mb-1 md:mb-2">+2.5B</div>
-                            <div class="text-gray-700 text-xs md:text-sm">ريال استثمارات</div>
-                        </div>
-                        <div class="bg-green-50 rounded-xl md:rounded-2xl p-3 md:p-4 text-center border border-green-100">
-                            <div class="text-2xl md:text-3xl font-bold text-green-700 mb-1 md:mb-2">2030</div>
-                            <div class="text-gray-700 text-xs md:text-sm">رؤية المملكة</div>
-                        </div>
-                    </div>
-                    
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
-                        <button class="flex-1 px-6 md:px-8 py-3 md:py-4 bg-green-600 text-white rounded-xl font-bold text-base md:text-lg btn-glow hover:bg-green-700">
-                            ابدأ الاستثمار الآن
-                        </button>
-                        <button class="flex-1 px-6 md:px-8 py-3 md:py-4 bg-gray-100 text-gray-800 rounded-xl font-semibold border-2 border-gray-200 hover:bg-gray-200 transition-all text-base md:text-lg">
-                            دليل المستثمر
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Projects Grid -->
-                <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
-                    <!-- Project Card 1 -->
-                    <div class="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-gray-200 shadow-md card-hover">
-                        <div class="mb-3 md:mb-4">
-                            <span class="px-2 md:px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs md:text-sm">
-                                🏢 تجاري
-                            </span>
-                        </div>
-                        <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">
-                            مشروع المركز التجاري
-                        </h4>
-                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            مجمع تجاري متكامل بمساحات واسعة ومرافق عصرية
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-green-700 text-xs md:text-sm font-medium">📍 جدة</span>
-                            <button class="text-green-600 hover:text-green-800 transition-colors text-sm md:text-base">
-                                اعرف المزيد ←
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 2 -->
-                    <div class="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-gray-200 shadow-md card-hover">
-                        <div class="mb-3 md:mb-4">
-                            <span class="px-2 md:px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs md:text-sm">
-                                🏥 صحي
-                            </span>
-                        </div>
-                        <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">
-                            مشروع المجمع الطبي
-                        </h4>
-                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            مركز طبي متخصص بأحدث التقنيات الطبية والخدمات الصحية
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-green-700 text-xs md:text-sm font-medium">📍 الدمام</span>
-                            <button class="text-green-600 hover:text-green-800 transition-colors text-sm md:text-base">
-                                اعرف المزيد ←
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 3 -->
-                    <div class="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-gray-200 shadow-md card-hover">
-                        <div class="mb-3 md:mb-4">
-                            <span class="px-2 md:px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs md:text-sm">
-                                🏫 تعليمي
-                            </span>
-                        </div>
-                        <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">
-                            مشروع المدينة الجامعية
-                        </h4>
-                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            حرم جامعي متكامل بمرافق تعليمية وبحثية متطورة
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-green-700 text-xs md:text-sm font-medium">📍 مكة المكرمة</span>
-                            <button class="text-green-600 hover:text-green-800 transition-colors text-sm md:text-base">
-                                اعرف المزيد ←
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 4 -->
-                    <div class="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-gray-200 shadow-md card-hover">
-                        <div class="mb-3 md:mb-4">
-                            <span class="px-2 md:px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs md:text-sm">
-                                ⚡ طاقة
-                            </span>
-                        </div>
-                        <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">
-                            مشروع محطة الطاقة المتجددة
-                        </h4>
-                        <p class="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
-                            محطة توليد كهرباء من الطاقة الشمسية بسعة إنتاجية عالية
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-green-700 text-xs md:text-sm font-medium">📍 تبوك</span>
-                            <button class="text-green-600 hover:text-green-800 transition-colors text-sm md:text-base">
-                                اعرف المزيد ←
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Additional Info Section -->
-        <div class="mt-12 md:mt-16 bg-green-50 rounded-2xl md:rounded-3xl p-6 md:p-8 border border-green-100">
-            <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-                <div>
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">لماذا تختار شركة درين للمقاولات؟</h3>
-                    <ul class="space-y-2 md:space-y-3">
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-600 mt-1">✓</span>
-                            <span class="text-gray-700 text-sm md:text-base">خبرة تزيد عن 25 عاماً في مجال المقاولات</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-600 mt-1">✓</span>
-                            <span class="text-gray-700 text-sm md:text-base">فريق هندسي متخصص وحاصل على أعلى الشهادات</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-600 mt-1">✓</span>
-                            <span class="text-gray-700 text-sm md:text-base">استخدام أحدث التقنيات والمواد في الإنشاء</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-600 mt-1">✓</span>
-                            <span class="text-gray-700 text-sm md:text-base">التزام كامل بمعايير الجودة والسلامة</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="text-center">
-                    <div class="inline-block p-4 md:p-6 bg-white rounded-2xl shadow-lg">
-                        <div class="text-2xl md:text-3xl font-bold text-green-700 mb-2">100%</div>
-                        <div class="text-gray-700 text-sm md:text-base">رضا العملاء</div>
-                        <div class="text-gray-500 text-xs md:text-sm mt-2">متوسط تقييم 4.9/5</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Slideshow configuration
-        const slidesTow = [
-            {
-                url: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
-                alt: 'مشروع سكني 1'
-            },
-            {
-                url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop',
-                alt: 'مشروع تجاري'
-            },
-            {
-                url: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop',
-                alt: 'مشروع إنشائي'
-            },
-            {
-                url: 'https://images.unsplash.com/photo-1590959651373-a3db0f38a961?w=800&h=600&fit=crop',
-                alt: 'مشروع سكني 2'
-            }
-        ];
-
-        let currentSlide = 0;
-        const slideshowContainer = document.getElementById('slideshow');
-
-        // Initialize slideshow
-        function initSlideshow() {
-            slidesTow.forEach((slide, index) => {
-                const slideDiv = document.createElement('div');
-                slideDiv.className = `absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
-                slideDiv.innerHTML = `
-                    <img src="${slide.url}" 
-                         alt="${slide.alt}" 
-                         class="w-full h-full object-cover"
-                         loading="lazy">
-                `;
-                slideshowContainer.appendChild(slideDiv);
-            });
-        }
-
-        // Change slide function
-        function changeSlide() {
-            const allSlides = slideshowContainer.children;
-            
-            if (allSlides.length === 0) return;
-            
-            // Fade out current slide
-            allSlides[currentSlide].classList.remove('opacity-100');
-            allSlides[currentSlide].classList.add('opacity-0');
-            
-            // Move to next slide
-            currentSlide = (currentSlide + 1) % allSlides.length;
-            
-            // Fade in next slide
-            allSlides[currentSlide].classList.remove('opacity-0');
-            allSlides[currentSlide].classList.add('opacity-100');
-        }
-
-        // Start slideshow
-        initSlideshow();
-        setInterval(changeSlide, 4000); // Change slide every 4 seconds
-
-        // Add scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.card-hover').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease-out';
-            observer.observe(card);
-        });
-        
-        // Add hover effects to buttons
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-    </script>
-</body>
-</html>
