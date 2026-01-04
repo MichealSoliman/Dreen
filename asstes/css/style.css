@@ -1094,8 +1094,8 @@
             left: 30px;
             z-index: 1000;
             background: #25D366;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1107,23 +1107,29 @@
         }
         /* WhatsApp Button */
       .call-float {
-    position: fixed;
-    bottom: 100px;
-    left: 30px; /* مكان الزر */
-    z-index: 1000;
-    background: #007bff; /* لون أزرق للاتصال */
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 25px rgba(0, 123, 255, 0.4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
+            position: fixed;
+            bottom: 100px;
+            left: 30px; /* مكان الزر */
+            z-index: 1000;
+            background: #007bff; /* لون أزرق للاتصال */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 25px rgba(0, 123, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+@media (max-width: 768px) {
+    .call-float {
+        left: 10px; /* أقرب للشاشة */
+        bottom: 80px; /* لو تحب تقلل المسافة عن الأسفل */
+    }
 }
-
+ 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
