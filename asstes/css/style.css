@@ -1111,9 +1111,9 @@
             bottom: 100px;
             left: 30px; /* مكان الزر */
             z-index: 1000;
-            background: #007bff; /* لون أزرق للاتصال */
-            width: 60px;
-            height: 60px;
+            background: #2071c7; /* لون أزرق للاتصال */
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1122,6 +1122,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
+            padding: 9px;
         }
 @media (max-width: 768px) {
     .call-float {
