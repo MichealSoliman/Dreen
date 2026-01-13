@@ -1009,76 +1009,81 @@
 
 
                         <!-- Partners -->
-<div class="about-card-shadow bg-white rounded-2xl md:rounded-3xl p-8">
-    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10">شركاؤنا</h2>
-    
-    <div class="grid grid-cols-2 md:grid-cols-6 gap-6 items-center">
-        <!-- كرت 1 -->
-        <div class="about-partner-logo text-center p-4 rounded-xl shadow hover:shadow-lg transition transform hover:scale-105">
-            <div class="flex flex-col items-center">
-                <img src="../asstes/img/شعار وزارة العدل السعودية –  SVG.svg" alt="">
- 
-                <div class="font-bold text-gray-800 mt-2"> وزارة العدل </div>
-            </div>
+            <!-- Partners -->
+<div class="about-card-shadow bg-white rounded-2xl md:rounded-3xl p-8 relative">
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10">
+        شركاؤنا
+    </h2>
+
+    <!-- سهم شمال -->
+    <button onclick="scrollPartners(-300)"
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-lg w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 z-10">
+        <i class="fas fa-chevron-right text-[#194480]"></i>
+    </button>
+
+    <!-- سهم يمين -->
+    <button onclick="scrollPartners(300)"
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-lg w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 z-10">
+        <i class="fas fa-chevron-left text-[#194480]"></i>
+    </button>
+
+    <!-- الشركاء -->
+    <div id="partnersScroll"
+        class="flex gap-6 overflow-x-hidden scroll-smooth px-12 py-16">
+
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img/شعار الهيئة العامة للموانئ – SVG.svg" alt="">
+           
         </div>
 
-        <!-- كرت 2 -->
-        <div class="about-partner-logo text-center p-4 rounded-xl shadow hover:shadow-lg transition transform hover:scale-105">
-            <div class="flex flex-col items-center">
-                <img src="../asstes/img/شعار وزارة الدفاع – SVG.svg" alt="">
-                <div class="font-bold text-gray-800 mt-2">  وزارة الدفاع</div>
-            </div>
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img/شعار جامعة الأمير سطام بن عبد العزيز  – SVG.svg" alt="">
+          
         </div>
 
-        <!-- كرت 3 -->
-        <div class="about-partner-logo text-center p-4 rounded-xl shadow hover:shadow-lg transition transform hover:scale-105">
-            <div class="flex flex-col items-center">
-                  <img src="../asstes/img/شعار جامعة الأمير سطام بن عبد العزيز  – SVG.svg" alt="">
-                <div class="font-bold text-gray-800 mt-2">  جامعة الامير سطام بالخرج</div>
-            </div>
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img//شعار جامعة نجران – SVG.svg" alt="">
+           
         </div>
 
-        <!-- كرت 4 -->
-        <div class="about-partner-logo text-center p-4 rounded-xl shadow hover:shadow-lg transition transform hover:scale-105">
-            <div class="flex flex-col items-center">
-                <img src="../asstes/img/شعار جامعة نجران – SVG.svg" alt="">
-                <div class="font-bold text-gray-800 mt-2"> جامعة نجران</div>
-            </div>
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img/شعار هيئة الأمر بالمعروف والنهي عن المنكر – SVG.svg" alt="">
+            
         </div>
 
-        <!-- كرت 5 -->
-        <div class="about-partner-logo text-center p-4 rounded-xl shadow hover:shadow-lg transition transform hover:scale-105">
-            <div class="flex flex-col items-center">
-                <img src="../asstes/img/شعار هيئة الأمر بالمعروف والنهي عن المنكر – SVG.svg" alt="">
-                <div class="font-bold text-gray-800 mt-2"> هيئة الامر بالمعروف</div>
-            </div>
-        </div>
-        <div class="about-partner-logo text-center p-4 rounded-xl shadow hover:shadow-lg transition transform hover:scale-105">
-            <div class="flex flex-col items-center">
-                <img src="../asstes/img/شعار هيئة حقوق الإنسان – Human Rights commission Logo – PNG – SVG.svg" alt="">
-                <div class="font-bold text-gray-800 mt-2"> هيئة حقوق الانسان </div>
-            </div>
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img/شعار هيئة حقوق الإنسان – Human Rights commission Logo – PNG – SVG.svg" alt="">
+           
         </div>
 
-   
-       
-        <div class="about-partner-logo text-center p-4 rounded-xl shadow hover:shadow-lg transition transform hover:scale-105">
-            <div class="flex flex-col items-center">
-                <img src="../asstes/img/شعار وزارة المالية – SVG.svg" alt="">
-                <div class="font-bold text-gray-800 mt-2">   وزارة المالية </div>
-            </div>
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img/شعار وزارة الدفاع – SVG.svg" alt="">
+         
         </div>
-        <div class="about-partner-logo text-center p-4 rounded-xl shadow hover:shadow-lg transition transform hover:scale-105">
-            <div class="flex flex-col items-center">
-                <img src="../asstes/img/شعار وزارة الرياضة – SVG.svg" alt="">
-                <div class="font-bold text-gray-800 mt-2">   وزارة الرياضة </div>
-            </div>
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img/شعار وزارة الرياضة – SVG.svg" alt="">
+         
         </div>
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img/شعار وزارة العدل السعودية –  SVG.svg" alt="">
+         
+        </div>
+        <div class="about-partner-logo min-w-[180px] text-center p-4 rounded-xl shadow hover:shadow-lg transition hover:scale-105">
+            <img src="./asstes/img/شعار وزارة المالية – SVG.svg" alt="">
+         
+        </div>
+
     </div>
 </div>
+
         </div>
     </section>
-
+    <script>
+function scrollPartners(value) {
+    document.getElementById('partnersScroll')
+        .scrollBy({ left: value, behavior: 'smooth' });
+}
+</script>
     <script>
         // Animation on scroll
         document.addEventListener('DOMContentLoaded', function () {
